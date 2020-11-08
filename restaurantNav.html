@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurant Navigation</title>
+</head>
+<body>
+    <div id = topBar>
+        <form>
+            <label for="addressSearch">Address</label>
+            <input type="search" id="addressSearch" name ="addressSearch"><br>
+        </form>
+        <h1>FUNNY PLACEHOLDER NAME</h1>
+        <form>
+            <input type="button" id="account" value="Account">
+        </form>
+    </div>
+
+    <div id = rSidebar>
+        <form>
+            <label for="restaurantSearch">Search</label>
+            <input type="search" id="restaurantSearch" name ="restaurantSearch"><br>
+        </form>
+        <form>
+            <label for="sort">Sort</label>
+            <select name="text" id="sort">
+                <option value ="all">All</option>
+		<option value ="deliveryTime">Delivery Time</option>
+                <option value ="popularity">Popularity</option>
+                <option value ="price">Price</option>
+                <option value ="specials">Specials</option>
+            </select>
+        </form>
+        <form>
+            <h2>Categories</h2>
+            <input type="radio" class="rSelectable" name="category" value="all">
+            <label for="all">All</label><br>
+        </form>
+    </div>
+    <div id = restaurantSpace>
+	    <div id = restaurant>
+		<img src="" id="restaurantIMG"></a>
+ 		<h3 id="restaurantName"></h3>
+		<p id="restaurantText"></p>
+            </div>  
+    </div>
+</body>
+</html>
