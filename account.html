@@ -2,8 +2,46 @@
 <html lang="en">
 <head>
     <title>Account</title>
+    <script src="jquery-3.5.1.js"></script>
 </head>
 <body>
+	<style>
+		.modal {
+		  display: none; /* Hidden by default */
+		  position: fixed; /* Stay in place */
+		  z-index: 1; /* Sit on top */
+		  left: 0;
+		  top: 0;
+		  width: 100%; /* Full width */
+		  height: 100%; /* Full height */
+		  overflow: auto; /* Enable scroll if needed */
+		  background-color: rgb(0,0,0); /* Fallback color */
+		  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+		}
+
+		/* Modal Content Box */
+		.modal-content {
+		  background-color: #fefefe;
+		  margin: 15% auto; /* 15% from the top and centered */
+		  padding: 20px;
+		  border: 1px solid #888;
+		  width: 80%; /* Could be more or less, depending on screen size */
+		}
+		/* The Close Button */
+		.close {
+		  color: #aaa;
+		  float: right;
+		  font-size: 28px;
+		  font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+		  color: black;
+		  text-decoration: none;
+		  cursor: pointer;
+		}
+	</style>
     <div class ="topBar">
         <form>
             <label for="addressSearch">Address</label>
@@ -20,10 +58,10 @@
     <h1>Account</h1>
 
     <div class ="navBar">
-        <a href="#profile" class="nav-active" id="account-profile-tab">Profile</a><br>
-        <a href="#cards" class="nav" id="account-card-tab">Saved Cards</a><br>
-        <a href="#contacts" class="nav" id="account-contact-tab">Contacts</a><br>
-        <a href="#addresses" class="nav" id="account-address-tab">Saved Addresses</a><br>
+        <a href="#profile" id="account-profile-tab">Profile</a><br>
+        <a href="#cards" id="account-card-tab">Saved Cards</a><br>
+        <a href="#contacts" id="account-contact-tab">Contacts</a><br>
+        <a href="#addresses" id="account-address-tab">Saved Addresses</a><br>
     </div>
 
     <div class ="tab-content">
@@ -34,23 +72,24 @@
                 <label for="lastName">Last Name</label><input type="text" name="lastName"><br>
                 <label for="username">Username</label><input type="text" name="username"><br>
                 <label for="email">Email</label><input type="email" name="email"><br>
-                <button id="btnPwd">Change Password</button>
+                <button type="submit">Save</button>
             </form>
+            <button class="openModal" id="btnPwd">Change Password</button>
         </div>
 
         <div class="tab-pane" id="cards">
             <h2>Saved Cards</h2>
-            <button id="btnCard">Add Card</button>
+            <button class="openModal" id="btnCard">Add Card</button>
         </div>
 
         <div class="tab-pane" id="contacts">
             <h2>Contacts</h2>
-            <button id="btnContact">Add Contact</button>
+            <button class="openModal" id="btnContact">Add Contact</button>
         </div>
 
         <div class="tab-pane" id="addresses">
             <h2>Saved Addresses</h2>
-            <button id="btnAddress">Add Address</button>
+            <button class="openModal" id="btnAddress">Add Address</button>
         </div>
     </div>
 
@@ -68,7 +107,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="submit">Confirm</button>
+                <button id="change-pwd" type="submit">Confirm</button>
             </div>
         </div>
     </div>
@@ -89,7 +128,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="submit">Add</button>
+                <button class="submit" type="submit">Add</button>
             </div>
         </div>
     </div>
@@ -107,7 +146,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="submit">Add</button>
+                <button class="submit" type="submit">Add</button>
             </div>
         </div>
     </div>
@@ -125,10 +164,10 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="submit">Add</button>
+                <button class="submit" type="submit">Add</button>
             </div>
         </div>
     </div>
-
+    <script src="account.js"></script>
 </body>
 </html>
