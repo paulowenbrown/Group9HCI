@@ -1,7 +1,3 @@
-$("#contacts").hide();
-$("#cards").hide();
-$("#addresses").hide();
-
 $("#account-profile-tab").click(function() {
 	$("#profile").show();
 	$("#contacts").hide();
@@ -53,6 +49,10 @@ $(".submit").click(function() {
   	if (r == true) {
     	$(".modal").hide();
  	}
+});
+
+$("#save-info").click(function() {
+  	var r = confirm("Are you sure you want to change this information?");
 });
 
 $("#change-pwd").click(function() {
