@@ -23,10 +23,6 @@ function login(){
     if(!loggedInAccount) {
         $("#loginError").show()
     } else {
-        // Clear login page values
-        $("#username").val("")
-        $("#password").val("")
-        $("#loginError").hide()
         showMenuPage()
     }
 }
@@ -40,6 +36,16 @@ function logout(){
 function showMenuPage() {
     $("#loginPage").hide()
     $("#menuPage").show()
+    // Clear login page values
+    $("#username").val("")
+    $("#password").val("")
+    $("#loginError").hide()
+    // Clear modal values
+    $("#unameSignUp").val("")
+    $("#passSignUp").val("")
+    $("#fnameSignUp").val("")
+    $("#lnameSignUp").val("")
+    $("#emailSignUp").val("")
 }
 
 function signUp(){
@@ -57,15 +63,9 @@ function signUp(){
             lname: lname,
             email: email
         }
-        // Add new account to array and set currently logged in
+        // Add new account to array and sets currently logged in account
         accounts.push(newAccount)
         loggedInAccount = newAccount
-        // Clear modal values
-        $("#unameSignUp").val("")
-        $("#passSignUp").val("")
-        $("#fnameSignUp").val("")
-        $("#lnameSignUp").val("")
-        $("#emailSignUp").val("")
         closeModal()
         showMenuPage()
     } else {
@@ -81,7 +81,6 @@ function openModal() {
 // When the user clicks on <span> (x), close the modal
 function closeModal() {
     $("#signUpModal").hide()
-    $("#signUpError").hide()
 }
 
 // When the user clicks anywhere outside of the modal, close it
