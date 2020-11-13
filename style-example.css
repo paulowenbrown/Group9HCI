@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+}
+
+div.topBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: black;
+    
+}
+
+#address, #title, #account {
+    background-color: maroon;
+    color: white;
+    display: block;
+    float: left;
+    margin: 20px;
+    padding: 20px;
+    height: calc(100% - 40px);
+    text-align: center;
+}
+
+#address {
+    width: calc(20% - 40px)
+}
+
+#title {
+    width: calc(60% - 40px)
+}
+
+#account {
+    width: calc(20% - 40px);
+    font-size: x-large;
+    text-decoration: none;
+}
+
+#account:hover {
+    background-color: red;
+}
+
+.rSidebar {
+    background-color: gray;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 20%;
+    height: calc(100vh - 100px);
+}
+
+.orderBar {
+    background-color: gray;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 20%;
+    height: calc(100vh - 100px);
+}
+
+#checkout {
+    display: block;
+    position: absolute;
+    bottom: 2%;
+    left: 5%;
+    width: 90%;
+    height: 75px;
+    font-size: x-large;
+}
+
+.dishSpace {
+    background-color: lightgray;
+    position: fixed;
+    left: 20%;
+    top: 100px;
+    width: 60%;
+    height: calc(100% - 100px);
+    overflow-y: auto;
+}
+
+.menuitem {
+    background-color: gray;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 100px;
+}
+
+.menuitem img {
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.dishSpace::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .dishSpace {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
