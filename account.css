@@ -30,7 +30,7 @@ body {
 /* Modal Content Box */
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 5% auto;
     padding: 10px 20px;
     width: 25%;
     border: 5px solid #f1f1f1;
@@ -109,6 +109,7 @@ input[type=text], input[type=email] {
   padding-right: 30px;
   border: 2px solid #5A7574;
   border-radius: 3px;
+  font-family: "Trebuchet MS", sans-serif;
 }
 
 .modal input[type=text],.modal input[type=email],.modal input[type=password] {
@@ -117,6 +118,7 @@ input[type=text], input[type=email] {
   padding: 12px;
   border: 2px solid #5A7574;
   border-radius: 3px;
+  font-family: "Trebuchet MS", sans-serif;
 }
 
 label {
@@ -197,22 +199,27 @@ label {
 }
 
 button {
-  background-color: #DDE2DB;
-  border: 2px solid #5A7574;
-  color: #5A7574;
-  padding: 12px 24px;
-  text-align: center;
-  font-size: 14px;
-  margin: 4px 2px;
-  opacity: 1;
-  transition: 0.1s;
-  font-family: "Trebuchet MS", sans-serif;
+    background-color: #DDE2DB;
+    border: 2px solid #5A7574;
+    color: #5A7574;
+    padding: 12px 24px;
+    text-align: center;
+    font-size: 14px;
+    margin: 4px 2px;
+    opacity: 1;
+    transition: 0.1s;
+    font-family: "Trebuchet MS", sans-serif;
 }
 
 button:hover {
     opacity: 0.8;
     background-color: #5A7574;
     color: #DDE2DB;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -224,4 +231,54 @@ button:hover {
 .tab-content {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-  }
+}
+
+
+
+
+
+#loginPage h1 {
+    text-align: center;
+    display: block;
+}
+
+#loginPage p {
+    color: red;
+}
+
+#loginPage .flex-container {
+  justify-content: center;
+}
+
+#loginPage input[type=text], #loginPage input[type=email], #loginPage input[type=password] {
+  margin-bottom: 10px;
+  padding-right: 100px;
+}
+
+#loginPage label {
+  margin-top: 10px;
+}
+
+#loginPage button {
+  padding: 4px 24px;
+  margin: 4px 0px;
+  border-radius: 7px;
+  width: 50%;
+}
+
+#loginPage .modal button {
+  width: 30%;
+  padding: 12px 24px;
+}
+
+.centered, #menuPage {
+  overflow-y: auto;
+  position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  top: 30%;
+  left: 48%;
+  margin-top: -50px;
+  margin-left: -100px;
+}
