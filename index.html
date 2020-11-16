@@ -2,11 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>GROUP 9 APP NAME</title>
     <script type="text/javascript" src="./jquery-3.5.1.js"></script>
-    <script type="text/javascript" src="./login.js"></script>
-    <script type="text/javascript" src="./account.js"></script>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./account.css">
   </head>
   <body onload="setPage()">
     <div class ="topBar">
@@ -63,38 +61,41 @@
     <!-- ACCOUNT -->
     <div id="accountPage">
       <div class ="topBar">
-        <form>
-            <label for="addressSearch">Address</label>
-            <input type="search" id="addressSearch" name ="addressSearch"><br>
-        </form>
-        <h1>NAME</h1>
-        <form>
-            <input type="button" id="account" value="Account">
-        </form>
+        <h1 id="title">NAME</h1>
       </div>
 
-      <button onclick="showMenuPage()">Back</button>
-
-      <h1>Account</h1>
-
-      <div class ="navBar">
-          <a href="#profile" id="account-profile-tab">Profile</a><br>
-          <a href="#cards" id="account-card-tab">Saved Cards</a><br>
-          <a href="#contacts" id="account-contact-tab">Contacts</a><br>
-          <a href="#addresses" id="account-address-tab">Saved Addresses</a><br>
+      <div class ="rSidebar">
+        <div class="wrap-button">
+          <input type="button" id="backButton" value="BACK TO SEARCH" onclick="showMenuPage()">
+        </div>
+        <div class="pill-nav">
+            <a href="#profile" id="account-profile-tab" class="pill-active">Profile</a>
+            <a href="#cards" id="account-card-tab">Saved Cards</a>
+            <a href="#contacts" id="account-contact-tab">Contacts</a>
+            <a href="#addresses" id="account-address-tab">Saved Addresses</a>
+        </div>
       </div>
 
       <div class ="tab-content">
+        <h1>Account</h1>
           <div class="tab-pane" id="profile">
-              <h2>Profile</h2>
-              <form>
-                  <label for="firstName">First Name</label><input type="text" name="firstName"><br>
-                  <label for="lastName">Last Name</label><input type="text" name="lastName"><br>
-                  <label for="username">Username</label><input type="text" name="username"><br>
-                  <label for="email">Email</label><input type="email" name="email"><br>
-                  <button id="save-info" type="submit">Save</button>
-              </form>
-              <button class="openModal" id="btnPwd">Change Password</button>
+            <h2>Profile</h2>
+            <div class="flex-container">
+                <form>
+                  <div class="flex-container">
+                    <div class="col-1">
+                        <label for="firstName">First Name</label><input type="text" name="firstName">
+                    </div>
+                    <div class="col-2">
+                        <label for="lastName">Last Name</label><input type="text" name="lastName">
+                      </div>
+                  </div>
+                    <label for="username">Username</label><input type="text" name="username">
+                    <label for="email">Email</label><input type="email" name="email">
+                    <button id="save-info" type="submit">Save Changes</button>
+                </form>
+            </div>
+            <button class="openModal" id="btnPwd">Change Password</button>
           </div>
 
           <div class="tab-pane" id="cards">
@@ -140,11 +141,17 @@
               </div>
               <div class="modal-body">
                   <form>
-                      <label for="inputName">Name</label><input type="text" name="inputName"><br>
-                      <label for="cardNumber">Card Number</label><input type="text" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" size="19"><br>
-                      <label for="cardName">Name on Card</label><input type="text" name="cardName"><br>
-                      <label for="expiryDate">Expiration Date</label><input type="text" name="expiryDate" placeholder="XX/XX" size="5"><br>
-                      <label for="cvv">CVV</label><input type="text" name="cvv" placeholder="XXX" size="4"><br>
+                      <label for="inputName">Name</label><input type="text" name="inputName">
+                      <label for="cardNumber">Card Number</label><input type="text" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" size="19">
+                      <label for="cardName">Name on Card</label><input type="text" name="cardName">
+                      <div class="flex-container">
+                        <div class="col-1">
+                          <label for="expiryDate">Expiration Date</label><input type="text" name="expiryDate" placeholder="XX/XX" size="5">
+                        </div>
+                        <div class="col-2">
+                          <label for="cvv">CVV</label><input type="text" name="cvv" placeholder="XXX" size="4">
+                        </div>
+                    </div>
                   </form>
               </div>
               <div class="modal-footer">
@@ -189,5 +196,7 @@
           </div>
       </div>
     </div>
+    <script type="text/javascript" src="./login.js"></script>
+    <script type="text/javascript" src="./account.js"></script>
   </body>
 </html>
