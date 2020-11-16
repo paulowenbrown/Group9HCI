@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="style-example.css" rel="stylesheet">
+    <title>Menu</title>
+</head>
+<body>
+    <div class = topBar>
+        <div id="address">
+        <form>
+            <label for="addressSearch">Address</label>
+            <input type="search" id="addressSearch" name ="addressSearch"><br>
+        </form>
+        </div>
+        <h1 id="title">FUNNY PLACEHOLDER NAME</h1>
+        <a href="account.html" id="account">Account</a>
+    </div>
+
+    <div class = rSidebar>
+        <input type="button" id ="backButton" value="Back">
+        <form>
+            <label for="menuSearch">Search</label>
+            <input type="search" id="menuSearch" name ="menuSearch"><br>
+        </form>
+        <form>
+            <label for="sort">Sort</label>
+            <select name="text" id="sort">
+                <option value ="all">All</option>
+                <option value ="popularity">Popularity</option>
+                <option value ="price">Price</option>
+                <option value ="specials">Specials</option>
+            </select>
+        </form>
+        <form>
+            <h2>Categories</h2>
+            <input type="radio" id="all" name="category" value="all" checked="checked" >
+            <label for="all">All</label><br>
+            <input type="radio" id="combos" name="category" value="combos" >
+            <label for="combos">Combos</label><br>
+            <input type="radio" id="appetizers" name="category" value="appetizers" >
+            <label for="appetizers">Appetizers</label><br>
+            <input type="radio" id="sideDish" name="category" value="sideDish" >
+            <label for="sideDish">Side Dishes</label><br>
+            <input type="radio" id="mainDish" name="category" value="mainDish" >
+            <label for="mainDish">Main Dishes</label><br>
+            <input type="radio" id="desserts" name="category" value="desserts" >
+            <label for="desserts">Desserts</label><br>
+            <input type="radio" id="storePolicy" name="category" value="storePolicy" >
+            <label for="storePolicy">Store Policy</label><br>
+        </form>
+    </div>
+    
+    <div class = orderBar>
+        <h2>Single</h2>
+        <button type="button" id="addPerson" onclick="addOrderSection();">Add Person</button>
+        <div id="orderList"></div>
+        <input type="button" id="checkout" value="Checkout">
+    </div>
+
+    <div id = dishSpace>
+    </div>
+    
+    <script src="groupOrder.js"></script>
+</body>
+</html>
