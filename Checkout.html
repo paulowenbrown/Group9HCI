@@ -3,28 +3,45 @@
 <head>
     <meta charset="utf-8" />
     <title>Checkout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./w3.css">
+    <link rel="stylesheet" href="./w3-theme-blue-grey.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="./yuhan.css" >
+   
+    
+
 </head>
-<body>
-    <div class=topBar>
-        <form>
-            <label for="addressSearch">Address</label>
-            <input type="search" id="addressSearch" name="addressSearch"><br>
-        </form>
-        <h1>Eat Fun</h1>
-        <form>
-            <input type="button" id="account" value="Account">
-        </form>
+<body class="w3-theme-l5">
+    <!-- Top header bar -->
+    <div class="w3-top">
+        <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+            <form class="w3-bar-item w3-button w3-padding-large w3-theme-d4">
+                <label for="addressSearch">Address: </label>
+                <input type="search" id="addressSearch" name="addressSearch" value="60 UNiversity road"><br>
+            </form>
+            <div class="w3-bar header-title-container">
+                <h1 class= "w3-bar-item header-title">Eat Fun</h1>
+            </div>
+            <form class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white">
+                <input type="button" id="account" value="Account">
+            </form>
+        </div>
     </div>
 
+    <!-- Body Container -->
     <div class=Delivery>
         <p>Delivery</p>
 
         <form>
             <p>Address</p>
             <select>
-                <option value="home">Home</option>
-                <option value="school">School</option>
-                <option value="Company">Company</option>
+                <option value="home">123 university street</option>
+                <option value="school">1 main hwy</option>
+                
             </select>
         </form>
 
@@ -49,18 +66,69 @@
                 <option value="2">2</option>
                 <option value="3">3</option>
             </select>
+            
+            <input type="hidden" id="payment" value="">
+            <button type="button" id="payment_select">Select Payment</button>
 
-            <input type="button" id="Payment" value="Select Payment">
             <h5>Items:</h5>
             <h5>Total:</h5>
         </form>
 
         <br />
-
+        
         <form>
             <input type="button" id="placeOrder" value="Place Order">
         </form>
     </div>
 
+    <div class="payment_modal" id="payment_modal">
+        <div class="payment_modal_contain">
+            <span class="payment_close">&times;</span>
+        
+            <h3>
+                Select Payment
+            </h3>
+            <form >
+                <p class="">Cards: </p>
+                <input type="radio" id="card1" name="card_options" value="Card 1...">
+                <label for="card1">Card 1...</label><br>
+                <input type="radio" id="card2" name="card_options" value="Card 2...">
+                <label for="card2">Card 2...</label><br>
+                <button type="button" id="addCard_bnt">Add Card</button> <br>
+
+                <label for="Contacts">Contacts:</label><br>
+                <select>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <br>
+                <input type="submit" value="Confirm">
+            </form>
+        </div>
+    </div>
+    <div class="cardInfo_modal" id="cardInfo_modal">
+        <div class="cardInfo_modal_contain">
+            <span class="cardInfo_close">&times;</span>
+            <form>
+                
+                <label for="cardNumber">Number</label><br>
+                    <input type="text" id="cardNumber">
+                <p>Name on Card<p>
+                    <input type="text" id="cardName">
+                <p>Expiry Date MM/YY<p>
+                    <input type="text" id="expiryDate" placeholder="MM/YY">
+                <p>cvv<p>
+                    <input type="text" id="cvv"><br><br>
+
+                <input type="submit" value="Submit">
+
+            </form>
+        </div>
+    </div>
+
+    <script src="./yuhan.js" ></script>
 </body>
+    
+
 </html>
