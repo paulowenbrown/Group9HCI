@@ -3,6 +3,10 @@ $("#account-profile-tab").click(function() {
 	$("#contacts").hide();
 	$("#cards").hide();
 	$("#addresses").hide();
+	$(this).addClass("pill-active");
+	$("#account-card-tab").removeClass("pill-active");
+	$("#account-contact-tab").removeClass("pill-active");
+	$("#account-address-tab").removeClass("pill-active");
 });
 
 $("#account-card-tab").click(function() {
@@ -10,6 +14,10 @@ $("#account-card-tab").click(function() {
 	$("#contacts").hide();
 	$("#cards").show();
 	$("#addresses").hide();
+	$(this).addClass("pill-active");
+	$("#account-profile-tab").removeClass("pill-active");
+	$("#account-contact-tab").removeClass("pill-active");
+	$("#account-address-tab").removeClass("pill-active");
 });
 
 $("#account-contact-tab").click(function() {
@@ -17,6 +25,10 @@ $("#account-contact-tab").click(function() {
 	$("#contacts").show();
 	$("#cards").hide();
 	$("#addresses").hide();
+	$(this).addClass("pill-active");
+	$("#account-card-tab").removeClass("pill-active");
+	$("#account-profile-tab").removeClass("pill-active");
+	$("#account-address-tab").removeClass("pill-active");
 });
 
 $("#account-address-tab").click(function() {
@@ -24,6 +36,10 @@ $("#account-address-tab").click(function() {
 	$("#contacts").hide();
 	$("#cards").hide();
 	$("#addresses").show();
+	$(this).addClass("pill-active");
+	$("#account-card-tab").removeClass("pill-active");
+	$("#account-contact-tab").removeClass("pill-active");
+	$("#account-profile-tab").removeClass("pill-active");
 });
 
 var spanClose = $(".close");
