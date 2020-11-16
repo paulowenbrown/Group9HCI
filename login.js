@@ -4,6 +4,7 @@ let accounts = [{ username:"admin", password:"password", fname:"admin", lname:"a
 function setPage() {
     $("#loginError").hide()
     $("#menuPage").hide()
+    $("#accountPage").hide()
     $("#username").val("admin")
     $("#password").val("password")
 }
@@ -35,6 +36,7 @@ function logout(){
 
 function showMenuPage() {
     $("#loginPage").hide()
+    $("#accountPage").hide()
     $("#menuPage").show()
     // Clear login page values
     $("#username").val("")
@@ -46,6 +48,11 @@ function showMenuPage() {
     $("#fnameSignUp").val("")
     $("#lnameSignUp").val("")
     $("#emailSignUp").val("")
+}
+
+function showAccountPage() {
+    $("#menuPage").hide()
+    $("#accountPage").show()
 }
 
 function signUp(){

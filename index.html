@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <script type="text/javascript" src="./jquery-3.5.1.js"></script>
-    <script type="text/javascript" src="./index.js"></script>
+    <script type="text/javascript" src="./login.js"></script>
+    <script type="text/javascript" src="./account.js"></script>
     <link rel="stylesheet" href="./styles.css">
   </head>
+
   <body onload="setPage()">
+    <!-- LOGIN -->
     <div id="loginPage">
-      <div class="centered">
+      <div>
         <p id="loginError"><strong>Please provide both a username and password for an already created account</strong></p>
         <button id="guest" onclick="showMenuPage()">Guest User</button><br>
         <label for="username">Username</label>
@@ -38,9 +41,142 @@
         </div>
       </div>
     </div>
+
+    <!-- MENU -->
     <div id="menuPage">
       MENUUUUUUUUUUUUUU<br>
-      <button onclick="logout()">Log Out</button>
+      <button onclick="logout()">Log Out</button><br>
+      <button onclick="showAccountPage()">Account</button>
+    </div>
+
+    <!-- ACCOUNT -->
+    <div id="accountPage">
+      <div class ="topBar">
+        <form>
+            <label for="addressSearch">Address</label>
+            <input type="search" id="addressSearch" name ="addressSearch"><br>
+        </form>
+        <h1>NAME</h1>
+        <form>
+            <input type="button" id="account" value="Account">
+        </form>
+      </div>
+
+      <button onclick="showMenuPage()">Back</button>
+
+      <h1>Account</h1>
+
+      <div class ="navBar">
+          <a href="#profile" id="account-profile-tab">Profile</a><br>
+          <a href="#cards" id="account-card-tab">Saved Cards</a><br>
+          <a href="#contacts" id="account-contact-tab">Contacts</a><br>
+          <a href="#addresses" id="account-address-tab">Saved Addresses</a><br>
+      </div>
+
+      <div class ="tab-content">
+          <div class="tab-pane" id="profile">
+              <h2>Profile</h2>
+              <form>
+                  <label for="firstName">First Name</label><input type="text" name="firstName"><br>
+                  <label for="lastName">Last Name</label><input type="text" name="lastName"><br>
+                  <label for="username">Username</label><input type="text" name="username"><br>
+                  <label for="email">Email</label><input type="email" name="email"><br>
+                  <button id="save-info" type="submit">Save</button>
+              </form>
+              <button class="openModal" id="btnPwd">Change Password</button>
+          </div>
+
+          <div class="tab-pane" id="cards">
+              <h2>Saved Cards</h2>
+              <button class="openModal" id="btnCard">Add Card</button>
+          </div>
+
+          <div class="tab-pane" id="contacts">
+              <h2>Contacts</h2>
+              <button class="openModal" id="btnContact">Add Contact</button>
+          </div>
+
+          <div class="tab-pane" id="addresses">
+              <h2>Saved Addresses</h2>
+              <button class="openModal" id="btnAddress">Add Address</button>
+          </div>
+      </div>
+
+      <div class="modal" id="change-pwd-modal">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <span class="close">&times;</span>
+                  <h2>Change Password</h2>
+              </div>
+              <div class="modal-body">
+                  <form>
+                      <label for="oldPassword">Old Password</label><input type="password" name="oldPassword"><br>
+                      <label for="newPassword">New Password</label><input type="password" name="newPassword"><br>
+                      <label for="confirmPassword">Confirm Password</label><input type="password" name="confirmPassword"><br>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button id="change-pwd" type="submit">Confirm</button>
+              </div>
+          </div>
+      </div>
+
+      <div class="modal" id="add-card-modal">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <span class="close">&times;</span>
+                  <h2>Add Card</h2>
+              </div>
+              <div class="modal-body">
+                  <form>
+                      <label for="inputName">Name</label><input type="text" name="inputName"><br>
+                      <label for="cardNumber">Card Number</label><input type="text" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" size="19"><br>
+                      <label for="cardName">Name on Card</label><input type="text" name="cardName"><br>
+                      <label for="expiryDate">Expiration Date</label><input type="text" name="expiryDate" placeholder="XX/XX" size="5"><br>
+                      <label for="cvv">CVV</label><input type="text" name="cvv" placeholder="XXX" size="4"><br>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button class="submit" type="submit">Add</button>
+              </div>
+          </div>
+      </div>
+
+      <div class="modal" id="add-contact-modal">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <span class="close">&times;</span>
+                  <h2>Add Contact</h2>
+              </div>
+              <div class="modal-body">
+                  <form>
+                      <label for="inputName">Name</label><input type="text" name="inputName"><br>
+                      <label for="username">Username</label><input type="text" name="username"><br>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button class="submit" type="submit">Add</button>
+              </div>
+          </div>
+      </div>
+
+      <div class="modal" id="add-address-modal">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <span class="close">&times;</span>
+                  <h2>Add Address</h2>
+              </div>
+              <div class="modal-body">
+                  <form>
+                      <label for="inputName">Name</label><input type="text" name="inputName"><br>
+                      <label for="addresses">Address</label><input type="text" name="addresses"><br>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button class="submit" type="submit">Add</button>
+              </div>
+          </div>
+      </div>
     </div>
   </body>
 </html>
