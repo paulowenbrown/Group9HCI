@@ -62,11 +62,10 @@ $("#btnCard").click(function() {
  	$("#add-card-modal").show();
 });
 
-// Code other than modal showing and pill
-
 function showAccountPage() {
 	$("#restaurantPage").hide()
 	$("#accountPage").show()
+	listInit()
 	// Sets Account field values
 	$("#usernameAcc").val(loggedInAccount.username)
 	$("#fnameAcc").val(loggedInAccount.fname)
@@ -126,13 +125,15 @@ $("#add-card").click(function() {
 	}
 	// Add card to list
 	if (!error) {
-		loggedInAccount.cards.push({
+		let card = {
 			name: name,
 			cardNumber: cardNum,
 			cardName: cardName,
 			expDate: expDate,
 			cvv: cvv
-		})
+		}
+		loggedInAccount.cards.push(card)
+		appendCard(card)
 		$("#cardInputName").val("")
 		$("#cardNum").val("")
 		$("#cardName").val("")
@@ -145,10 +146,12 @@ $("#add-card").click(function() {
 $("#add-contact").click(function() {
 	let name = $("#contactInputName").val()
 	let username = $("#contactUsername").val()
-	loggedInAccount.contacts.push({
+	let contact = {
 		name: name,
 		username: username
-	})
+	}
+	loggedInAccount.contacts.push(contact)
+	appendContact(contact)
 	$("#contactInputName").val("")
 	$("#contactUsername").val("")
 	$(".modal").hide()
@@ -157,11 +160,50 @@ $("#add-contact").click(function() {
 $("#add-address").click(function() {
 	let name = $("#addressInputName").val()
 	let address = $("#address").val()
-	loggedInAccount.adresses.push({
+	let addr = {
 		name: name,
 		address: address
-	})
+	}
+	loggedInAccount.addresses.push(addr)
+	appendAddress(addr)
 	$("#addressInputName").val("")
 	$("#address").val("")
 	$(".modal").hide()
 });
+
+function listInit() {
+	// Clear divs to ensure no duplication
+	$("#cardList").html("");
+	$("#contactList").html("");
+	$("#addressList").html("");
+	for (x in loggedInAccount.cards) {
+		let card = loggedInAccount.cards[x]
+		appendCard(card)
+	}
+	for (x in loggedInAccount.contacts) {
+		let contact = loggedInAccount.contacts[x]
+		appendContact(contact)
+	}
+	for (x in loggedInAccount.addresses) {
+		let addr = loggedInAccount.addresses[x]
+		appendAddress(addr)
+	}
+}
+
+function appendCard(card) {
+	var item = document.createElement("h4")
+	item.appendChild(document.createTextNode(card.name + " - " + card.cardNumber))
+	document.getElementById("cardList").appendChild(item);
+}
+
+function appendContact(contact) {
+	var item = document.createElement("h4")
+	item.appendChild(document.createTextNode(contact.name + " - " + contact.username))
+	document.getElementById("contactList").appendChild(item);
+}
+
+function appendAddress(addr) {
+	var item = document.createElement("h4")
+	item.appendChild(document.createTextNode(addr.name + " - " + addr.address))
+	document.getElementById("addressList").appendChild(item);
+}
