@@ -13,7 +13,7 @@
     <div id="loginPage">
       <div class="centered">
         <div class="flex-container">
-          <button id="guest" onclick="showMenuPage()">Guest User</button>
+          <button id="guest" onclick="guestUserLogin()">Guest User</button>
         </div>
         <div class="flex-container">
           <p id="loginError"><strong>Invalid username or password</strong></p>
@@ -53,11 +53,11 @@
       </div>
     </div>
 
-    <!-- MENU -->
-    <div id="menuPage">
-      MENUUUUUUUUUUUUUU<br>
+    <!-- RESTAURANT -->
+    <div id="restaurantPage">
+      Restaurant Page<br>
       <button onclick="logout()">Log Out</button><br>
-      <button onclick="showAccountPage()">Account</button>
+      <button id="accountBtn" onclick="showAccountPage()">Account</button>
     </div>
 
     <!-- ACCOUNT -->
@@ -68,7 +68,7 @@
 
       <div class ="rSidebar">
         <div class="wrap-button">
-          <input type="button" id="backButton" value="BACK TO SEARCH" onclick="showMenuPage()">
+          <input type="button" id="backButton" value="BACK TO SEARCH" onclick="showRestaurantPage()">
         </div>
         <div class="pill-nav">
             <a id="account-profile-tab" class="pill-active">Profile</a>
@@ -86,17 +86,17 @@
                 <form>
                   <div class="flex-container">
                     <div class="col-1">
-                        <label for="firstName">First Name</label><input type="text" name="firstName">
+                        <label for="firstName">First Name</label><input type="text" name="firstName" id="fnameAcc">
                     </div>
                     <div class="col-2">
-                        <label for="lastName">Last Name</label><input type="text" name="lastName">
-                      </div>
+                        <label for="lastName">Last Name</label><input type="text" name="lastName" id="lnameAcc">
+                    </div>
                   </div>
-                    <label for="username">Username</label><input type="text" name="username">
-                    <label for="email">Email</label><input type="email" name="email">
-                    <button id="save-info" type="submit">Save Changes</button>
+                    <label for="username">Username</label><input type="text" name="username" id="usernameAcc">
+                    <label for="email">Email</label><input type="email" name="email" id="emailAcc">
                 </form>
             </div>
+            <button id="save-info">Save Changes</button><br>
             <button class="openModal" id="btnPwd">Change Password</button>
           </div>
 
@@ -123,11 +123,12 @@
                   <h2>Change Password</h2>
               </div>
               <div class="modal-body">
-                  <form>
-                      <label for="oldPassword">Old Password</label><input type="password" name="oldPassword"><br>
-                      <label for="newPassword">New Password</label><input type="password" name="newPassword"><br>
-                      <label for="confirmPassword">Confirm Password</label><input type="password" name="confirmPassword"><br>
-                  </form>
+                <p id="passwordError"><strong>Passwords must be the same</strong></p>
+                <form>
+                    <label for="oldPassword">Old Password</label><input type="text" name="oldPassword" id="passwordAcc"><br>
+                    <label for="newPassword">New Password</label><input type="text" name="newPassword" id="passwordNew"><br>
+                    <label for="confirmPassword">Confirm Password</label><input type="text" name="confirmPassword" id="passwordConfirm"><br>
+                </form>
               </div>
               <div class="modal-footer">
                   <button id="change-pwd" type="submit">Confirm</button>
@@ -142,22 +143,25 @@
                   <h2>Add Card</h2>
               </div>
               <div class="modal-body">
-                  <form>
-                      <label for="inputName">Name</label><input type="text" name="inputName">
-                      <label for="cardNumber">Card Number</label><input type="text" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" size="19">
-                      <label for="cardName">Name on Card</label><input type="text" name="cardName">
-                      <div class="flex-container">
-                        <div class="col-1">
-                          <label for="expiryDate">Expiration Date</label><input type="text" name="expiryDate" placeholder="XX/XX" size="5">
-                        </div>
-                        <div class="col-2">
-                          <label for="cvv">CVV</label><input type="text" name="cvv" placeholder="XXX" size="4">
-                        </div>
-                    </div>
-                  </form>
+                <p id="cardNumError"><strong>Card Number must be of length exactly 16</strong></p>
+                <p id="expDateError"><strong>Expiry Date must be a two digit month (with preceding 0 where required) followed by a two digit year, separated by a slash</strong></p>
+                <p id="cvvError"><strong>CVV must be number of length exactly 3</strong></p>
+                <form>
+                    <label for="inputName">Name</label><input type="text" name="inputName" id="cardInputName">
+                    <label for="cardNumber">Card Number</label><input type="text" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" size="19" id="cardNum">
+                    <label for="cardName">Name on Card</label><input type="text" name="cardName" id="cardName">
+                    <div class="flex-container">
+                      <div class="col-1">
+                        <label for="expiryDate">Expiration Date</label><input type="text" name="expiryDate" placeholder="XX/XX" size="5" id="expDate">
+                      </div>
+                      <div class="col-2">
+                        <label for="cvv">CVV</label><input type="text" name="cvv" placeholder="XXX" size="4" id="cvv">
+                      </div>
+                  </div>
+                </form>
               </div>
               <div class="modal-footer">
-                  <button class="submit" type="submit">Add</button>
+                  <button id="add-card" type="submit">Add</button>
               </div>
           </div>
       </div>
@@ -170,12 +174,12 @@
               </div>
               <div class="modal-body">
                   <form>
-                      <label for="inputName">Name</label><input type="text" name="inputName"><br>
-                      <label for="username">Username</label><input type="text" name="username"><br>
+                      <label for="inputName">Name</label><input type="text" name="inputName" id="contactInputName"><br>
+                      <label for="username">Username</label><input type="text" name="username" id="contactUsername"><br>
                   </form>
               </div>
               <div class="modal-footer">
-                  <button class="submit" type="submit">Add</button>
+                  <button id="add-contact" type="submit">Add</button>
               </div>
           </div>
       </div>
@@ -188,16 +192,27 @@
               </div>
               <div class="modal-body">
                   <form>
-                      <label for="inputName">Name</label><input type="text" name="inputName"><br>
-                      <label for="addresses">Address</label><input type="text" name="addresses"><br>
+                      <label for="inputName">Name</label><input type="text" name="inputName" id="addressInputName"><br>
+                      <label for="addresses">Address</label><input type="text" name="addresses" id="address"><br>
                   </form>
               </div>
               <div class="modal-footer">
-                  <button class="submit" type="submit">Add</button>
+                  <button id="add-address" type="submit">Add</button>
               </div>
           </div>
       </div>
     </div>
+
+    <!-- MENU -->
+    <div id="menuPage">
+      MENUUUUUUUUUUUUUU
+    </div>
+
+    <!-- CHECKOUT -->
+    <div id="checkoutPage">
+      CHECKOUT
+    </div>
+
     <script type="text/javascript" src="./common.js"></script>
     <script type="text/javascript" src="./login.js"></script>
     <script type="text/javascript" src="./account.js"></script>

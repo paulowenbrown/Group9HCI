@@ -234,7 +234,9 @@ button:hover {
 }
 
 
-
+#accountPage p {
+    color: red;
+}
 
 
 #loginPage h1 {
@@ -271,7 +273,7 @@ button:hover {
   padding: 12px 24px;
 }
 
-.centered, #menuPage {
+.centered, #restaurantPage {
   overflow-y: auto;
   position: fixed;
   display: flex;

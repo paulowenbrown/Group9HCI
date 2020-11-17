@@ -1,13 +1,14 @@
 let loggedInAccount = ""
-let accountIndex = null // location in array of currently logged in account for ease of access
 let accounts = [{ username:"admin", password:"password", fname:"John", lname:"Smith", email:"admin@admin.ca", 
     cards: [{ name:"John", cardNumber:"1234123412341234", cardName:"John Smith", expDate:"01/22", cvv: "123" }],
     contacts: [{ name:"Jeff", username: "test" }], addresses: [{ name:"John", address:"123 Admin Place"}] }]
 
 function setPage() {
     $("#loginError").hide()
-    $("#menuPage").hide()
+    $("#restaurantPage").hide()
     $("#accountPage").hide()
+    $("#menuPage").hide()
+    $("#checkoutPage").hide()
     $("#username").val("admin")
     $("#password").val("password")
 }
@@ -20,7 +21,6 @@ function login(){
         let account = accounts[x]
         if(account.username == uname && account.password == pass) {
             loggedInAccount = account
-            accountIndex = x
             break
         }
     }
@@ -28,21 +28,26 @@ function login(){
     if(!loggedInAccount) {
         $("#loginError").show()
     } else {
-        showMenuPage()
+        $("#accountBtn").show()
+        showRestaurantPage()
     }
+}
+
+function guestUserLogin(){
+    $("#accountBtn").hide()
+    showRestaurantPage()
 }
 
 function logout(){
     loggedInAccount = ""
-    accountIndex = null
     $("#loginPage").show()
-    $("#menuPage").hide()
+    $("#restaurantPage").hide()
 }
 
-function showMenuPage() {
+function showRestaurantPage() {
     $("#loginPage").hide()
     $("#accountPage").hide()
-    $("#menuPage").show()
+    $("#restaurantPage").show()
     // Clear login page values
     $("#username").val("")
     $("#password").val("")
@@ -53,11 +58,6 @@ function showMenuPage() {
     $("#fnameSignUp").val("")
     $("#lnameSignUp").val("")
     $("#emailSignUp").val("")
-}
-
-function showAccountPage() {
-    $("#menuPage").hide()
-    $("#accountPage").show()
 }
 
 function signUp(){
@@ -73,13 +73,16 @@ function signUp(){
             password: pass,
             fname: fname,
             lname: lname,
-            email: email
+            email: email,
+            cards: [],
+            contacts: [],
+            addresses: []
         }
         // Add new account to array and sets currently logged in account
         accounts.push(newAccount)
         loggedInAccount = newAccount
         closeModal()
-        showMenuPage()
+        showRestaurantPage()
     } else {
         $("#signUpError").show()
     }
