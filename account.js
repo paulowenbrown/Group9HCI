@@ -42,8 +42,6 @@ $("#account-address-tab").click(function() {
 	$("#account-profile-tab").removeClass("pill-active");
 });
 
-var spanClose = $(".close");
-
 $("#btnAddress").click(function() {
  	$("#add-address-modal").show();
 });
@@ -73,8 +71,4 @@ $("#save-info").click(function() {
 
 $("#change-pwd").click(function() {
 	$(".modal").hide();
-});
-
-spanClose.click(function() {
-  	$(".modal").hide();
 });

@@ -1,5 +1,8 @@
 let loggedInAccount = ""
-let accounts = [{ username:"admin", password:"password", fname:"admin", lname:"admin", email:"admin@admin.ca"}]
+let accountIndex = null // location in array of currently logged in account for ease of access
+let accounts = [{ username:"admin", password:"password", fname:"John", lname:"Smith", email:"admin@admin.ca", 
+    cards: [{ name:"John", cardNumber:"1234123412341234", cardName:"John Smith", expDate:"01/22", cvv: "123" }],
+    contacts: [{ name:"Jeff", username: "test" }], addresses: [{ name:"John", address:"123 Admin Place"}] }]
 
 function setPage() {
     $("#loginError").hide()
@@ -17,6 +20,7 @@ function login(){
         let account = accounts[x]
         if(account.username == uname && account.password == pass) {
             loggedInAccount = account
+            accountIndex = x
             break
         }
     }
@@ -30,6 +34,7 @@ function login(){
 
 function logout(){
     loggedInAccount = ""
+    accountIndex = null
     $("#loginPage").show()
     $("#menuPage").hide()
 }
@@ -80,19 +85,7 @@ function signUp(){
     }
 }
 
-function openModal() {
+function openSignUpModal() {
     $("#signUpModal").show()
     $("#signUpError").hide()
-}
-
-// When the user clicks on <span> (x), close the modal
-function closeModal() {
-    $("#signUpModal").hide()
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target.id == "signUpModal") {
-        closeModal()
-    }
 }

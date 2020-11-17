@@ -26,13 +26,15 @@
           <button onclick="login()">Log In</button>
         </div>
         <div class="flex-container">
-          <button id="signUp" onclick="openModal()">Sign Up</button>
+          <button id="signUp" onclick="openSignUpModal()">Sign Up</button>
         </div>
       </div>
       <div id="signUpModal" class="modal">
         <div class="modal-content">
-          <span class="close" onclick="closeModal()">&times;</span>
-          <h1>Sign Up</h1>
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Sign Up</h2>
+          </div>
           <p id="signUpError"><strong>Please fill in username and password</strong></p>
           <label for="unameSignUp">Username</label>
           <input type="text" id="unameSignUp" name="unameSignUp"><br>
@@ -69,10 +71,10 @@
           <input type="button" id="backButton" value="BACK TO SEARCH" onclick="showMenuPage()">
         </div>
         <div class="pill-nav">
-            <a href="#profile" id="account-profile-tab" class="pill-active">Profile</a>
-            <a href="#cards" id="account-card-tab">Saved Cards</a>
-            <a href="#contacts" id="account-contact-tab">Contacts</a>
-            <a href="#addresses" id="account-address-tab">Saved Addresses</a>
+            <a id="account-profile-tab" class="pill-active">Profile</a>
+            <a id="account-card-tab">Saved Cards</a>
+            <a id="account-contact-tab">Contacts</a>
+            <a id="account-address-tab">Saved Addresses</a>
         </div>
       </div>
 
@@ -196,6 +198,7 @@
           </div>
       </div>
     </div>
+    <script type="text/javascript" src="./common.js"></script>
     <script type="text/javascript" src="./login.js"></script>
     <script type="text/javascript" src="./account.js"></script>
   </body>
