@@ -1,0 +1,345 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Trebuchet MS", sans-serif;
+    color: #4B5049;
+}
+
+div.topBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #5A7574;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+#address, #title, #accountBtn, #logOut, #logIn {
+    color: white;
+    padding-left: 20px;
+    height: calc(100% - 40px);
+    text-align: center;
+}
+
+#address {
+    margin-top:7px;
+    margin-left: 13px;
+    text-align: left;
+    border: none;
+    padding: 24px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: none;
+    font-family: "Trebuchet MS", sans-serif;
+    text-decoration: none;
+    font-size: 17px;
+    border-radius: 12px;
+    outline: none;
+    color: black;
+}
+
+#title {
+    width: calc(60% - 40px)
+}
+
+.account-container {
+    margin-right: 2.5%;
+    width: 18%;
+}
+
+#accountBtn {
+    margin-top:12px;
+    font-size: 17px;
+    font-weight: bold;
+    padding-top: 15px;
+    padding-bottom: 34px;
+    padding-right: 20px;
+    padding-left: 20px;
+    text-decoration: none;
+    font-size: 17px;
+    background-color: #DDE2DB;
+    border: 2px solid #5A7574;
+    color: #5A7574;
+    width: 55%;
+}
+
+#accountBtn:hover {
+    background-color: #5A7574;
+    color: #DDE2DB;
+    border: 2px solid #DDE2DB;
+}
+
+#logOut,#logIn {
+    float: right;
+    margin-top:12px;
+    font-size: 17px;
+    font-weight: bold;
+    padding-top: 15px;
+    padding-bottom: 34px;
+    padding-right: 22px;
+    padding-left: 22px;
+    text-decoration: none;
+    font-size: 17px;
+    background-color: #DDE2DB;
+    border: 2px solid #5A7574;
+    color: #5A7574;
+    width: 40%;
+}
+
+#logOut:hover,#logIn:hover {
+    background-color: #5A7574;
+    color: #DDE2DB;
+    border: 2px solid #DDE2DB;
+}
+
+#logIn {
+    display: none;
+}
+
+.rSidebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 20%;
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+
+.search-container {
+    border: none;
+    margin-top: 40px;
+    display: block;
+    width: 79%;
+    margin-left: 10%;
+}
+
+.rSidebar input[type=text] {
+    padding: 6px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: none;
+    font-family: "Trebuchet MS", sans-serif;
+    text-decoration: none;
+    font-size: 17px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    outline: none;
+    max-width: 80%;
+}
+
+.sort-container {
+    border: none;
+    margin-top: 5px;
+    display: block;
+    width: 79%;
+    margin-left: 10%;
+}
+
+.sort-container label {
+    background-color: #DDE2DB;
+    padding: 6.5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+    font-family: "Trebuchet MS", sans-serif;
+    color: #5A7574;
+    text-decoration: none;
+    font-size: 15px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    outline: none;
+    max-width: 20%;
+}
+
+.sort-container #sort {
+    padding: 6px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    border: none;
+    font-family: "Trebuchet MS", sans-serif;
+    text-decoration: none;
+    font-size: 17px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    outline: none;
+    margin-left:-5px;
+    width:80%;
+    font-size: 15px;
+    color: #4B5049;
+}
+
+#category {
+    text-align: center;
+    margin:30px;
+    margin-bottom: 10px;
+}
+
+.rSidebar hr {
+    width: 40%;
+    margin-bottom: 30px;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #DDE2DB;
+    padding: 0;
+}
+
+.rSidebar .search-container button {
+    padding: 6px 10px;
+    margin-top: 8px;
+    font-size: 17px;
+    cursor: pointer;
+    margin-left:0px;
+    margin-right: -5px;
+    border: 2px solid #DDE2DB;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    max-width:20%;
+}
+
+.rSidebar .search-container button:hover {
+    border: 2px solid #DDE2DB;
+}
+
+.pill-nav .pill-active {
+    background-color: #DDE2DB;
+    color: #5A7574;
+}
+
+.pill-nav {
+    background-color: #5A7574;
+    position:fixed;
+    border-radius: 70px;
+    width: 17%;
+    top: 130px;
+    left: 3%;
+    height: 80.5vh;
+    overflow-y: auto;
+}
+
+.rCategory {
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin: 10px;
+    margin-left: 10px;
+    height: 62%;
+    overflow-y: auto;
+}
+
+.rCategory a {
+    padding: 23px;
+    margin-left: 6.5px;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 17px;
+    color: white;
+    width: 30%;
+    text-align: center;
+    height: 15%;
+}
+
+.rCategory a:hover {
+    background-color: #DDE2DB;
+    color:#4B5049;
+}
+
+h1 {
+    padding-left: 5%;
+    display: block;
+}
+
+h2 {
+    color: #DDE2DB;
+}
+
+#restaurantSpace {
+    padding: 20px;
+    position: fixed;
+    left: 20%;
+    top: 80px;
+    width: 80%;
+    height: calc(100% - 80px);
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.restaurant {
+    background-color: #DDE2DB;
+    margin-left: 6%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding: 5%;
+    border-radius: 100px;
+    height: 50%;
+    width: 40%;
+    border: 4px solid #DDE2DB;
+    cursor: pointer;
+}
+
+.restaurant:hover {
+    border: 4px solid #5A7574;
+}
+
+.restaurant img {
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+
+button {
+    background-color: #DDE2DB;
+    border: 2px solid #5A7574;
+    color: #5A7574;
+    padding: 12px 24px;
+    text-align: center;
+    font-size: 14px;
+    margin: 4px 2px;
+    opacity: 1;
+    transition: 0.1s;
+    font-family: "Trebuchet MS", sans-serif;
+    outline: none;
+}
+
+button:hover {
+    opacity: 0.8;
+    background-color: #5A7574;
+    color: #DDE2DB;
+    border: 2px solid #DDE2DB;
+}
+
+.addButton, .editDish {
+    background-color: #5A7574;
+    color: #DDE2DB;
+    border: 2px solid #5A7574;
+}
+
+.addButton:hover, .editDish:hover {
+    background-color: #DDE2DB;
+    border: 2px solid #5A7574;
+    color: #5A7574;
+}
+
+#restaurantSpace::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+#restaurantSpace::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+#restaurantSpace::-webkit-scrollbar-thumb {
+  background: #DDE2DB;
+}
+
+/* Handle on hover */
+#restaurantSpace::-webkit-scrollbar-thumb:hover {
+  background: #4B5049;
+}

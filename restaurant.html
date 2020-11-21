@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurant Navigation</title>
+    <script src="jquery-3.5.1.js"></script>
+    <link rel="stylesheet" href="restaurant.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div id="restaurantPage">
+        <div class = "topBar">
+            <div id="address">
+                <form>
+                    <input type="text" placeholder="Address" id="address">
+                </form>
+            </div>
+            <h1 id="title">FUNNY PLACEHOLDER NAME</h1>
+            <div class="account-container">
+                <button id="accountBtn" onclick="showAccountPage()">Account</button>
+                <button id="logOut" onclick="logout()">Log Out</button>
+                <button id="logIn" onclick="">Log In</button>
+            </div>
+        </div>
+        <div class = "rSidebar">
+            <div class="pill-nav">
+                <div class="search-container">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                    <input type="text" placeholder="Search" name="search">
+                </div>
+                <div class="sort-container">
+                    <label for="sort">Sort</label>
+                    <select name="text" id="sort">
+                        <option value ="all">All</option>
+                        <option value ="deliveryTime">Delivery Time</option>
+                        <option value ="popularity">Popularity</option>
+                        <option value ="price">Price</option>
+                        <option value ="specials">Specials</option>
+                    </select>
+                </div>
+                <h2 id="category">Categories</h2><hr>
+                <div class="rCategory">
+                    <a href="" class="pill-active" name="category">All</a>
+                    <a href="" name="category">B</a>
+                    <a href="" name="category">C</a>
+                    <a href="" name="category">D</a>
+                    <a href="" name="category">B</a>
+                    <a href="" name="category">C</a>
+                    <a href="" name="category">D</a>
+                    <a href="" name="category">D</a>
+                    <a href="" name="category">B</a>
+                    <a href="" name="category">C</a>
+                    <a href="" name="category">D</a>
+                </div>
+            </div>
+        </div>
+        <div id = "restaurantSpace">
+        </div>  
+    </div>
+         <script src="restaurant.js"></script>
+</body>
+</html>

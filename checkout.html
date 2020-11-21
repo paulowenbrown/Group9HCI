@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Checkout</title>
+    <script type="text/javascript" src="./jquery-3.5.1.js"></script>
+    <link rel="stylesheet" href="./checkout.css" >
+</head>
+<body>
+    <!-- Top header bar -->
+<div class = "topBar">
+    <h1 id="title">FUNNY PLACEHOLDER NAME</h1>
+    <div class="account-container">
+        <button id="accountBtn" onclick="showAccountPage()">Account</button>
+        <button id="logOut" onclick="logout()">Log Out</button>
+        <button id="logIn" onclick="">Log In</button>
+    </div>
+    </div>
+
+    <!-- Body Container -->
+    <div class="rSidebar">
+        <div class="wrap-button">
+            <input type="button" id ="backButton" value="BACK TO SEARCH">
+        </div>
+        <div class="pill-nav">
+
+        <h2 id="delivery">Delivery</h2><hr>
+            <div class="select-container">
+                <label for="selectAddress">Address</label>
+                <select id="selectAddress">
+                    <option value="home">123 university street</option>
+                    <option value="school">1 main hwy</option>
+                </select>
+            </div>
+            <p>Delivery Time:</p>
+            <div class="note-container">
+                <label>Extra Notes</label>
+                <textarea id="extraNote" rows="4" cols="50"></textarea>
+            </div>
+    </div>
+    </div>
+
+    <div class="checkoutSpace">
+        <h1>Your Order</h1>
+        <h2>Person 1</h2>
+        <button id="payment-select">Select Payment</button>
+        <h3>Items:</h3>
+        <h3>Total:</h3>
+        <button type="submit" id="placeOrder">Place Order</button>
+    </div>
+
+    <div class="modal" id="payment-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="payment-close" id="payment-close">&times;</span>
+                <h2>Select Payment</h2>
+            </div>
+            <div class="modal-body">
+                <p class="">Cards: </p>
+                <input type="radio" id="card1" name="card_options" value="Card 1...">
+                <label for="card1">Card 1...</label><br>
+                <input type="radio" id="card2" name="card_options" value="Card 2...">
+                <label for="card2">Card 2...</label><br>
+                <button id="addCard-btn">Add Card</button> <br>
+
+                <label for="Contacts">Contacts:</label><br>
+                <select>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="submit">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="add-card-modal">
+      <div class="modal-content">
+          <div class="modal-header">
+                <span class="add-card-close" id="add-card-close">&times;</span>
+                <h2>Add Card</h2>
+          </div>
+          <div class="modal-body">
+                <p id="cardNumError"><strong>Card Number must be of length exactly 16</strong></p>
+                <p id="expDateError"><strong>Expiry Date must be a two digit month (with preceding 0 where required) followed by a two digit year, separated by a slash</strong></p>
+                <p id="cvvError"><strong>CVV must be number of length exactly 3</strong></p>
+                <form>
+                    <label for="inputName">Name</label><input type="text" name="inputName" id="cardInputName">
+                    <label for="cardNumber">Card Number</label><input type="text" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" size="19" id="cardNum">
+                    <label for="cardName">Name on Card</label><input type="text" name="cardName" id="cardName">
+                    <div class="flex-container">
+                      <div class="col-1">
+                        <label for="expiryDate">Expiration Date</label><input type="text" name="expiryDate" placeholder="XX/XX" size="5" id="expDate">
+                      </div>
+                      <div class="col-2">
+                        <label for="cvv">CVV</label><input type="text" name="cvv" placeholder="XXX" size="4" id="cvv">
+                      </div>
+                  </div>
+                </form>
+          </div>
+          <div class="modal-footer">
+              <button id="add-card" type="submit">Add</button>
+          </div>
+      </div>
+  </div>
+
+    <script src="./checkout.js" ></script>
+</body>
+    
+
+</html>

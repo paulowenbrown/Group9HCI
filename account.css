@@ -57,7 +57,6 @@ body {
     width: 100%;
     height: 80px;
     background-color: #5A7574;
-    
 }
 
 h1 {
@@ -72,6 +71,44 @@ h1 {
     text-align: center;
 }
 
+#accountPage #title {
+    margin-left: 36.95%;
+    display: inline-block;
+}
+
+.account-container {
+    margin-right: 3%;
+    width: 18%;
+    max-width: 18%;
+    display: inline-block;
+    float: right;
+    height: calc(100% - 40px);
+}
+
+#logOut {
+    max-height: 100%;
+    float: right;
+    margin-top:12px;
+    font-size: 17px;
+    font-weight: bold;
+    padding-top: 15px;
+    padding-bottom: 34px;
+    padding-right: 22px;
+    padding-left: 22px;
+    text-decoration: none;
+    font-size: 17px;
+    background-color: #DDE2DB;
+    border: 2px solid #5A7574;
+    color: #5A7574;
+    width: 40%;
+}
+
+#logOut:hover {
+    background-color: #5A7574;
+    color: #DDE2DB;
+    border: 2px solid #DDE2DB;
+}
+
 .tab-content {
     padding: 20px;
     position: fixed;
@@ -81,6 +118,10 @@ h1 {
     height: calc(100% - 80px);
     overflow-y: auto;
     
+}
+
+#account-profile-tab {
+  margin-top: 10%;
 }
 
 .tab-pane {
@@ -102,7 +143,7 @@ h1 {
     padding-left: 8px;
 }
 
-input[type=text], input[type=email] {
+input[type=text], input[type=email], input[type=password] {
   width: 100%;
   margin-bottom: 20px;
   padding: 12px;
@@ -171,6 +212,8 @@ label {
     border-radius: 12px;
     font-size: 17px;
     color: white;
+    width: 80%;
+    margin-left: 10%;
 }
 
 .rSidebar a:hover {
@@ -190,7 +233,7 @@ label {
     width: 17%;
     top: 180px;
     left: 3%;
-    height: 70vh;
+    height: 75vh;
     overflow-y: auto;
 }
 
@@ -226,15 +269,10 @@ button:hover {
 .tab-content::-webkit-scrollbar {
     display: none;
   }
-  
-  /* Hide scrollbar for IE, Edge and Firefox */
-.tab-content {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+
+#accountPage p {
+    color: red;
 }
-
-
-
 
 
 #loginPage h1 {
@@ -271,7 +309,7 @@ button:hover {
   padding: 12px 24px;
 }
 
-.centered, #menuPage {
+.centered, #restaurantPage {
   overflow-y: auto;
   position: fixed;
   display: flex;
