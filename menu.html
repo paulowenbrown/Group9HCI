@@ -19,13 +19,12 @@
 
     <div class = rSidebar>
         <input type="button" id ="backButton" value="Back">
-        <form>
-            <label for="menuSearch">Search</label>
-            <input type="search" id="menuSearch" name ="menuSearch"><br>
-        </form>
+
+        <label for="menuSearch">Search</label>
+        <input type="search" id="menuSearch" name ="menuSearch" oninput="refreshMenuItems()"><br>
         <form>
             <label for="sort">Sort</label>
-            <select name="text" id="sort">
+            <select name="text" id="sort" onchange="refreshMenuItems()">
                 <option value ="all">All</option>
                 <option value ="popularity">Popularity</option>
                 <option value ="price">Price</option>
@@ -34,19 +33,19 @@
         </form>
         <form>
             <h2>Categories</h2>
-            <input type="radio" id="all" name="category" value="all" checked="checked" >
+            <input type="radio" id="all" name="category" value="all" checked="checked" onclick="refreshMenuItems()">
             <label for="all">All</label><br>
-            <input type="radio" id="combos" name="category" value="combos" >
+            <input type="radio" id="combos" name="category" value="combos" onclick="refreshMenuItems()">
             <label for="combos">Combos</label><br>
-            <input type="radio" id="appetizers" name="category" value="appetizers" >
+            <input type="radio" id="appetizers" name="category" value="appetizers" onclick="refreshMenuItems()">
             <label for="appetizers">Appetizers</label><br>
-            <input type="radio" id="sideDish" name="category" value="sideDish" >
+            <input type="radio" id="sideDish" name="category" value="sides" onclick="refreshMenuItems()">
             <label for="sideDish">Side Dishes</label><br>
-            <input type="radio" id="mainDish" name="category" value="mainDish" >
+            <input type="radio" id="mainDish" name="category" value="mains" onclick="refreshMenuItems()">
             <label for="mainDish">Main Dishes</label><br>
-            <input type="radio" id="desserts" name="category" value="desserts" >
+            <input type="radio" id="desserts" name="category" value="desserts" onclick="refreshMenuItems()">
             <label for="desserts">Desserts</label><br>
-            <input type="radio" id="storePolicy" name="category" value="storePolicy" >
+            <input type="radio" id="storePolicy" name="category" value="storePolicy" onclick="refreshMenuItems()">
             <label for="storePolicy">Store Policy</label><br>
         </form>
     </div>
