@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>GROUP 9 APP NAME</title>
+    <script type="text/javascript" src="./jquery-3.5.1.js"></script>
+    <link rel="stylesheet" href="./account.css">
+  </head>
+  <body onload="setPage()">
+    <div class ="topBar">
+      <h1 id="title">FUNNY PLACEHOLDER NAME</h1>
+    </div>
+    <div id="loginPage">
+      <div class="centered">
+        <div class="flex-container">
+          <button id="guest" onclick="guestUserLogin()">Guest User</button>
+        </div>
+        <div class="flex-container">
+          <p id="loginError"><strong>Invalid username or password</strong></p>
+        </div>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password">
+        <div class="flex-container">
+          <button onclick="login()">Log In</button>
+        </div>
+        <div class="flex-container">
+          <button id="signUp" onclick="openSignUpModal()">Sign Up</button>
+        </div>
+      </div>
+      <div id="signUpModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Sign Up</h2>
+          </div>
+          <p id="signUpError"><strong>Please fill in username and password</strong></p>
+          <label for="unameSignUp">Username</label>
+          <input type="text" id="unameSignUp" name="unameSignUp"><br>
+          <label for="fnameSignUp">First Name</label>
+          <input type="text" id="fnameSignUp" name="fnameSignUp"><br>
+          <label for="lnameSignUp">Last Name</label>
+          <input type="text" id="lnameSignUp" name="lnameSignUp"><br>
+          <label for="emailSignUp">Email</label>
+          <input type="email" id="emailSignUp" name="emailSignUp"><br>
+          <label for="passSignUp">Password</label>
+          <input type="password" id="passSignUp" name="passSignUp"><br>
+          <div class="modal-footer">
+            <button onclick="signUp()">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESTAURANT -->
+    <div id="restaurantPage">
+      Restaurant Page<br>
+      <button onclick="logout()">Log Out</button>
+      <button id="accountBtn" onclick="showAccountPage()">Account</button>
+    </div>
+
+    <!-- ACCOUNT -->
+    <div id="accountPage">
+      <div class = "topBar">
+        <h1 id="title">FUNNY PLACEHOLDER NAME</h1>
+        <div class="account-container">
+          <button id="logOut" onclick="logout()">Log Out</button>
+        </div>
+      </div>
+
+      <div class ="rSidebar">
+        <div class="wrap-button">
+          <input type="button" id="backButton" value="BACK TO SEARCH" onclick="showRestaurantPage()">
+        </div>
+        <div class="pill-nav">
+            <a id="account-profile-tab" class="pill-active">Profile</a>
+            <a id="account-card-tab">Saved Cards</a>
+            <a id="account-contact-tab">Contacts</a>
+            <a id="account-address-tab">Saved Addresses</a>
+        </div>
+      </div>
+
+      <div class ="tab-content">
+        <h1>Account</h1>
+          <div class="tab-pane" id="profile">
+            <h2>Profile</h2>
+            <div class="flex-container">
+                <form>
+                  <div class="flex-container">
+                    <div class="col-1">
+                        <label for="firstName">First Name</label><input type="text" name="firstName" id="fnameAcc">
+                    </div>
+                    <div class="col-2">
+                        <label for="lastName">Last Name</label><input type="text" name="lastName" id="lnameAcc">
+                    </div>
+                  </div>
+                    <label for="username">Username</label><input type="text" name="username" id="usernameAcc">
+                    <label for="email">Email</label><input type="email" name="email" id="emailAcc">
+                </form>
+            </div>
+            <button id="save-info">Save Changes</button><br>
+            <button class="openModal" id="btnPwd">Change Password</button>
+          </div>
+
+          <div class="tab-pane" id="cards">
+              <h2>Saved Cards</h2>
+              <div id="cardList"></div>
+              <button class="openModal" id="btnCard">Add Card</button>
+          </div>
+
+          <div class="tab-pane" id="contacts">
+              <h2>Contacts</h2>
+              <div id="contactList"></div>
+              <button class="openModal" id="btnContact">Add Contact</button>
+          </div>
+
+          <div class="tab-pane" id="addresses">
+              <h2>Saved Addresses</h2>
+              <div id="addressList"></div>
+              <button class="openModal" id="btnAddress">Add Address</button>
+          </div>
+      </div>
+
+      <div class="modal" id="change-pwd-modal">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <span class="close">&times;</span>
+                  <h2>Change Password</h2>
+              </div>
+              <div class="modal-body">
+                <p id="passwordError"><strong>Passwords must be the same</strong></p>
+                <form>
+                    <label for="oldPassword">Old Password</label><input type="text" name="oldPassword" id="passwordAcc"><br>
+                    <label for="newPassword">New Password</label><input type="text" name="newPassword" id="passwordNew"><br>
+                    <label for="confirmPassword">Confirm Password</label><input type="text" name="confirmPassword" id="passwordConfirm"><br>
+                </form>
+              </div>
+              <div class="modal-footer">
+                  <button id="change-pwd" type="submit">Confirm</button>
+              </div>
+          </div>
+      </div>
+
+      <div class="modal" id="add-card-modal">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <span class="close">&times;</span>
+                  <h2>Add Card</h2>
+              </div>
+              <div class="modal-body">
+                <p id="cardNumError"><strong>Card Number must be of length exactly 16</strong></p>
+                <p id="expDateError"><strong>Expiry Date must be a two digit month (with preceding 0 where required) followed by a two digit year, separated by a slash</strong></p>
+                <p id="cvvError"><strong>CVV must be number of length exactly 3</strong></p>
+                <form>
+                    <label for="inputName">Name</label><input type="text" name="inputName" id="cardInputName">
+                    <label for="cardNumber">Card Number</label><input type="text" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" size="19" id="cardNum">
+                    <label for="cardName">Name on Card</label><input type="text" name="cardName" id="cardName">
+                    <div class="flex-container">
+                      <div class="col-1">
+                        <label for="expiryDate">Expiration Date</label><input type="text" name="expiryDate" placeholder="XX/XX" size="5" id="expDate">
+                      </div>
+                      <div class="col-2">
+                        <label for="cvv">CVV</label><input type="text" name="cvv" placeholder="XXX" size="4" id="cvv">
+                      </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                  <button id="add-card" type="submit">Add</button>
+              </div>
+          </div>
+      </div>
+
+      <div class="modal" id="add-contact-modal">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <span class="close">&times;</span>
+                  <h2>Add Contact</h2>
+              </div>
+              <div class="modal-body">
+                  <form>
+                      <label for="inputName">Name</label><input type="text" name="inputName" id="contactInputName"><br>
+                      <label for="username">Username</label><input type="text" name="username" id="contactUsername"><br>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button id="add-contact" type="submit">Add</button>
+              </div>
+          </div>
+      </div>
+
+      <div class="modal" id="add-address-modal">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <span class="close">&times;</span>
+                  <h2>Add Address</h2>
+              </div>
+              <div class="modal-body">
+                  <form>
+                      <label for="inputName">Name</label><input type="text" name="inputName" id="addressInputName"><br>
+                      <label for="addresses">Address</label><input type="text" name="addresses" id="address"><br>
+                  </form>
+              </div>
+              <div class="modal-footer">
+                  <button id="add-address" type="submit">Add</button>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- MENU -->
+    <div id="menuPage">
+      MENUUUUUUUUUUUUUU
+    </div>
+
+    <!-- CHECKOUT -->
+    <div id="checkoutPage">
+      CHECKOUT
+    </div>
+
+    <script type="text/javascript" src="./common.js"></script>
+    <script type="text/javascript" src="./login.js"></script>
+    <script type="text/javascript" src="./account.js"></script>
+    <script type="text/javascript">
+      if(localStorage.getItem('data')) {
+            var data = JSON.parse(localStorage.getItem('data'));
+            console.log(data);
+            for(var i = 0; i < data.length; i++) {
+                console.log(i)
+                $('#cardList').append('<h4>'+data[i].name+' - '+data[i].card+'</h4>');
+            }
+        }
+    </script>
+  </body>
+</html>
