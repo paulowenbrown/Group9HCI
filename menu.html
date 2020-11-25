@@ -2,40 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="style-example.css" rel="stylesheet">
     <title>Menu</title>
 </head>
 <body>
-<<<<<<< Updated upstream
     <div class = topBar>
-=======
-    <div id = topBar>
->>>>>>> Stashed changes
+        <div id="address">
         <form>
             <label for="addressSearch">Address</label>
             <input type="search" id="addressSearch" name ="addressSearch"><br>
         </form>
-        <h1>FUNNY PLACEHOLDER NAME</h1>
-        <form>
-            <input type="button" id="account" value="Account">
-        </form>
+        </div>
+        <h1 id="title">FUNNY PLACEHOLDER NAME</h1>
+        <a href="account.html" id="account">Account</a>
     </div>
 
-<<<<<<< Updated upstream
-    <input type="button" id ="backButton" value="Back">
-
     <div class = rSidebar>
-=======
-    <input type="button" class ="backButton" value="Back">
+        <input type="button" id ="backButton" value="Back">
 
-    <div id = rSidebar>
->>>>>>> Stashed changes
-        <form>
-            <label for="menuSearch">Search</label>
-            <input type="search" id="menuSearch" name ="menuSearch"><br>
-        </form>
+        <label for="menuSearch">Search</label>
+        <input type="search" id="menuSearch" name ="menuSearch" oninput="refreshMenuItems()"><br>
         <form>
             <label for="sort">Sort</label>
-            <select name="text" id="sort">
+            <select name="text" id="sort" onchange="refreshMenuItems()">
                 <option value ="all">All</option>
                 <option value ="popularity">Popularity</option>
                 <option value ="price">Price</option>
@@ -44,66 +33,33 @@
         </form>
         <form>
             <h2>Categories</h2>
-<<<<<<< Updated upstream
-            <input type="radio" id="all" name="category" value="all" checked="checked" >
+            <input type="radio" id="all" name="category" value="all" checked="checked" onclick="refreshMenuItems()">
             <label for="all">All</label><br>
-            <input type="radio" id="combos" name="category" value="combos" >
+            <input type="radio" id="combos" name="category" value="combos" onclick="refreshMenuItems()">
             <label for="combos">Combos</label><br>
-            <input type="radio" id="appetizers" name="category" value="appetizers" >
+            <input type="radio" id="appetizers" name="category" value="appetizers" onclick="refreshMenuItems()">
             <label for="appetizers">Appetizers</label><br>
-            <input type="radio" id="sideDish" name="category" value="sideDish" >
+            <input type="radio" id="sideDish" name="category" value="sides" onclick="refreshMenuItems()">
             <label for="sideDish">Side Dishes</label><br>
-            <input type="radio" id="mainDish" name="category" value="mainDish" >
+            <input type="radio" id="mainDish" name="category" value="mains" onclick="refreshMenuItems()">
             <label for="mainDish">Main Dishes</label><br>
-            <input type="radio" id="desserts" name="category" value="desserts" >
+            <input type="radio" id="desserts" name="category" value="desserts" onclick="refreshMenuItems()">
             <label for="desserts">Desserts</label><br>
-            <input type="radio" id="storePolicy" name="category" value="storePolicy" >
+            <input type="radio" id="storePolicy" name="category" value="storePolicy" onclick="refreshMenuItems()">
             <label for="storePolicy">Store Policy</label><br>
         </form>
     </div>
-    <div class = dishSpace>
-
-    </div>
+    
     <div class = orderBar>
         <h2>Single</h2>
-=======
-            <input type="radio" class="rSelectable" name="category" value="all" checked="checked" >
-            <label for="all">All</label><br>
-            <input type="radio" class="rSelectable" name="category" value="combos" >
-            <label for="combos">Combos</label><br>
-            <input type="radio" class="rSelectable" name="category" value="appetizers" >
-            <label for="appetizers">Appetizers</label><br>
-            <input type="radio" class="rSelectable" name="category" value="sideDish" >
-            <label for="sideDish">Side Dishes</label><br>
-            <input type="radio" class="rSelectable" name="category" value="mainDish" >
-            <label for="mainDish">Main Dishes</label><br>
-            <input type="radio" class="rSelectable" name="category" value="desserts" >
-            <label for="desserts">Desserts</label><br>
-            <input type="radio" class="rSelectable" name="category" value="storePolicy" >
-            <label for="storePolicy">Store Policy</label><br>
-        </form>
+        <button type="button" id="addPerson" onclick="addOrderSection();">Add Person</button>
+        <div id="orderList"></div>
+        <input type="button" id="checkout" value="Checkout">
     </div>
+
     <div id = dishSpace>
-	    <div id = menuItem>
-		<img src="" id="itemIMG"></a>
- 		<h3 id="itemName"></h3>
-		<p id="itemText"></p>
-		<input type="button" id="defaultOrder" value="Order">
-		<input type="button" id="editOrder" value="Edit">
-            </div>  
     </div>
-    <div id = orderBar>
-        <h2 id="grpOrder">Single</h2>
->>>>>>> Stashed changes
-        <form>
-            <input type="button" id ="addPerson" value="+">
-        </form>
-        <h3>Items:</h3>
-    </div>
-    <input type="button" id="checkout" value="Checkout">
+    
+    <script src="groupOrder.js"></script>
 </body>
-<<<<<<< Updated upstream
 </html>
-=======
-</html>
->>>>>>> Stashed changes

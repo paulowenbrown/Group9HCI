@@ -9,7 +9,6 @@ div.topBar {
     width: 100%;
     height: 100px;
     background-color: black;
-    
 }
 
 #address, #title, #account {
@@ -69,7 +68,7 @@ div.topBar {
     font-size: x-large;
 }
 
-.dishSpace {
+#dishSpace {
     background-color: lightgray;
     position: fixed;
     left: 20%;
@@ -79,11 +78,20 @@ div.topBar {
     overflow-y: auto;
 }
 
+#orderList {
+    position: absolute;
+    top: 100px;
+    bottom: calc(75px + 4%);
+    width: 100%;
+    overflow-y: auto;
+}
+
 .menuitem {
     background-color: gray;
     margin: 5%;
     padding: 5%;
     border-radius: 100px;
+    position: relative; /*required for anything inside the menuitem to have absolute position*/ 
 }
 
 .menuitem img {
@@ -92,13 +100,23 @@ div.topBar {
     float: left;
 }
 
+.menuitem .addButton {
+    position: absolute;
+    right: 30%;
+    bottom: 40%;
+}
+
+.selectedOrderSection {
+    color: blue;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
-.dishSpace::-webkit-scrollbar {
+#dishSpace::-webkit-scrollbar {
     display: none;
-  }
+}
   
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .dishSpace {
+/* Hide scrollbar for IE, Edge and Firefox */
+#dishSpace {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-  }
+}
