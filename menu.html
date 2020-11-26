@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="jquery-3.5.1.js"></script>
-    <link href="account.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Menu</title>
 </head>
@@ -31,11 +31,11 @@
             <div class="pill-nav">
                 <div class="search-container">
                     <button type="submit"><i class="fa fa-search"></i></button>
-                    <input type="text" placeholder="Search" name="search">
+                    <input type="text" id="menuSearch" placeholder="Search" name="menuSearch" oninput="refreshMenuItems()">
                 </div>
                 <div class="sort-container">
                     <label for="sort">Sort</label>
-                    <select name="text" id="sort">
+                    <select name="text" id="sort" onchange="refreshMenuItems()">
                         <option value ="all">All</option>
                         <option value ="popularity">Popularity</option>
                         <option value ="price">Price</option>
@@ -43,13 +43,13 @@
                     </select>
                 </div>
                 <h2 id="category">Categories</h2><hr>
-                <a href="" id="all" name="category" value="all" class="pill-active">All</a>
-                <a href="" id="combos" name="category" value="combos">Combos</a>
-                <a href="" id="appetizers" name="category" value="appetizers">Appetizers</a>
-                <a href="" id="sideDish" name="category" value="sideDish">Side Dishes</a>
-                <a href="" id="mainDish" name="category" value="mainDish">Main Dishes</a>
-                <a href="" id="desserts" name="category" value="desserts">Desserts</a>
-                <a href="" id="storePolicy" name="category" value="storePolicy">Store Policy</a>
+                <a id="all" name="category" class="pill-active" onclick="refreshMenuItems()">All</a>
+                <a id="combos" name="category" onclick="refreshMenuItems()">Combos</a>
+                <a id="appetizers" name="category" onclick="refreshMenuItems()">Appetizers</a>
+                <a id="sides" name="category" onclick="refreshMenuItems()">Side Dishes</a>
+                <a id="mains" name="category" onclick="refreshMenuItems()">Main Dishes</a>
+                <a id="desserts" name="category" onclick="refreshMenuItems()">Desserts</a>
+                <a id="storePolicy" name="category" onclick="refreshMenuItems()">Store Policy</a>
             </div>
         </div>
         

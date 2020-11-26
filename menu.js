@@ -1,53 +1,74 @@
 var data = '[ \
-    {"name":"Item #1", "text":"Item description #1", "image":"placeholder.png"}, \
-    {"name":"Item #2", "text":"Item description #2", "image":"placeholder.png"}, \
-    {"name":"Item #3", "text":"Item description #3", "image":"placeholder.png"}, \
-    {"name":"Item #4", "text":"Item description #4", "image":"placeholder.png"}, \
-    {"name":"Item #5", "text":"Item description #5", "image":"placeholder.png"}, \
-    {"name":"Item #6", "text":"Item description #6", "image":"placeholder.png"} \
+    {"name":"Combo #1", "text":"Item description", "category":"combos", "price":13.99, "popularity":6, "special":false, "image":"placeholder.png"}, \
+    {"name":"Combo #2", "text":"Item description", "category":"combos", "price":10.99, "popularity":3, "special":true, "image":"placeholder.png"}, \
+    {"name":"Combo #3", "text":"Item description", "category":"combos", "price":11.49, "popularity":8, "special":false, "image":"placeholder.png"}, \
+    {"name":"Appetizer #1", "text":"Item description", "category":"appetizers", "price":3.99, "popularity":5, "special":false, "image":"placeholder.png"}, \
+    {"name":"Appetizer #2", "text":"Item description", "category":"appetizers", "price":4.99, "popularity":1, "special":false, "image":"placeholder.png"}, \
+    {"name":"Side #1", "text":"Item description", "category":"sides", "price":6.99, "popularity":2, "special":true, "image":"placeholder.png"}, \
+    {"name":"Side #2", "text":"Item description", "category":"sides", "price":4.49, "popularity":9, "special":false, "image":"placeholder.png"}, \
+    {"name":"Main #1", "text":"Item description", "category":"mains", "price":7.99, "popularity":4, "special":true, "image":"placeholder.png"}, \
+    {"name":"Main #2", "text":"Item description", "category":"mains", "price":9.99, "popularity":10, "special":false, "image":"placeholder.png"}, \
+    {"name":"Main #3", "text":"Item description", "category":"mains", "price":8.99, "popularity":7, "special":false, "image":"placeholder.png"}, \
+    {"name":"Dessert #1", "text":"Item description", "category":"desserts", "price":3.49, "popularity":6, "special":false, "image":"placeholder.png"}, \
+    {"name":"Dessert #2", "text":"Item description", "category":"desserts", "price":2.99, "popularity":4, "special":false, "image":"placeholder.png"} \
 ]';
-
 var items = JSON.parse(data);
 var orders = [];
 var currentOrderSection = 0;
 
-function displayMenuItems() {
+function refreshMenuItems() {
+    var categories = document.getElementsByClassName("pill-active");
+    var category = categories[0].id;
+    var sort = document.getElementById("sort").value;
+    var search = document.getElementById("menuSearch").value.toUpperCase();
+
+    var items = JSON.parse(data);
+    if (sort == "price") items.sort(function(a, b){return a.price - b.price});
+    if (sort == "popularity") items.sort(function(a, b){return b.popularity - a.popularity});
+    if (sort == "specials") items.sort(function(a, b){return b.special - a.special});
+
+    document.getElementById("dishSpace").innerHTML = "";
     for (i=0; i<items.length; i++) {
-        var item = document.createElement("div");
-        item.setAttribute("class", "menuitem");
-        item.setAttribute("id", "item_" + i.toString());
+        if (category == "all" || items[i].category == category) {
+            var itemtext = items[i].name + items[i].text;
+                if (itemtext.toUpperCase().indexOf(search) > -1) {
+                var item = document.createElement("div");
+                item.setAttribute("class", "menuitem");
+                item.setAttribute("id", "item_" + i.toString());
 
-        var name = document.createElement("h3");
-        name.setAttribute("class", "itemName");
-        name.appendChild(document.createTextNode(items[i].name));
+                if (items[i].special) item.classList.add("onSpecial");
 
-        var text = document.createElement("p");
-        text.setAttribute("class", "itemDescription");
-        text.appendChild(document.createTextNode(items[i].text));
+                var name = document.createElement("h3");
+                name.setAttribute("class", "itemName");
+                name.appendChild(document.createTextNode(items[i].name));
 
-        var img = document.createElement("img");
-        img.setAttribute("class", "itemImg");
-        img.setAttribute("src", items[i].image);
+                var text = document.createElement("p");
+                text.setAttribute("class", "itemDescription");
+                text.appendChild(document.createTextNode(items[i].text));
 
-        var addButton = document.createElement("button");
-        addButton.setAttribute("type", "button");
-        addButton.setAttribute("class", "addButton");
-        addButton.appendChild(document.createTextNode("Default"));
-        addButton.setAttribute("onClick", "addToOrder(" + i.toString() + ");");
+                var price = document.createElement("p");
+                price.setAttribute("class", "itemPrice");
+                price.appendChild(document.createTextNode(items[i].price));
 
-        var editDish = document.createElement("button");
-        editDish.setAttribute("type", "button");
-        editDish.setAttribute("class", "editDish");
-        editDish.appendChild(document.createTextNode("Edit"));
-        //editDish.setAttribute("onClick", "addToOrder(" + i.toString() + ");");
+                var img = document.createElement("img");
+                img.setAttribute("class", "itemImg");
+                img.setAttribute("src", items[i].image);
 
-        item.appendChild(img);
-        item.appendChild(name);
-        item.appendChild(text);
-        item.appendChild(addButton);
-        item.appendChild(editDish);
+                var addButton = document.createElement("button");
+                addButton.setAttribute("type", "button");
+                addButton.setAttribute("class", "addButton");
+                addButton.appendChild(document.createTextNode("Add to order"));
+                addButton.setAttribute("onClick", "addToOrder(" + i.toString() + ");");
 
-        document.getElementById("dishSpace").appendChild(item);
+                item.appendChild(img);
+                item.appendChild(name);
+                item.appendChild(text);
+                item.appendChild(price);
+                item.appendChild(addButton);
+
+                document.getElementById("dishSpace").appendChild(item);
+            }
+        }
     }
 }
 
@@ -77,7 +98,6 @@ function removeOrderSection(i) {
         currentOrderSection--;
     }
     orders.splice(i, 1);
-    $('#singleOrGroup').text('SINGLE');
     refreshOrderList();
 }
 
@@ -99,11 +119,10 @@ function refreshOrderList() {
         section.appendChild(sectionName);
 
         if (orders.length > 1) {
-            $('#singleOrGroup').text('GROUP');
             var removeButton = document.createElement("button");
             removeButton.setAttribute("type", "button");
             removeButton.setAttribute("class", "removeButton");
-            removeButton.innerHTML = '<i class="fa fa-trash-o"></i>';
+            removeButton.appendChild(document.createTextNode("Remove Section"));
             removeButton.setAttribute("onClick", "removeOrderSection(" + i.toString() + ");");
             section.appendChild(removeButton);
         }
@@ -115,12 +134,12 @@ function refreshOrderList() {
 
             var text = document.createElement("p");
             text.setAttribute("class", "orderListItemText");
-            text.appendChild(document.createTextNode(items[orders[i].items[j]].name));
+            text.appendChild(document.createTextNode(items[orders[i].items[j]].name + " - " + items[orders[i].items[j]].price));
 
             var removeButton = document.createElement("button");
             removeButton.setAttribute("type", "button");
-            removeButton.setAttribute("class", "removeItem");
-            removeButton.innerHTML = '&times;';
+            removeButton.setAttribute("class", "removeButton");
+            removeButton.appendChild(document.createTextNode("Remove"));
             removeButton.setAttribute("onClick", "removeFromOrder(" + i.toString() + ", " + j.toString() + ");");
 
             orderItem.appendChild(text);
@@ -134,7 +153,7 @@ function refreshOrderList() {
 }
 
 function init() {
-    displayMenuItems();
+    refreshMenuItems();
     orders.push({name: "Person 1", items: []});
     refreshOrderList();
 }
