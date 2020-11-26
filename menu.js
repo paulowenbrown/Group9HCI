@@ -22,9 +22,10 @@ function refreshMenuItems() {
     if (categories[0]) {
         category = categories[0].id
     }
-    var sort = document.getElementById("sort").value;
+    var sort = document.getElementById("menuSort").value;
     var search = document.getElementById("menuSearch").value.toUpperCase();
 
+    var items = JSON.parse(data);
     if (sort == "price") items.sort(function(a, b){return a.price - b.price});
     if (sort == "popularity") items.sort(function(a, b){return b.popularity - a.popularity});
     if (sort == "specials") items.sort(function(a, b){return b.special - a.special});
