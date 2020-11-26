@@ -693,12 +693,19 @@ button:hover {
     padding: 5%;
     border-radius: 100px;
     width: 90%;
+    position: relative;
 }
 
 .menuitem img {
     width: 100px;
     height: 100px;
     float: left;
+}
+
+.menuitem .addButton {
+    position: absolute;
+    right: 10%;
+    bottom: 40%;
 }
 
 #menuPage .selectedOrderSection {
