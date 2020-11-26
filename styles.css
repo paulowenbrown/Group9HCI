@@ -675,6 +675,12 @@ button:hover {
     overflow-y: auto;
 }
 
+#orderList .orderListItem {
+    position: relative;
+    left: 10%;
+    width: 90%;
+}
+
 #menuPage p {
   color: #DDE2DB;
 }
