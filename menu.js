@@ -106,6 +106,13 @@ function removeOrderSection(i) {
 }
 
 function refreshOrderList() {
+    if (orders.length == 1) {
+        document.getElementById("singleOrGroup").innerHTML = "SINGLE";
+    }
+    else {
+        document.getElementById("singleOrGroup").innerHTML = "GROUP";
+    }
+
     document.getElementById("orderList").innerHTML = "";
 
     for (i=0; i<orders.length; i++) {
@@ -157,11 +164,13 @@ function refreshOrderList() {
 
 function init() {
     refreshMenuItems();
-    orders.push({name: "Person 1", items: []});
     refreshOrderList();
 }
 
 function showMenuPage() {
+    if (orders.length == 0) {
+        orders.push({name: loggedInAccount.fname, items: []});
+    }
     $("#menuPage").show()
     setActive($("#all"))
 }
