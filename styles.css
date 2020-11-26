@@ -681,7 +681,7 @@ button:hover {
     width: 90%;
 }
 
-#menuPage p {
+#menuPage .orderBar p {
   color: #DDE2DB;
 }
 
