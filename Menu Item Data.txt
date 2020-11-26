@@ -1,0 +1,48 @@
+var data = '[ \
+{"name": "Doner kebab", "text": "A sandwich kebab, made from meat cooked on a vertical rotisserie.", "category": "Main", "price": 10.75, "popularity": 1, "special": "false", "image": "mcdoners-doner-kebab.jpg”}, \
+{"name": "Souvlaki", "text": "Meat and assorted veggies on a skewer", "category": "Main", "price": 7.43, "popularity": 3, "special": "false", "image": "mcdoners-lamb-souv.jpg”}, \
+{"name": "Falafel", "text": "A deep-fried patty made from ground chickpeas", "category": "Side Dish", "price": 7.67, "popularity": 4, "special": "false", "image": "mcdoners-falafel.jpg”}, \
+{"name": "Salad", "text": "Salad made with romaine lettuce with vinaigrette dressing and feta cheese", "category": "Side Dish", "price": 6.6, "popularity": 7, "special": "false", "image": "mcdoners-salad.jpg”}, \
+{"name": "Meat on Rice", "text": "Sliced meat on a platter of rice and vegetables", "category": "Main", "price": 11.4, "popularity": 8, "special": "false", "image": "mcdoners-chkn-rice.jpg”}, \
+{"name": "Water", "text": "Water", "category": "Beverage", "price": 2.00, "popularity": 9, "special": "false”, "image": “placeholder.png”}, \
+{"name": "Soda", "text": "Assorted sodas", "category": "Beverage", "price": 2.50, "popularity": 6, "special": "false", "image": “placeholder.png”}, \
+{"name": "Calamari", "text": "Fried squid rings with a garnish of green onions. Accompanied by tartar and cocktail sauce.", "category": "Appetizer", "price": 6.53, "popularity": 5, "special": "false", "image": "codfather-calamari.jpg”}, \
+{"name": "Oysters Rockefeller", "text": "Oysters on the half-shell that have been topped with a rich sauce of butter, parsley, then broiled.", "category": "Appetizer", "price": 10.4, "popularity": 8, "special": "false", "image": "codfather-rockefeller.jpg”}, \
+{"name": "Scallops", "text": "Seared scallops in a garlic butter sauce", "category": "Appetizer", "price": 6.23, "popularity": 11, "special": "false", "image": "codfather-scallops.jpg”}, \
+{"name": "Scrimp Scampi", "text": "Shrimp sautéed in a white wine sauce", "category": "Main", "price": 13.63, "popularity": 3, "special": "false", "image": "codfather-scampi.jpg”}, \
+{"name": "Fish and Chips", "text": "Battered fish served with french fries", "category": "Main", "price": 15.89, "popularity": 1, "special": "false", "image": "codfather-fishnchips.jpg”}, \
+{"name": "Lobster", "text": "Lobster served with butter and garlic sauce", "category": "Main", "price": 20.67, "popularity": 9, "special": "false", "image": "codfather-lobster.jpg”}, \
+{"name": "Fish Tacos", "text": "Fish in tacos!", "category": "Main", "price": 10.46, "popularity": 4, "special": "false", "image": "codfather- tacos.jpg”}, \
+{"name": "Biscuits", "text": "Our signature light and fluffy biscuits", "category": "Side", "price": 5.32, "popularity": 2, "special": "false", "image": "codfather-biscuit.jpg”}, \
+{"name": "Water", "text": "Water", "category": "Beverage", "price": 1.50, "popularity": 9, "special": "false", "image": “”}, \
+{"name": "Soda", "text": "Assorted sodas", "category": "Beverage", "price": 2.00, "popularity": 7, "special": "false", "image": “”}, \
+{"name": "Devil May Fry", "text": "Cajun french fries", "category": "Side", "price": 7, "popularity": 1, "special": "false", "image": "dvl-may-hngry-fries.jpg”}, \
+{"name": "Wedges", "text": "Potato wedges", "category": "Side", "price": 6.5, "popularity": 2, "special": "false", "image": "dvl-may- hngry-wedges.jpg”}, \
+{"name": "Garlic Bread", "text": "Crusty herb loaf doused with garlic. Guaranteed to keep vampires away.", "category": "Side", "price": 6, "popularity": 4, "special": "false", "image": "dvl-may- hngry-bread.jpg”}, \
+{"name": "Hell’s Pizza", "text": "Pizza with toppings of triple smoked champagne ham, double pineapple & double cheese. ", "category": "Main", "price": 19.5, "popularity": 3, "special": "false", "image": "dvl-may-hngry-za.jpg”}, \
+{"name": "Green Demon Pasta", "text": "Creamy basil sauce with roasted garlic, mushrooms & parmesan. Served on fettuccini.", "category": "Main", "price": 12, "popularity": 5, "special": "false", "image": "dvl-may-hngry-pasta.jpg”}, \
+{"name": "Cheesecake", "text": "Kahlua & white chocolate cheesecake. ", "category": "Dessert", "price": 5, "popularity": 6, "special": "false", "image": "dvl-may-hngry-cake.jpg”}, \
+{"name": "Unearthly", "text": "Snack size dessert pizza made with berries, banana, chocolate & custard.", "category": "Dessert", "price": 6, "popularity": 7, "special": "false", "image": "dvl-may-hngry-unearthly.jpg”}, \
+{"name": "Catffee", "text": "Our signature coffee! Comes in a variety of options", "category": "Beverage", "price": 6.54, "popularity": 1, "special": "false", "image": "catfe-coffee.jpg”}, \
+{"name": "Meowcha", "text": "Our mocha, made with whole milk, chocolate, and espresso!", "category": "Beverage", "price": 5.32, "popularity": 4, "special": "false", "image": "catfe-meowcha.jpg”}, \
+{"name": "Lemeownade", "text": "Lemonade, freshly squeezed from real lemons! Comes in a variety of flavours", "category": "Beverage", "price": 5.02, "popularity": 3, "special": "false", "image": "catfe- lemeownade.jpg”}, \
+{"name": "Cat pop", "text": "Cake pop shaped like a cat! Comes in a variety of flavours (default vanilla)", "category": "Dessert", "price": 3, "popularity": 5, "special": "false", "image": "catfe-cake-pop.jpg”}, \
+{"name": "Catamon Roll", "text": "Our cinnamon rolls, made fresh every morning!", "category": "Dessert", "price": 3.50, "popularity": 7, "special": "false", "image": "catfe-cinammon.jpg”}, \
+{"name": "Catolli", "text": "A tube-shaped shell of fried pastry dough, filled with ricotta filling! Comes in a variety of flavours", "category": "Dessert", "price": 4.05, "popularity": 6, "special": "false", "image": "catfe-canolli.jpg”}, \
+{"name": "Kitty Cookies", "text": "Sugar cookies cut out in the shape of cats. One of our staples!", "category": "Dessert", "price": 2.20, "popularity": 2, "special": "false", "image": "catfe-cookies.jpg”}, \
+{"name": "Fisherman’s Toast", "text": "Onion-covered toast, garnished with parsley.", "category": "Appetizer", "price": 4.5, "popularity": 3, "special": "false", "image": "good- hunter-toast.jpg”}, \
+{"name": "Steak fries", "text": "Our house made steak fries", "category": "Side", "price": 5.6, "popularity": 5, "special": "false", "image": "good-hunter-fries.jpg”}, \
+{"name": "Game Burger", "text": "A burger with lettuce, cheese, tomatoes, with various hamburger meat available (default deer)", "category": "Main", "price": 10.54, "popularity": 2, "special": "false", "image": "good-hunter- burger.jpg”}, \
+{"name": "Game Steak", "text": "A steak cooked to your liking, various types of meat available (default deer, medium-rare)", "category": "Main", "price": 20.85, "popularity": 1, "special": "false", "image": "good-hunter- steak.jpg”}, \
+{"name": "Partridge Parmigiana", "text": "Breaded partridge breast covered in tomato sauce and mozzarella, parmesan, or provolone cheese", "category": "Main", "price": 15.64, "popularity": 4, "special": "false", "image": "good-hunter-partridge.jpg”}, \
+{"name": "Pizza", "text": "Our signature pizza! Has a variety of options", "category": "Main", "price": 20.56, "popularity": 3, "special": "false", "image": "creperia-pizza.jpg”}, \
+{"name": "Pizza Crepe", "text": "A dish that blends our specialties together! Variety of options", "category": "Main", "price": 13.45, "popularity": 1, "special": "false", "image": "creperia-pizzacrepe.jpg”}, \
+{"name": "Fruit Crepe", "text": "A crepe filled with fruit, and another topping of your choice (default Nutella)", "category": "Dessert", "price": 7.50, "popularity": 4, "special": "false", "image": "creperia-fruitcrepe.jpg”}, \
+{"name": "Dessert Crepe", "text": "A dessert crepe that’s filled with sweets! A variety of options", "category": "Dessert", "price": 7.50, "popularity": 2, "special": "false", "image": "creperia- dessertcrepe.jpg”}, \
+{"name": "Harðfiskur", "text": "Unsalted cod cod, dried by cold air and wind on wooden racks. Fun to snack on!", "category": "Appetizer", "price": 3.56, "popularity": 3, "special": "false", "image": "riceland-hardfiskr.jpg”}, \
+{"name": "California Roll", "text": "Inside-out roll containing imitation crab and avocado.", "category": "Main", "price": 9.95, "popularity": 1, "special": "false", "image": "riceland-caliroll.jpg”}, \
+{"name": "Spicy Tuna Roll", "text": "Sashimi grade tuna, spicy sauce, and cucumber.", "category": "Main", "price": 11.95, "popularity": 2, "special": "false", "image": "riceland- spicytuna.jpg”}, \
+{"name": "Shark Roll", "text": "A roll made with fermented shark.", "category": "Main", "price": 16.95, "popularity": 6, "special": "false", "image": "riceland-sharkroll.jpg”}, \
+{"name": "Skyr", "text": "An Icelandic dairy product, very thick and eaten like yoghurt. This one is topped by cream, sugar, and blueberries.", "category": "Dessert", "price": 6.30, "popularity": 4, "special": "false", "image": "riceland-skyr.jpg”}, \
+{"name": "Vínarterta", "text": "A slice of a multi-layered cake made from alternating layers of almond flavoured biscuit and plum jam", "category": "Dessert", "price": 6.75, "popularity": 5, "special": "false", "image": "riceland-vinarterta.jpg”} \
+]';
