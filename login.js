@@ -1,7 +1,10 @@
 let loggedInAccount = ""
 let accounts = [{ username:"admin", password:"password", fname:"John", lname:"Smith", email:"admin@admin.ca", 
-    cards: [{ name:"John", cardNumber:"1234123412341234", cardName:"John Smith", expDate:"01/22", cvv: "123" }],
-    contacts: [{ name:"Jeff", username: "test" }], addresses: [{ name:"John", address:"123 Admin Place"}] }]
+    cards: [{ name:"John", cardNumber:"1234123412341234", cardName:"John Smith", expDate:"01/22", cvv: "123" },
+    { name:"Eric", cardNumber:"1234123412343334", cardName:"Eric Brown", expDate:"01/22", cvv: "123" }],
+    contacts: [{ name:"Jeff", username: "test" }, { name:"Alphonse", username: "cool-guy" }], 
+    addresses: [{ name:"John", address:"123 Admin Place"}, { name:"Eric", address:"99 Circle Ave"}]}]
+let guest = {contacts: [], addresses: [], cards: []}
 
 function setPage() {
     $("#loginError").hide()
@@ -28,13 +31,30 @@ function login(){
     if(!loggedInAccount) {
         $("#loginError").show()
     } else {
+        $("#logIn").hide()
+        $("#logInMenu").hide()
+        $("#logInCheckout").hide()
+        $("#logOut").show()
+        $("#logOutMenu").show()
+        $("#logOutCheckout").show()
         $("#accountBtn").show()
+        $("#accountBtnMenu").show()
+        $("#accountBtnCheckout").show()
         showRestaurantPage()
     }
 }
 
 function guestUserLogin(){
+    $("#logIn").show()
+    $("#logInMenu").show()
+    $("#logInCheckout").show()
+    $("#logOut").hide()
+    $("#logOutMenu").hide()
+    $("#logOutCheckout").hide()
     $("#accountBtn").hide()
+    $("#accountBtnMenu").hide()
+    $("#accountBtnCheckout").hide()
+    loggedInAccount = guest
     showRestaurantPage()
 }
 
@@ -42,11 +62,22 @@ function logout(){
     loggedInAccount = ""
     $("#loginPage").show()
     $("#restaurantPage").hide()
+    hideAccountPage()
+    hideMenuPage()
+	hideCheckoutPage()
+}
+
+function showLoginPage() {
+    $("#loginPage").show()
+    hideMenuPage()
+    $("#restaurantPage").hide()
+    hideCheckoutPage()
 }
 
 function showRestaurantPage() {
     $("#loginPage").hide()
-    $("#accountPage").hide()
+    hideAccountPage()
+    hideMenuPage()
     $("#restaurantPage").show()
     // Clear login page values
     $("#username").val("")
