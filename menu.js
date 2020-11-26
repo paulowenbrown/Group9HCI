@@ -83,7 +83,7 @@ function removeFromOrder(section, num) {
 }
 
 function addOrderSection() {
-    orders.push({name: "New Section", items: []});
+    orders.push({name: "New Person", items: []});
     currentOrderSection = orders.length - 1;
     refreshOrderList();
 }
@@ -122,7 +122,7 @@ function refreshOrderList() {
             var removeButton = document.createElement("button");
             removeButton.setAttribute("type", "button");
             removeButton.setAttribute("class", "removeButton");
-            removeButton.appendChild(document.createTextNode("Remove Section"));
+            removeButton.innerHTML = '<i class="fa fa-trash-o"></i>';
             removeButton.setAttribute("onClick", "removeOrderSection(" + i.toString() + ");");
             section.appendChild(removeButton);
         }
@@ -139,7 +139,7 @@ function refreshOrderList() {
             var removeButton = document.createElement("button");
             removeButton.setAttribute("type", "button");
             removeButton.setAttribute("class", "removeButton");
-            removeButton.appendChild(document.createTextNode("Remove"));
+            removeButton.innerHTML = '&times;';
             removeButton.setAttribute("onClick", "removeFromOrder(" + i.toString() + ", " + j.toString() + ");");
 
             orderItem.appendChild(text);
@@ -156,6 +156,41 @@ function init() {
     refreshMenuItems();
     orders.push({name: "Person 1", items: []});
     refreshOrderList();
+}
+
+// For selecting categories
+$("#all").click(function() {
+    setActive(this)
+});
+$("#combos").click(function() {
+    setActive(this)
+});
+$("#appetizers").click(function() {
+    setActive(this)
+});
+$("#sides").click(function() {
+    setActive(this)
+});
+$("#mains").click(function() {
+    setActive(this)
+});
+$("#desserts").click(function() {
+    setActive(this)
+});
+$("#storePolicy").click(function() {
+    setActive(this)
+});
+
+function setActive(selected) {
+    $("#all").removeClass("pill-active");
+    $("#combos").removeClass("pill-active");
+    $("#appetizers").removeClass("pill-active");
+    $("#sides").removeClass("pill-active");
+    $("#mains").removeClass("pill-active");
+    $("#desserts").removeClass("pill-active");
+    $("#storePolicy").removeClass("pill-active");
+    $(selected).addClass("pill-active");
+    refreshMenuItems();
 }
 
 window.addEventListener('load',init);
