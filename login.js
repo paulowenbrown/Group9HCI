@@ -1,7 +1,9 @@
 let loggedInAccount = ""
 let accounts = [{ username:"admin", password:"password", fname:"John", lname:"Smith", email:"admin@admin.ca", 
-    cards: [{ name:"John", cardNumber:"1234123412341234", cardName:"John Smith", expDate:"01/22", cvv: "123" }],
-    contacts: [{ name:"Jeff", username: "test" }], addresses: [{ name:"John", address:"123 Admin Place"}] }]
+    cards: [{ name:"John", cardNumber:"1234123412341234", cardName:"John Smith", expDate:"01/22", cvv: "123" },
+    { name:"Eric", cardNumber:"1234123412343334", cardName:"Eric Brown", expDate:"01/22", cvv: "123" }],
+    contacts: [{ name:"Jeff", username: "test" }, { name:"Alphonse", username: "cool-guy" }], 
+    addresses: [{ name:"John", address:"123 Admin Place"}, { name:"Eric", address:"99 Circle Ave"}]}]
 
 function setPage() {
     $("#loginError").hide()
@@ -42,7 +44,9 @@ function logout(){
     loggedInAccount = ""
     $("#loginPage").show()
     $("#restaurantPage").hide()
-    $("#accountPage").hide()
+    hideAccountPage()
+    hideMenuPage()
+	hideCheckoutPage()
 }
 
 function showRestaurantPage() {

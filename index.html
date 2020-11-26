@@ -120,7 +120,7 @@
 
     <div class="rSidebar">
       <div class="wrap-button">
-        <input type="button" id="backButton" value="BACK TO SEARCH" onclick="showRestaurantPage()">
+        <input type="button" class="backButton" value="BACK TO SEARCH" onclick="showRestaurantPage()">
       </div>
       <div class="pill-nav">
         <a id="account-profile-tab">Profile</a>
@@ -280,7 +280,7 @@
 
     <div class="rSidebar">
       <div class="wrap-button">
-        <input type="button" id="backButton" value="BACK TO SEARCH">
+        <input type="button" class="backButton" value="BACK TO SEARCH">
       </div>
 
       <div class="pill-nav">
@@ -327,7 +327,96 @@
 
   <!-- CHECKOUT -->
   <div id="checkoutPage">
-    CHECKOUT
+    <!-- Top header bar -->
+    <div class="topBar">
+      <h1 id="title">FUNNY PLACEHOLDER NAME</h1>
+      <div class="account-container">
+        <button id="accountBtn" onclick="showAccountPage()">Account</button>
+        <button id="logOut" onclick="logout()">Log Out</button>
+        <button id="logIn" onclick="">Log In</button>
+      </div>
+    </div>
+
+    <!-- Body Container -->
+    <div class="rSidebar">
+      <div class="wrap-button">
+        <input type="button" class="backButton" id="backMenu" value="RETURN TO MENU">
+      </div>
+      <div class="pill-nav">
+        <h2 id="delivery">Delivery</h2>
+        <hr>
+        <div class="select-container">
+          <label for="selectAddress">Address</label>
+          <select id="selectAddress">
+            <option value="home">123 university street</option>
+            <option value="school">1 main hwy</option>
+          </select>
+        </div>
+        <p>Delivery Time:</p>
+        <div class="note-container">
+          <label>Extra Notes</label>
+          <textarea id="extraNote" rows="4" cols="50"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="checkoutSpace">
+      <h1>Your Order</h1>
+      <div id="persons">
+      </div>
+      <button type="submit" id="placeOrder">Place Order</button>
+    </div>
+
+    <div class="modal" id="add-card-modal-checkout">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Add Card</h2>
+        </div>
+        <div class="modal-body">
+          <p id="cardNumErrorC"><strong>Card Number must be of length exactly 16</strong></p>
+          <p id="expDateErrorC"><strong>Expiry Date must be a two digit month (with preceding 0 where required) followed
+              by a two digit year, separated by a slash</strong></p>
+          <p id="cvvErrorC"><strong>CVV must be number of length exactly 3</strong></p>
+          <form>
+            <label for="inputName">Name</label><input type="text" name="inputName" id="cardInputNameC">
+            <label for="cardNumber">Card Number</label><input type="text" name="cardNumber"
+              placeholder="XXXX XXXX XXXX XXXX" size="19" id="cardNumC">
+            <label for="cardName">Name on Card</label><input type="text" name="cardName" id="cardNameC">
+            <div class="flex-container">
+              <div class="col-1">
+                <label for="expiryDate">Expiration Date</label><input type="text" name="expiryDate" placeholder="XX/XX"
+                  size="5" id="expDateC">
+              </div>
+              <div class="col-2">
+                <label for="cvv">CVV</label><input type="text" name="cvv" placeholder="XXX" size="4" id="cvvC">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="add-card-checkout" type="submit">Add</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="add-contact-modal-checkout">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Add Contact</h2>
+        </div>
+        <div class="modal-body">
+          <form>
+            <label for="inputName">Name</label><input type="text" name="inputName" id="contactInputNameC"><br>
+            <label for="username">Username</label><input type="text" name="username" id="contactUsernameC"><br>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="add-contact-checkout" type="submit">Add</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script type="text/javascript" src="./common.js"></script>
@@ -335,6 +424,7 @@
   <script type="text/javascript" src="./account.js"></script>
   <script type="text/javascript" src="./restaurant.js"></script>
   <script type="text/javascript" src="./menu.js"></script>
+  <script type="text/javascript" src="./checkout.js"></script>
 </body>
 
 </html>

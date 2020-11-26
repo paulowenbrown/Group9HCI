@@ -51,15 +51,23 @@ $("#btnPwd").click(function () {
 	$("#change-pwd-modal").show();
 });
 
-$("#btnContact").click(function () {
+function addContactModal() {
 	$("#add-contact-modal").show();
+}
+
+$("#btnContact").click(function () {
+	addContactModal()
 });
 
-$("#btnCard").click(function () {
+function addCardModal() {
 	$("#cardNumError").hide()
 	$("#cvvError").hide()
 	$("#expDateError").hide()
 	$("#add-card-modal").show();
+}
+
+$("#btnCard").click(function () {
+	addCardModal()
 });
 
 function removeAccountActive() {
@@ -76,8 +84,10 @@ function hideAccountPage() {
 
 function showAccountPage() {
 	$("#restaurantPage").hide()
+	hideMenuPage()
+	hideCheckoutPage()
 	$("#accountPage").show()
-	$("#account-profile-tab").removeClass("pill-active");
+	$("#account-profile-tab").addClass("pill-active");
 	listInit()
 	// Sets Account field values
 	$("#usernameAcc").val(loggedInAccount.username)

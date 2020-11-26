@@ -82,6 +82,8 @@ function addToOrder(id) {
 function removeFromOrder(section, num) {
     orders[section].items.splice(num, 1);
     refreshOrderList();
+    // need to refresh checkout page in case it was done from there
+    showCheckoutInfo()
 }
 
 function addOrderSection() {
@@ -151,7 +153,6 @@ function refreshOrderList() {
         }
         document.getElementById("orderList").appendChild(section);
     }
-    console.log(orders[0].items.toString());
 }
 
 function init() {
@@ -172,7 +173,7 @@ function hideMenuPage() {
 
 $("#checkout").click(function() {
     $("#menuPage").hide()
-    $("#checkoutPage").show()
+    showCheckoutPage()
 });
 
 // For selecting categories
@@ -199,7 +200,9 @@ $("#storePolicy").click(function() {
 });
 
 function setActive(selected) {
+    removeActive()
     $(selected).addClass("pill-active");
+    refreshOrderList();
     refreshMenuItems();
 }
 
