@@ -22,9 +22,10 @@ function refreshMenuItems() {
     if (categories[0]) {
         category = categories[0].id
     }
-    var sort = document.getElementById("sort").value;
+    var sort = document.getElementById("menuSort").value;
     var search = document.getElementById("menuSearch").value.toUpperCase();
 
+    var items = JSON.parse(data);
     if (sort == "price") items.sort(function(a, b){return a.price - b.price});
     if (sort == "popularity") items.sort(function(a, b){return b.popularity - a.popularity});
     if (sort == "specials") items.sort(function(a, b){return b.special - a.special});
@@ -106,6 +107,13 @@ function removeOrderSection(i) {
 }
 
 function refreshOrderList() {
+    if (orders.length == 1) {
+        document.getElementById("singleOrGroup").innerHTML = "SINGLE";
+    }
+    else {
+        document.getElementById("singleOrGroup").innerHTML = "GROUP";
+    }
+
     document.getElementById("orderList").innerHTML = "";
 
     for (i=0; i<orders.length; i++) {
@@ -157,11 +165,13 @@ function refreshOrderList() {
 
 function init() {
     refreshMenuItems();
-    orders.push({name: "Person 1", items: []});
     refreshOrderList();
 }
 
 function showMenuPage() {
+    if (orders.length == 0) {
+        orders.push({name: loggedInAccount.fname, items: []});
+    }
     $("#menuPage").show()
     setActive($("#all"))
 }

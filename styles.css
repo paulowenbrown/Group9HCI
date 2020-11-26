@@ -492,7 +492,7 @@ button:hover {
     margin-left: 10%;
 }
 
-.sort-container #sort {
+.sort-container .sort {
     padding: 6px;
     padding-top: 9px;
     padding-bottom: 9px;
@@ -675,7 +675,13 @@ button:hover {
     overflow-y: auto;
 }
 
-#menuPage p {
+#orderList .orderListItem {
+    position: relative;
+    left: 10%;
+    width: 90%;
+}
+
+#menuPage .orderBar p {
   color: #DDE2DB;
 }
 
@@ -687,12 +693,19 @@ button:hover {
     padding: 5%;
     border-radius: 100px;
     width: 90%;
+    position: relative;
 }
 
 .menuitem img {
     width: 100px;
     height: 100px;
     float: left;
+}
+
+.menuitem .addButton {
+    position: absolute;
+    right: 10%;
+    bottom: 40%;
 }
 
 #menuPage .selectedOrderSection {
@@ -720,7 +733,7 @@ button:hover {
 }
 
 .removeButton {
-    padding: 12px 16px;
+    padding: 4px 6px;
 }
 
 .removeItem {
