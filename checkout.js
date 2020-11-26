@@ -1,70 +1,53 @@
-let fakeaccount = [{
-  username: "admin", password: "password", fname: "John", lname: "Smith", email: "admin@admin.ca",
-  cards: [{ name: "John", cardNumber: "1234123412341234", cardName: "John Smith", expDate: "01/22", cvv: "123" }],
-  contacts: [{ name: "Jeff", username: "test" }], addresses: [{ name: "John", address: "123 Admin Place" }]
-}]
 
-// Get the modal
-var modal = document.getElementById("payment-modal");
 
-// Get the button that opens the modal
-var btn = document.getElementById("payment-select");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("payment-close")[0];
+$("#backMenu").click(function () {
+  $("#menuPage").show()
+  $("#checkoutPage").hide()
+})
 
 
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-  modal.style.display = "none";
-}
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
 
-// Get the modal
-var card_modal = document.getElementById("add-card-modal");
 
-// Get the button that opens the modal
-var card_btn = document.getElementById("addCard-btn");
+$('#add-card').click(function () {
+  var cardInputName = $('#cardInputName').val();
+  var cardNum = $('#cardNum').val();
+  var cardName = $('#cardName').val();
+  var expDate = $('#expDate').val();
+  var cvv = $('#cvv').val();
+  $('#cardList').append('<h4><input type="radio" name="pay" value=""/>' + cardInputName + ' - ' + cardNum + '</h4>');
+})
 
-// Get the <span> element that closes the modal
-var card_span = document.getElementsByClassName("add-card-close")[0];
+// var persons = localStorage.getItem('persons');
+// console.log(persons)
+// if (persons) {
+//   persons = JSON.parse(persons);
+//   var html = '';
+//   for (var k = 0; k < persons.length; k++) {
+//       html += '<div class="item">';
+//       html += '<h2>' + persons[k].person + '</h2>';
+//       html += '<button class="payment-select">Select Payment</button>';
+//       html += '<h3>Items: ' + persons[k].items + '</h3>';
+//       html += '<h3>Total:</h3>';
+//       html += '</div>';
+//   }
+//   $('#persons').html(html);
+// }
 
-// When the user clicks the button, open the modal 
-card_btn.onclick = function () {
-  card_modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-card_span.onclick = function () {
-  card_modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-  if (event.target == card_modal) {
-    card_modal.style.display = "none";
-  }
-}
-
+$('#addCard-btn').click(function () {
+  $("#add-card-modal").show()
+})
 
 
 function checkoutCardList() {
-
   // Clear divs to ensure no duplication
   $("#cardList").html("");
 
-  for (let x in fakeaccount.cards) {
-    let card = fakeaccount.cards[x]
+  for (let x in loggedInAccount.cards) {
+    let card = loggedInAccount.cards[x]
     appendCard(card)
   }
-  console.log("testing2222");
 }
 
 function appendCard(card) {
@@ -82,10 +65,9 @@ function appendCard(card) {
 
 
 $("#payment-select").click(function () {
-
+  console.log("AOSK")
   checkoutCardList();
-  console.log("testing");
-  modal.style.display = "block";
+  $("#payment-modal").show()
   if (localStorage.getItem('data')) {
     var data = JSON.parse(localStorage.getItem('data'));
     console.log(data);
@@ -95,3 +77,22 @@ $("#payment-select").click(function () {
     }
   }
 })
+
+
+// $('#cardList').append('<h4>' + name + ' - ' + cardNum + '</h4>');
+// var data = {
+//   'name': name,
+//   'card': cardNum
+// };
+
+// var arr1 = [];
+// if (localStorage.getItem('data')) {
+//   arr1 = JSON.parse(localStorage.getItem('data'));
+//   arr1.push(data);
+//   localStorage.setItem('data', JSON.stringify(arr1));
+
+// } else {
+//   arr1.push(data);
+//   localStorage.setItem('data', JSON.stringify(arr1));
+
+// }

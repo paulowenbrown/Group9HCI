@@ -18,11 +18,13 @@ var currentOrderSection = 0;
 
 function refreshMenuItems() {
     var categories = document.getElementsByClassName("pill-active");
-    var category = categories[0].id;
+    var category = "";
+    if (categories[0]) {
+        category = categories[0].id
+    }
     var sort = document.getElementById("sort").value;
     var search = document.getElementById("menuSearch").value.toUpperCase();
 
-    var items = JSON.parse(data);
     if (sort == "price") items.sort(function(a, b){return a.price - b.price});
     if (sort == "popularity") items.sort(function(a, b){return b.popularity - a.popularity});
     if (sort == "specials") items.sort(function(a, b){return b.special - a.special});
@@ -158,6 +160,21 @@ function init() {
     refreshOrderList();
 }
 
+function showMenuPage() {
+    $("#menuPage").show()
+    setActive($("#all"))
+}
+
+function hideMenuPage() {
+    $("#menuPage").hide()
+    removeActive()
+}
+
+$("#checkout").click(function() {
+    $("#menuPage").hide()
+    $("#checkoutPage").show()
+});
+
 // For selecting categories
 $("#all").click(function() {
     setActive(this)
@@ -182,6 +199,11 @@ $("#storePolicy").click(function() {
 });
 
 function setActive(selected) {
+    $(selected).addClass("pill-active");
+    refreshMenuItems();
+}
+
+function removeActive() {
     $("#all").removeClass("pill-active");
     $("#combos").removeClass("pill-active");
     $("#appetizers").removeClass("pill-active");
@@ -189,8 +211,6 @@ function setActive(selected) {
     $("#mains").removeClass("pill-active");
     $("#desserts").removeClass("pill-active");
     $("#storePolicy").removeClass("pill-active");
-    $(selected).addClass("pill-active");
-    refreshMenuItems();
 }
 
 window.addEventListener('load',init);

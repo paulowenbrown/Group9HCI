@@ -47,7 +47,7 @@ function logout(){
 
 function showRestaurantPage() {
     $("#loginPage").hide()
-    $("#accountPage").hide()
+    hideAccountPage()
     $("#restaurantPage").show()
     // Clear login page values
     $("#username").val("")

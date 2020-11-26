@@ -90,17 +90,17 @@
         <h2 id="category">Categories</h2>
         <hr>
         <div class="rCategory">
-          <a href="" class="pill-active" name="category">All</a>
-          <a href="" name="category">B</a>
-          <a href="" name="category">C</a>
-          <a href="" name="category">D</a>
-          <a href="" name="category">B</a>
-          <a href="" name="category">C</a>
-          <a href="" name="category">D</a>
-          <a href="" name="category">D</a>
-          <a href="" name="category">B</a>
-          <a href="" name="category">C</a>
-          <a href="" name="category">D</a>
+          <a name="category">All</a>
+          <a name="category">B</a>
+          <a name="category">C</a>
+          <a name="category">D</a>
+          <a name="category">B</a>
+          <a name="category">C</a>
+          <a name="category">D</a>
+          <a name="category">D</a>
+          <a name="category">B</a>
+          <a name="category">C</a>
+          <a name="category">D</a>
         </div>
       </div>
     </div>
@@ -123,7 +123,7 @@
         <input type="button" id="backButton" value="BACK TO SEARCH" onclick="showRestaurantPage()">
       </div>
       <div class="pill-nav">
-        <a id="account-profile-tab" class="pill-active">Profile</a>
+        <a id="account-profile-tab">Profile</a>
         <a id="account-card-tab">Saved Cards</a>
         <a id="account-contact-tab">Contacts</a>
         <a id="account-address-tab">Saved Addresses</a>
@@ -264,7 +264,65 @@
 
   <!-- MENU -->
   <div id="menuPage">
-    MENUUUUUUUUUUUUUU
+    <div class="topBar">
+      <div id="address">
+        <form>
+          <input type="text" placeholder="Address" id="address">
+        </form>
+      </div>
+      <h1 id="title">FUNNY PLACEHOLDER NAME</h1>
+      <div class="account-container">
+        <button id="accountBtn" onclick="showAccountPage()">Account</button>
+        <button id="logOut" onclick="logout()">Log Out</button>
+        <button id="logIn" onclick="">Log In</button>
+      </div>
+    </div>
+
+    <div class="rSidebar">
+      <div class="wrap-button">
+        <input type="button" id="backButton" value="BACK TO SEARCH">
+      </div>
+
+      <div class="pill-nav">
+        <div class="search-container">
+          <button type="submit"><i class="fa fa-search"></i></button>
+          <input type="text" id="menuSearch" placeholder="Search" name="menuSearch" oninput="refreshMenuItems()">
+        </div>
+        <div class="sort-container">
+          <label for="sort">Sort</label>
+          <select name="text" id="sort" onchange="refreshMenuItems()">
+            <option value="all">All</option>
+            <option value="popularity">Popularity</option>
+            <option value="price">Price</option>
+            <option value="specials">Specials</option>
+          </select>
+        </div>
+        <h2 id="category">Categories</h2>
+        <hr>
+        <a id="all" name="category">All</a>
+        <a id="combos" name="category">Combos</a>
+        <a id="appetizers" name="category">Appetizers</a>
+        <a id="sides" name="category">Side Dishes</a>
+        <a id="mains" name="category">Main Dishes</a>
+        <a id="desserts" name="category">Desserts</a>
+        <a id="storePolicy" name="category">Store Policy</a>
+      </div>
+    </div>
+
+    <div class="orderBar">
+      <div class="pill-checkout">
+        <h2 id="singleOrGroup">SINGLE</h2>
+        <button type="button" id="addPerson" onclick="addOrderSection();"><i class="fa fa-user-plus"></i></button>
+        <div id="orderList"></div>
+      </div>
+      <input type="button" id="checkout" value="Checkout">
+    </div>
+
+    <div class="restaurantDisplayName">
+      <h1>Restaurant Name</h1>
+    </div>
+    <div id="dishSpace">
+    </div>
   </div>
 
   <!-- CHECKOUT -->
@@ -276,6 +334,7 @@
   <script type="text/javascript" src="./login.js"></script>
   <script type="text/javascript" src="./account.js"></script>
   <script type="text/javascript" src="./restaurant.js"></script>
+  <script type="text/javascript" src="./menu.js"></script>
 </body>
 
 </html>
