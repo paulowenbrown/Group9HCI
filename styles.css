@@ -106,14 +106,14 @@ h1 {
     height: calc(100% - 40px);
 }
 
-#address, #accountBtn, #logOut, #logIn {
+#address, .navButton {
     color: white;
     padding-left: 20px;
     text-align: center;
     height: calc(100% - 40px);
 }
 
-#logOut,#logIn {
+.navButton {
     float: right;
     margin-top:12px;
     font-size: 17px;
@@ -130,20 +130,15 @@ h1 {
     width: 40%;
 }
 
-#logOut:hover,#logIn:hover {
+.navButton:hover {
     background-color: #5A7574;
     color: #DDE2DB;
     border: 2px solid #DDE2DB;
 }
 
-#accountPage #logOut {
+#accountPage .navButton {
     max-height: 100%;
 }
-
-#logIn {
-  display: none;
-}
-
 
 
 .tab-content {
@@ -383,6 +378,10 @@ button:hover {
 }
 
 #add-card-modal-checkout p {
+    color: red;
+}
+
+#payError {
     color: red;
 }
 

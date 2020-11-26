@@ -265,7 +265,20 @@ $("#add-contact-checkout").click(function () {
 	$(".modal").hide()
 });
 
+function placeOrder() {
+  for (i = 0; i < orders.length; i++) {
+    if (!orders[i].checked) {
+      $("#payError").show()
+    } else {
+      $("#payError").hide()
+      $("#orderConfirm").show()
+    }
+  }
+}
+
 function showCheckoutPage() {
+  $("#payError").hide()
+  $("#orderConfirm").hide()
   showCheckoutInfo()
   $("#checkoutPage").show()
 }

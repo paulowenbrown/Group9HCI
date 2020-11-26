@@ -12,7 +12,7 @@
 <body onload="setPage()">
   <div id="loginPage">
     <div class="topBar">
-      <h1 id="title">FUNNY PLACEHOLDER NAME</h1>
+      <h1 id="title">GET FüD</h1>
     </div>
     <div class="centered">
       <div class="flex-container">
@@ -64,11 +64,11 @@
           <input type="text" placeholder="Address" id="address">
         </form>
       </div>
-      <h1 id="title">FUNNY PLACEHOLDER NAME</h1>
+      <h1 id="title">GET FüD</h1>
       <div class="account-container">
-        <button id="accountBtn" onclick="showAccountPage()">Account</button>
-        <button id="logOut" onclick="logout()">Log Out</button>
-        <button id="logIn" onclick="">Log In</button>
+        <button class="navButton" id="accountBtn" onclick="showAccountPage()">Account</button>
+        <button class="navButton" id="logOut" onclick="logout()">Log Out</button>
+        <button class="navButton" id="logIn" onclick="showLoginPage()">Log In</button>
       </div>
     </div>
     <div class="rSidebar">
@@ -112,9 +112,9 @@
   <!-- ACCOUNT -->
   <div id="accountPage">
     <div class="topBar">
-      <h1 id="title">FUNNY PLACEHOLDER NAME</h1>
+      <h1 id="title">GET FüD</h1>
       <div class="account-container">
-        <button id="logOut" onclick="logout()">Log Out</button>
+        <button class="navButton" id="logOut" onclick="logout()">Log Out</button>
       </div>
     </div>
 
@@ -270,17 +270,17 @@
           <input type="text" placeholder="Address" id="address">
         </form>
       </div>
-      <h1 id="title">FUNNY PLACEHOLDER NAME</h1>
+      <h1 id="title">GET FüD</h1>
       <div class="account-container">
-        <button id="accountBtn" onclick="showAccountPage()">Account</button>
-        <button id="logOut" onclick="logout()">Log Out</button>
-        <button id="logIn" onclick="">Log In</button>
+        <button class="navButton" id="accountBtnMenu" onclick="showAccountPage()">Account</button>
+        <button class="navButton" id="logOutMenu" onclick="logout()">Log Out</button>
+        <button class="navButton" id="logInMenu" onclick="showLoginPage()">Log In</button>
       </div>
     </div>
 
     <div class="rSidebar">
       <div class="wrap-button">
-        <input type="button" class="backButton" value="BACK TO SEARCH">
+        <input type="button" class="backButton" value="BACK TO SEARCH" onclick="showRestaurantPage()">
       </div>
 
       <div class="pill-nav">
@@ -329,11 +329,11 @@
   <div id="checkoutPage">
     <!-- Top header bar -->
     <div class="topBar">
-      <h1 id="title">FUNNY PLACEHOLDER NAME</h1>
+      <h1 id="title">GET FüD</h1>
       <div class="account-container">
-        <button id="accountBtn" onclick="showAccountPage()">Account</button>
-        <button id="logOut" onclick="logout()">Log Out</button>
-        <button id="logIn" onclick="">Log In</button>
+        <button class="navButton" id="accountBtnCheckout" onclick="showAccountPage()">Account</button>
+        <button class="navButton" id="logOutCheckout" onclick="logout()">Log Out</button>
+        <button class="navButton" id="logInCheckout" onclick="showLoginPage()">Log In</button>
       </div>
     </div>
 
@@ -364,7 +364,9 @@
       <h1>Your Order</h1>
       <div id="persons">
       </div>
-      <button type="submit" id="placeOrder">Place Order</button>
+      <button type="submit" id="placeOrder" onclick="placeOrder()">Place Order</button><br>
+      <p id="payError"><strong>Please select a payment option for all orders.</strong></p>
+      <h4 id="orderConfirm">Your order is successfully placed and on its way. Thank you for ordering with GET FüD!</h4>
     </div>
 
     <div class="modal" id="add-card-modal-checkout">
