@@ -589,15 +589,25 @@ button:hover {
 	font-size: 23px;
 }
 
+#menuPage .modal h2 {
+    color: #4B5049;
+}
+
+#menuPage .modal label {
+    display: inline-block;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
 .orderButtonPos {
 	position: absolute;
-	top: 75px;
+	top: 70px;
 	right: 80px;
 }
 
 .menuDescripPos {
 	width: 75%;
-	margin-top: -10px;
+	margin-top: -15px;
 }
 
 #restaurantSpace::-webkit-scrollbar {
@@ -690,9 +700,30 @@ button:hover {
     position: absolute;
     top: 90px;
     bottom: calc(40px);
-    width: 100%;
-    overflow-y: auto;
+    width: 97%;
+    overflow-y: scroll;
 }
+
+#orderList::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  #orderList::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 100px;
+  }
+  
+  /* Handle */
+  #orderList::-webkit-scrollbar-thumb {
+    background: #4B5049;
+    border-radius: 100px;
+  }
+  
+  /* Handle on hover */
+  #orderList::-webkit-scrollbar-thumb:hover {
+    background: #DDE2DB;
+  }
 
 #menuPage .orderBar p {
   color: #DDE2DB;
@@ -711,7 +742,7 @@ button:hover {
 }
 
 .onSpecial {
-    background-color: #a3f782;
+    background-color: #D0F0BE;
 }
 
 .menuitem img {
@@ -719,6 +750,7 @@ button:hover {
 	margin-right: 25px;
     height: 100%;
     float: left;
+    border-radius: 12px;
 }
 
 .menuitem .itemPrice {
@@ -776,6 +808,7 @@ button:hover {
 
 .orderListItemCheckout .orderListItemText {
     width: 45%;
+    margin-left: 5%;
 }
 
 .orderListItemTextPrice {

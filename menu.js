@@ -130,7 +130,8 @@ function refreshMenuItems() {
                     modalH.setAttribute("class", "modal-header");
                     var span = document.createElement("span");
                     span.setAttribute("class", "close");
-                    span.appendChild(document.createTextNode("x"));
+                    span.setAttribute("onclick", "closeEditModal()");
+                    span.innerHTML = "&times;";
                     var h2 = document.createElement("h2");
                     h2.appendChild(document.createTextNode("Edit"));
                     modalH.appendChild(span);
@@ -139,10 +140,13 @@ function refreshMenuItems() {
 
                     //Content
 
+                    var modalB = document.createElement("div");
+                    modalB.setAttribute("class", "modal-body");
+
                     if (sortedItems[i].radio) {
                         var h3radio = document.createElement("h3");
                         h3radio.appendChild(document.createTextNode("Please select one:"));
-                        modalC.appendChild(h3radio);
+                        modalB.appendChild(h3radio);
                         for (j = 0; j < sortedItems[i].radio.length; j++) {
                             var radio = document.createElement("input");
                             var label = document.createElement('label');
@@ -153,15 +157,16 @@ function refreshMenuItems() {
                             label.setAttribute("for", "radio_" + j);
                             label.setAttribute("id", "label_" + j);
                             label.appendChild(document.createTextNode(sortedItems[i].radio[j]));
-                            modalC.appendChild(radio);
-                            modalC.appendChild(label);
+                            modalB.appendChild(radio);
+                            modalB.appendChild(label);
+                            modalB.appendChild(document.createElement("br"));
                         }
                     }
 
                     if (sortedItems[i].select) {
                         var h3select = document.createElement("h3");
                         h3select.appendChild(document.createTextNode("Please select one or more:"));
-                        modalC.appendChild(h3select);
+                        modalB.appendChild(h3select);
                         for (j = 0; j < sortedItems[i].select.length; j++) {
                             var check = document.createElement("input");
                             var label = document.createElement('label');
@@ -172,11 +177,13 @@ function refreshMenuItems() {
                             label.setAttribute("for", "checkbox_" + j);
                             label.setAttribute("id", "labelC_" + j);
                             label.appendChild(document.createTextNode(sortedItems[i].select[j]));
-                            modalC.appendChild(check);
-                            modalC.appendChild(label);
+                            modalB.appendChild(check);
+                            modalB.appendChild(label);
+                            modalB.appendChild(document.createElement("br"));
                         }
                     }
 
+                    modalC.appendChild(modalB);
 
                     // Footer
                     var modalF = document.createElement("div");
@@ -191,8 +198,6 @@ function refreshMenuItems() {
                     modalC.appendChild(modalF);
                     modal.appendChild(modalC);
                 }
-
-
 
                 orderButtonPos.appendChild(addButton);
                 if (sortedItems[i].radio || sortedItems[i].select) {
@@ -222,6 +227,10 @@ function refreshMenuItems() {
 
 function openEditModal(index) {
     $("#editModal_" + index).show()
+}
+
+function closeEditModal() {
+    $(".modal").hide()
 }
 
 function addToOrder(id) {
