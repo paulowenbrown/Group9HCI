@@ -1,10 +1,14 @@
-var data = '[ \
-    {"name":"Restaurant #1", "text":"Text for restaurant #1", "image":"placeholder.png"}, \
-    {"name":"Restaurant #2", "text":"Text for restaurant #2", "image":"placeholder.png"}, \
-    {"name":"Restaurant #3", "text":"Text for restaurant #3", "image":"placeholder.png"} \
+var restaurantData = '[ \
+    {"name":"The Codfather", "text":"Italian family owned seafood restaurant", "image":"RestaurantImages/the-codfather.jpg"}, \
+    {"name":"McDoner Lads", "text":"Kebab store owned by a local New Zealand lad", "image":"RestaurantImages/mcdonner-lads.jpg"}, \
+    {"name":"The Creperia", "text":"Joint pizza and crepe place", "image":"RestaurantImages/creperia.jpg"}, \
+    {"name":"Riceland", "text":"Combination nordic and sushi restaurant", "image":"RestaurantImages/riceland.jpg"}, \
+    {"name":"Devil May Hungry", "text":"A restaurant themed around items that are devilishly good!", "image":"RestaurantImages/DevilMayHungry.jpg"}, \
+    {"name":"The Good Hunter", "text":"A restaurant that serves game", "image":"RestaurantImages/the-good-hunter.jpg"}, \
+    {"name":"Catfé", "text":"Cat themed café!", "image":"RestaurantImages/catfe.jpg"} \
 ]';
 
-var restaurants = JSON.parse(data);
+var restaurants = JSON.parse(restaurantData);
 
 var currRestaurant = {};
 
