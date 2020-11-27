@@ -27,7 +27,7 @@ function refreshRestaurantList() {
     }
 
     document.getElementById("restaurantSpace").innerHTML = "";
-    for (i=0; i<restaurants.length; i++) {
+    for (i = 0; i < restaurants.length; i++) {
         if (category == "allRest" || restaurants[i].category == category) {
             var restauranttext = restaurants[i].name + restaurants[i].text;
             if (restauranttext.toUpperCase().indexOf(search) > -1) {
@@ -48,7 +48,7 @@ function refreshRestaurantList() {
 
                 var viewButton = document.createElement("button");
                 viewButton.setAttribute("type", "button");
-                viewButton.setAttribute("class", "addButton");
+                viewButton.setAttribute("class", "viewMenuButton");
                 viewButton.appendChild(document.createTextNode("View Menu"));
                 viewButton.setAttribute("onClick", "viewMenu(" + i.toString() + ");");
 
@@ -68,31 +68,31 @@ function init() {
     setActiveR($("#allRest"));
 }
 
-window.addEventListener('load',init);
+window.addEventListener('load', init);
 
 // For selecting categories
-$("#allRest").click(function() {
+$("#allRest").click(function () {
     setActiveR(this)
 });
-$("#steakhouse").click(function() {
+$("#steakhouse").click(function () {
     setActiveR(this)
 });
-$("#cafe").click(function() {
+$("#cafe").click(function () {
     setActiveR(this)
 });
-$("#pizza").click(function() {
+$("#pizza").click(function () {
     setActiveR(this)
 });
-$("#seafood").click(function() {
+$("#seafood").click(function () {
     setActiveR(this)
 });
-$("#sushi").click(function() {
+$("#sushi").click(function () {
     setActiveR(this)
 });
-$("#pita").click(function() {
+$("#pita").click(function () {
     setActiveR(this)
 });
-$("#dessert").click(function() {
+$("#dessert").click(function () {
     setActiveR(this)
 });
 
