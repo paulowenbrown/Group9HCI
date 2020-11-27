@@ -57,17 +57,34 @@ function refreshMenuItems() {
                 img.setAttribute("class", "itemImg");
                 img.setAttribute("src", items[i].image);
 
+                var orderButtonPos = document.createElement("div");
+                orderButtonPos.setAttribute("class","orderButtonPos");
+
+                var menuDescripPos = document.createElement("div");
+                menuDescripPos.setAttribute("class","menuDescripPos");
+
                 var addButton = document.createElement("button");
                 addButton.setAttribute("type", "button");
                 addButton.setAttribute("class", "addButton");
                 addButton.appendChild(document.createTextNode("Add to order"));
                 addButton.setAttribute("onClick", "addToOrder(" + i.toString() + ");");
 
+                var editDish = document.createElement("button");
+                editDish.setAttribute("type", "button");
+                editDish.setAttribute("class", "editDish");
+                editDish.appendChild(document.createTextNode("Edit"));
+                editDish.setAttribute("onClick", "addToOrder(" + i.toString() + ");");
+
+                orderButtonPos.appendChild(addButton);
+                orderButtonPos.appendChild(editDish);
+
+                menuDescripPos.appendChild(name);
+                menuDescripPos.appendChild(text);
+                menuDescripPos.appendChild(price);
+
                 item.appendChild(img);
-                item.appendChild(name);
-                item.appendChild(text);
-                item.appendChild(price);
-                item.appendChild(addButton);
+                item.appendChild(menuDescripPos);
+                item.appendChild(orderButtonPos);
 
                 document.getElementById("dishSpace").appendChild(item);
             }
@@ -146,7 +163,12 @@ function refreshOrderList() {
 
             var text = document.createElement("p");
             text.setAttribute("class", "orderListItemText");
-            text.appendChild(document.createTextNode(items[orders[i].items[j]].name + " - " + items[orders[i].items[j]].price));
+            text.appendChild(document.createTextNode(items[orders[i].items[j]].name));
+
+            var text2 = document.createElement("p");
+            text2.setAttribute("class", "orderListItemText");
+            text2.setAttribute("class", "orderListItemTextPrice");
+            text2.appendChild(document.createTextNode(items[orders[i].items[j]].price));
 
             var removeButton = document.createElement("button");
             removeButton.setAttribute("type", "button");
@@ -155,6 +177,7 @@ function refreshOrderList() {
             removeButton.setAttribute("onClick", "removeFromOrder(" + i.toString() + ", " + j.toString() + ");");
 
             orderItem.appendChild(text);
+            orderItem.appendChild(text2);
             orderItem.appendChild(removeButton);
 
             section.appendChild(orderItem);

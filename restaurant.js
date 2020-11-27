@@ -33,7 +33,7 @@ function loadRestaurants() {
 
         var viewButton = document.createElement("button");
         viewButton.setAttribute("type", "button");
-        viewButton.setAttribute("class", "addButton");
+        viewButton.setAttribute("class", "viewMenuButton");
         viewButton.appendChild(document.createTextNode("View Menu"));
         viewButton.setAttribute("onClick", "viewMenu(" + i.toString() + ");");
 

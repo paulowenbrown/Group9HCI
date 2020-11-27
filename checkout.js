@@ -27,6 +27,7 @@ function showCheckoutInfo() {
     var radioCard = document.createElement("input");
     var labelRadioCard = document.createElement('label');
     radioCard.setAttribute("type", "radio");
+    radioCard.setAttribute("class", "paymentChoice");
     radioCard.setAttribute("id", "radioCard_" + i);
     radioCard.setAttribute("value", "card");
     radioCard.setAttribute("name", "select");
@@ -37,12 +38,13 @@ function showCheckoutInfo() {
     labelRadioCard.setAttribute("for", "radioCard_" + i);
     labelRadioCard.setAttribute("id", "labelRadioCard_" + i);
     labelRadioCard.appendChild(document.createTextNode("Credit Card"));
-    radioForm.appendChild(labelRadioCard);
     radioForm.appendChild(radioCard);
+    radioForm.appendChild(labelRadioCard);
 
     var radioContact = document.createElement("input");
     var labelRadioContact = document.createElement('label');
     radioContact.setAttribute("type", "radio");
+    radioContact.setAttribute("class", "paymentChoice");
     radioContact.setAttribute("id", "radioContact_" + i);
     radioContact.setAttribute("value", "contact");
     radioContact.setAttribute("name", "select");
@@ -53,18 +55,20 @@ function showCheckoutInfo() {
     labelRadioContact.setAttribute("for", "radioContact_" + i);
     labelRadioContact.setAttribute("id", "labelRadioContact_" + i);
     labelRadioContact.appendChild(document.createTextNode("Contact"));
-    radioForm.appendChild(labelRadioContact);
     radioForm.appendChild(radioContact);
+    radioForm.appendChild(labelRadioContact);
     section.append(radioForm);
 
     // Card option
     var cardSelect = document.createElement('select');
     var labelCard = document.createElement('label');
     labelCard.setAttribute("for", "card_" + i);
+    labelCard.setAttribute("class", "labelDropdown");
     labelCard.setAttribute("id", "labelCard_" + i);
     labelCard.appendChild(document.createTextNode("Credit Card:"));
     section.appendChild(labelCard);
     cardSelect.setAttribute("onChange", "setCard(" + i + ");");
+    cardSelect.setAttribute("class", "dropdownOption");
     cardSelect.setAttribute("id", "card_" + i);
     for (j = 0; j < loggedInAccount.cards.length; j++) {
       var card = loggedInAccount.cards[j];
@@ -88,10 +92,12 @@ function showCheckoutInfo() {
     var contactSelect = document.createElement('select');
     var labelContact = document.createElement('label');
     labelContact.setAttribute("for", "contact_" + i);
+    labelContact.setAttribute("class", "labelDropdown");
     labelContact.setAttribute("id", "labelContact_" + i);
     labelContact.appendChild(document.createTextNode("Contact:"));
     section.appendChild(labelContact);
     contactSelect.setAttribute("onChange", "setContact(" + i + ");");
+    contactSelect.setAttribute("class", "dropdownOption");
     contactSelect.setAttribute("id", "contact_" + i);
     for (j = 0; j < loggedInAccount.contacts.length; j++) {
       var contact = loggedInAccount.contacts[j];
@@ -115,12 +121,17 @@ function showCheckoutInfo() {
 
     for (j = 0; j < orders[i].items.length; j++) {
       var orderItem = document.createElement("div");
-      orderItem.setAttribute("class", "orderListItem");
+      orderItem.setAttribute("class", "orderListItemCheckout");
       orderItem.setAttribute("id", "orderListItem_" + i.toString() + "_" + j.toString());
 
       var text = document.createElement("p");
       text.setAttribute("class", "orderListItemText");
-      text.appendChild(document.createTextNode(items[orders[i].items[j]].name + " - " + items[orders[i].items[j]].price));
+      text.appendChild(document.createTextNode(items[orders[i].items[j]].name));
+
+      var text2 = document.createElement("p");
+	    text2.setAttribute("class", "orderListItemText");
+	    text2.setAttribute("class", "orderListItemTextPrice");
+	    text2.appendChild(document.createTextNode(items[orders[i].items[j]].price));
 
       var removeButton = document.createElement("button");
       removeButton.setAttribute("type", "button");
@@ -129,6 +140,7 @@ function showCheckoutInfo() {
       removeButton.setAttribute("onClick", "removeFromOrder(" + i.toString() + ", " + j.toString() + ");");
 
       orderItem.appendChild(text);
+      orderItem.appendChild(text2);
       orderItem.appendChild(removeButton);
 
       section.appendChild(orderItem);
@@ -136,6 +148,7 @@ function showCheckoutInfo() {
       total += items[orders[i].items[j]].price;
     }
 
+    section.appendChild(document.createElement("br"));
     var sectionTotal = document.createElement("h2");
     sectionTotal.setAttribute("class", "orderSectionTotal");
     sectionTotal.appendChild(document.createTextNode("Total: " + total));
@@ -236,7 +249,6 @@ $("#add-card-checkout").click(function () {
 		}
 		loggedInAccount.cards.push(card)
     
-    // could auto select in box but lazy for now
     showCheckoutInfo()
 
 		$("#cardInputNameC").val("")
@@ -257,7 +269,6 @@ $("#add-contact-checkout").click(function () {
 	}
 	loggedInAccount.contacts.push(contact)
   
-  // could auto select in box but lazy for now
   showCheckoutInfo()
 
 	$("#contactInputNameC").val("")
@@ -266,13 +277,17 @@ $("#add-contact-checkout").click(function () {
 });
 
 function placeOrder() {
+  var showError = false;
   for (i = 0; i < orders.length; i++) {
     if (!orders[i].checked) {
-      $("#payError").show()
-    } else {
-      $("#payError").hide()
-      $("#orderConfirm").show()
+      showError = true;
     }
+  }
+  if (showError) {
+    $("#payError").show()
+  } else {
+    $("#payError").hide()
+    $("#orderConfirm").show()
   }
 }
 
