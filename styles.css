@@ -213,7 +213,7 @@ input[type=text], input[type=email], input[type=password] {
 label {
   margin-bottom: 10px;
   display: block;
-  color: #5A7574;;
+  color: #5A7574;
 }
 
 .sort-container label {
@@ -555,7 +555,7 @@ button:hover {
     padding: 5%;
     border-radius: 100px;
     height: 50%;
-    width: 40%;
+    width: 70%;
     border: 4px solid #DDE2DB;
     cursor: pointer;
 }
@@ -568,6 +568,14 @@ button:hover {
     width: 100px;
     height: 100px;
     float: left;
+    border-radius: 50%;
+    margin: 2%;
+}
+
+.restaurant .restaurantText {
+    display: inline-block;
+    width: 50%;
+    overflow: auto;
 }
 
 .addButton, .editDish {
@@ -693,6 +701,7 @@ button:hover {
     margin-bottom:3%;
     padding: 5%;
     border-radius: 100px;
+    height: 50%;
     width: 90%;
     position: relative;
 }
@@ -701,13 +710,29 @@ button:hover {
     width: 100px;
     height: 100px;
     float: left;
+    border-radius: 50%;
+    margin: 2%;
 }
 
 .menuitem .addButton {
     position: absolute;
-    right: 10%;
+    right: 5%;
     bottom: 40%;
 }
+
+.menuitem .itemDescription {
+    display: inline-block;
+    width: 50%;
+    overflow: auto;
+}
+
+.menuitem .itemPrice {
+    font-weight: bold;
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+}
+
 
 #menuPage .selectedOrderSection {
     color: black;
