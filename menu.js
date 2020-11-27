@@ -4,8 +4,8 @@ var data = '[ \
     {"restaurant": "McDoner Lads", "name": "Falafel", "text": "A deep-fried patty made from ground chickpeas", "category": "sides", "price": 7.67, "popularity": 4, "special": false, "image": "MenuImages/mcdoners-falafel.jpg"}, \
     {"restaurant": "McDoner Lads", "name": "Salad", "text": "Salad made with romaine lettuce with vinaigrette dressing and feta cheese", "category": "sides", "price": 6.6, "popularity": 7, "special": false, "image": "MenuImages/mcdoners-salad.jpg"}, \
     {"restaurant": "McDoner Lads", "name": "Meat on Rice", "text": "Sliced meat on a platter of rice and vegetables", "category": "mains", "price": 11.4, "popularity": 8, "special": false, "image": "MenuImages/mcdoners-chkn-rice.jpg"}, \
-    {"restaurant": "McDoner Lads", "name": "Water", "text": "Water", "category": "beverages", "price": 2.00, "popularity": 9, "special": false, "image": "MenuImages/placeholder.png"}, \
-    {"restaurant": "McDoner Lads", "name": "Soda", "text": "Assorted sodas", "category": "beverages", "price": 2.50, "popularity": 6, "special": false, "image": "MenuImages/placeholder.png"}, \
+    {"restaurant": "McDoner Lads", "name": "Water", "text": "Water", "category": "beverages", "price": 2.00, "popularity": 9, "special": false, "image": "MenuImages/water-glass.png"}, \
+    {"restaurant": "McDoner Lads", "name": "Soda", "text": "Assorted sodas", "category": "beverages", "price": 2.50, "popularity": 6, "special": false, "image": "MenuImages/Soda-bottles.png"}, \
     {"restaurant": "The Codfather", "name": "Calamari", "text": "Fried squid rings with a garnish of green onions. Accompanied by tartar and cocktail sauce.", "category": "appetizers", "price": 6.53, "popularity": 5, "special": false, "image": "MenuImages/codfather-calamari.jpg"}, \
     {"restaurant": "The Codfather", "name": "Oysters Rockefeller", "text": "Oysters on the half-shell that have been topped with a rich sauce of butter, parsley, then broiled.", "category": "appetizers", "price": 10.4, "popularity": 8, "special": false, "image": "MenuImages/codfather-rockefeller.jpg"}, \
     {"restaurant": "The Codfather", "name": "Scallops", "text": "Seared scallops in a garlic butter sauce", "category": "appetizers", "price": 6.23, "popularity": 11, "special": false, "image": "MenuImages/codfather-scallops.jpg"}, \
@@ -14,8 +14,8 @@ var data = '[ \
     {"restaurant": "The Codfather", "name": "Lobster", "text": "Lobster served with butter and garlic sauce", "category": "mains", "price": 20.67, "popularity": 9, "special": false, "image": "MenuImages/codfather-lobster.jpg"}, \
     {"restaurant": "The Codfather", "name": "Fish Tacos", "text": "Fish in tacos!", "category": "mains", "price": 10.46, "popularity": 4, "special": false, "image": "MenuImages/codfather-tacos.jpg"}, \
     {"restaurant": "The Codfather", "name": "Biscuits", "text": "Our signature light and fluffy biscuits", "category": "sides", "price": 5.32, "popularity": 2, "special": false, "image": "MenuImages/codfather-biscuit.jpg"}, \
-    {"restaurant": "The Codfather", "name": "Water", "text": "Water", "category": "beverages", "price": 1.50, "popularity": 9, "special": false, "image": "MenuImages/"}, \
-    {"restaurant": "The Codfather", "name": "Soda", "text": "Assorted sodas", "category": "beverages", "price": 2.00, "popularity": 7, "special": false, "image": "MenuImages/"}, \
+    {"restaurant": "The Codfather", "name": "Water", "text": "Water", "category": "beverages", "price": 1.50, "popularity": 9, "special": false, "image": "MenuImages/water-glass.png"}, \
+    {"restaurant": "The Codfather", "name": "Soda", "text": "Assorted sodas", "category": "beverages", "price": 2.00, "popularity": 7, "special": false, "image": "MenuImages/Soda-bottles.png"}, \
     {"restaurant": "Devil May Hungry", "name": "Devil May Fry", "text": "Cajun french fries", "category": "sides", "price": 7, "popularity": 1, "special": false, "image": "MenuImages/dvl-may-hngry-fries.jpg"}, \
     {"restaurant": "Devil May Hungry", "name": "Wedges", "text": "Potato wedges", "category": "sides", "price": 6.5, "popularity": 2, "special": false, "image": "MenuImages/dvl-may-hngry-wedges.jpg"}, \
     {"restaurant": "Devil May Hungry", "name": "Garlic Bread", "text": "Crusty herb loaf doused with garlic. Guaranteed to keep vampires away.", "category": "sides", "price": 6, "popularity": 4, "special": false, "image": "MenuImages/dvl-may-hngry-bread.jpg"}, \
@@ -224,7 +224,7 @@ $("#checkout").click(function() {
 $("#all").click(function() {
     setActive(this)
 });
-$("#combos").click(function() {
+$("#beverages").click(function() {
     setActive(this)
 });
 $("#appetizers").click(function() {
@@ -252,7 +252,7 @@ function setActive(selected) {
 
 function removeActive() {
     $("#all").removeClass("pill-active");
-    $("#combos").removeClass("pill-active");
+    $("#beverages").removeClass("pill-active");
     $("#appetizers").removeClass("pill-active");
     $("#sides").removeClass("pill-active");
     $("#mains").removeClass("pill-active");
