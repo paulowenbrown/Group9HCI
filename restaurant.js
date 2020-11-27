@@ -39,6 +39,7 @@ function refreshRestaurantList() {
             if (restauranttext.toUpperCase().indexOf(search) > -1) {
                 var restaurant = document.createElement("div");
                 restaurant.setAttribute("class", "restaurant");
+                restaurant.setAttribute("onClick", "viewMenu(" + i.toString() + ");");
 
                 var name = document.createElement("h3");
                 name.setAttribute("class", "restaurantName");
@@ -56,17 +57,10 @@ function refreshRestaurantList() {
                 img.setAttribute("class", "restaurantImg");
                 img.setAttribute("src", restaurants[i].image)
 
-                var viewButton = document.createElement("button");
-                viewButton.setAttribute("type", "button");
-                viewButton.setAttribute("class", "viewMenuButton");
-                viewButton.appendChild(document.createTextNode("View Menu"));
-                viewButton.setAttribute("onClick", "viewMenu(" + i.toString() + ");");
-
                 restaurant.appendChild(img);
                 restaurant.appendChild(name);
                 restaurant.appendChild(text);
                 restaurant.appendChild(deltime);
-                restaurant.appendChild(viewButton);
 
                 document.getElementById("restaurantSpace").appendChild(restaurant);
             }

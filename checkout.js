@@ -151,6 +151,9 @@ function showCheckoutInfo() {
       total += items[orders[i].items[j]].price;
     }
 
+    // fixes weird 10 digit decimal point error
+    total = (Math.round(total * 100) / 100).toFixed(2);
+
     section.appendChild(document.createElement("br"));
     var sectionTotal = document.createElement("h2");
     sectionTotal.setAttribute("class", "orderSectionTotal");
