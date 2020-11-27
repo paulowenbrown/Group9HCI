@@ -96,6 +96,8 @@ function showRestaurantPage() {
     $("#fnameSignUp").val("")
     $("#lnameSignUp").val("")
     $("#emailSignUp").val("")
+    // Empty order when going back to restaurant page
+    orders = []
 }
 
 function signUp(){
