@@ -74,7 +74,7 @@ h1 {
 }
 
 .checkoutSpace h3 {
-    padding-left: 5%;
+    padding-left: 10%;
 }
 
 
@@ -85,12 +85,12 @@ h1 {
 }
 
 #accountPage #title, #checkoutPage #title {
-    margin-left: 36.70%;
+    margin-left: 46.1%;
     display: inline-block;
 }
 
 #restaurantPage #title, #menuPage #title {
-  padding-left: 20px;
+  padding-left: 33.5px;
   height: calc(100% - 40px);
   width: calc(60%-40px);
 }
@@ -102,19 +102,18 @@ h1 {
 
 #accountPage .account-container, #checkoutPage .account-container {
     max-width: 18%;
-    display: inline-block;
     float: right;
     height: calc(100% - 40px);
 }
 
-#address, #accountBtn, #logOut, #logIn {
+#address, .navButton {
     color: white;
     padding-left: 20px;
     text-align: center;
     height: calc(100% - 40px);
 }
 
-#logOut,#logIn {
+.navButton {
     float: right;
     margin-top:12px;
     font-size: 17px;
@@ -131,21 +130,15 @@ h1 {
     width: 40%;
 }
 
-#logOut:hover,#logIn:hover {
+.navButton:hover {
     background-color: #5A7574;
     color: #DDE2DB;
     border: 2px solid #DDE2DB;
 }
 
-#accountPage #logOut {
+#accountPage .navButton {
     max-height: 100%;
 }
-
-#logIn {
-  display: none;
-}
-
-
 
 .tab-content {
     padding: 20px;
@@ -203,8 +196,8 @@ input[type=text], input[type=email], input[type=password] {
 .rSidebar input[type=text] {
   padding: 6px;
   padding-right: 6px;
-  padding-top: 7px;
-  padding-bottom: 9px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   border: none;
   text-decoration: none;
   font-size: 17px;
@@ -218,7 +211,7 @@ input[type=text], input[type=email], input[type=password] {
 label {
   margin-bottom: 10px;
   display: block;
-  color: #5A7574;;
+  color: #5A7574;
 }
 
 .sort-container label {
@@ -246,7 +239,7 @@ label {
     position: fixed;
 }
 
-#backButton {
+.backButton {
     width: 100%;
     height: 100%;
     border-radius: 12px;
@@ -262,7 +255,7 @@ label {
     font-weight: bold;
 }
 
-#backButton:hover {
+.backButton:hover {
   background: #DDE2DB;
 }
 
@@ -344,7 +337,7 @@ button {
     margin: 4px 2px;
     opacity: 1;
     transition: 0.1s;
-    font-family: "Trebuchet MS", sans-serif
+    font-family: "Trebuchet MS", sans-serif;
     outline: none;
     cursor: pointer;
 }
@@ -381,6 +374,15 @@ button:hover {
 
 #accountPage p {
     color: red;
+}
+
+#add-card-modal-checkout p {
+    color: red;
+}
+
+#payError {
+    color: red;
+    margin-left: 5%;
 }
 
 
@@ -452,28 +454,6 @@ button:hover {
     color: black;
 }
 
-#accountBtn {
-    margin-top:12px;
-    font-size: 17px;
-    font-weight: bold;
-    padding-top: 15px;
-    padding-bottom: 34px;
-    padding-right: 20px;
-    padding-left: 20px;
-    text-decoration: none;
-    font-size: 17px;
-    background-color: #DDE2DB;
-    border: 2px solid #5A7574;
-    color: #5A7574;
-    width: 55%;
-}
-
-#accountBtn:hover {
-    background-color: #5A7574;
-    color: #DDE2DB;
-    border: 2px solid #DDE2DB;
-}
-
 .search-container {
     border: none;
     margin-top: 40px;
@@ -490,7 +470,7 @@ button:hover {
     margin-left: 10%;
 }
 
-.sort-container #sort {
+.sort-container .sort {
     padding: 6px;
     padding-top: 9px;
     padding-bottom: 9px;
@@ -562,21 +542,48 @@ button:hover {
 }
 
 .restaurant img {
-    width: 100px;
-    height: 100px;
-    float: left;
+	margin-top: -20px;
+	margin-bottom: -20px;
+    width: 100%;
+    height: 80%;
+    float: center;
+}
+
+.restaurant h3 {
+	margin-top: -10px;
 }
 
 .addButton, .editDish {
     background-color: #5A7574;
     color: #DDE2DB;
     border: 2px solid #5A7574;
+    width: 120px;
+    height: 55px;
+    display: block;
+    margin-bottom: 10px;
 }
 
-.addButton:hover, .editDish:hover {
+.addButton:hover, .editDish:hover, .viewMenuButton:hover {
     background-color: #DDE2DB;
     border: 2px solid #5A7574;
     color: #5A7574;
+}
+
+.restaurant .viewMenuButton {
+	background-color: #5A7574;
+    color: #DDE2DB;
+    border: 2px solid #5A7574;
+	float: right;
+}
+
+.orderButtonPos {
+	float:right;
+	margin-top: -105px;
+	margin-right: 50px;
+}
+
+.menuDescripPos {
+	width: 70%;
 }
 
 #restaurantSpace::-webkit-scrollbar {
@@ -616,7 +623,7 @@ button:hover {
     top: 150px;
     width: 57%;
     height: calc(100% - 150px);
-    overflow-y: auto;
+    overflow-y: scroll;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -673,7 +680,7 @@ button:hover {
     overflow-y: auto;
 }
 
-#menuPage p {
+#menuPage .orderBar p {
   color: #DDE2DB;
 }
 
@@ -681,15 +688,18 @@ button:hover {
     display: block;
     background-color: #DDE2DB;
     margin-top: 2%;
-    margin-bottom:3%;
+    margin-bottom: 3%;
     padding: 5%;
     border-radius: 100px;
     width: 90%;
+    max-height: 35%;
 }
 
 .menuitem img {
-    width: 100px;
-    height: 100px;
+	margin-top: -15px;
+	margin-right: 25px;
+    width: 200px;
+    height: 200px;
     float: left;
 }
 
@@ -704,9 +714,41 @@ button:hover {
     margin-right: 5%;
 }
 
-.orderListItemText {
+.orderSectionNameCheckout {
     display: inline-block;
+}
+
+.orderSectionTotal {
+	display: block;
+	margin-left: 5%;
+	margin-top: -10px;
+}
+
+.orderListItem {
+	display: flex;
+	justify-content: space-between;
+}
+
+.orderListItemCheckout {
+	display: flex;
+	justify-content: space-between;
+	width: 30%;
+	margin-left: 10%;
+	background-color: #DDE2DB;
+}
+
+.orderListItemCheckout button {
+	margin-right: 10%;
+}
+
+.orderListItemText {
     margin-left: 10%;
+    width: 35%;
+}
+
+#orderListItemTextPrice {
+    width: 10%;
+    margin-left: 0%;
 }
 
 #singleOrGroup {
@@ -721,21 +763,9 @@ button:hover {
     padding: 12px 16px;
 }
 
-.removeItem {
-    background-color: #5A7574;
-    color: #aaa;
-    font-size: 25px;
-    font-weight: bold;
-    border: none;
-}
-
-.removeItem:hover,
-.removeItem:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-    border: none;
-    background: none;
+.orderListItem .removeButton {
+	padding: 0px 15px;
+	margin-right: 5%;
 }
 
 #addPerson {
@@ -776,32 +806,34 @@ button:hover {
     
 }
 
-.payment-close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+.checkoutSpace label {
+	display: inline-block;
 }
 
-.payment-close:hover,
-.payment-close:focus {
-    color: black;
+.paymentChoice {
+	margin-left: 10%;
+	margin-right: 10px;
+}
+
+.dropdownOption {
+	padding: 6px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    border: 2px solid #5A7574;
+    font-family: "Trebuchet MS", sans-serif;
     text-decoration: none;
-    cursor: pointer;
+    font-size: 17px;
+    border-radius: 8px;
+    outline: none;
+    width:200px;
+    font-size: 15px;
+    color: #4B5049;
+    margin-right: 10px;
 }
 
-.add-card-close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.add-card-close:hover,
-.add-card-close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+.labelDropdown {
+	margin-left: 10%;
+	margin-right: 10px;
 }
 
 .select-container {
@@ -884,4 +916,5 @@ button:hover {
 
 #placeOrder {
     margin-left: 5%;
+    margin-top: 20px;
 }

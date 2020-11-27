@@ -1,4 +1,4 @@
-$("#account-profile-tab").click(function() {
+$("#account-profile-tab").click(function () {
 	$("#profile").show();
 	$("#contacts").hide();
 	$("#cards").hide();
@@ -9,7 +9,7 @@ $("#account-profile-tab").click(function() {
 	$("#account-address-tab").removeClass("pill-active");
 });
 
-$("#account-card-tab").click(function() {
+$("#account-card-tab").click(function () {
 	$("#profile").hide();
 	$("#contacts").hide();
 	$("#cards").show();
@@ -20,7 +20,7 @@ $("#account-card-tab").click(function() {
 	$("#account-address-tab").removeClass("pill-active");
 });
 
-$("#account-contact-tab").click(function() {
+$("#account-contact-tab").click(function () {
 	$("#profile").hide();
 	$("#contacts").show();
 	$("#cards").hide();
@@ -31,7 +31,7 @@ $("#account-contact-tab").click(function() {
 	$("#account-address-tab").removeClass("pill-active");
 });
 
-$("#account-address-tab").click(function() {
+$("#account-address-tab").click(function () {
 	$("#profile").hide();
 	$("#contacts").hide();
 	$("#cards").hide();
@@ -42,29 +42,52 @@ $("#account-address-tab").click(function() {
 	$("#account-profile-tab").removeClass("pill-active");
 });
 
-$("#btnAddress").click(function() {
- 	$("#add-address-modal").show();
+$("#btnAddress").click(function () {
+	$("#add-address-modal").show();
 });
 
-$("#btnPwd").click(function() {
+$("#btnPwd").click(function () {
 	$("#passwordError").hide()
- 	$("#change-pwd-modal").show();
+	$("#change-pwd-modal").show();
 });
 
-$("#btnContact").click(function() {
- 	$("#add-contact-modal").show();
+function addContactModal() {
+	$("#add-contact-modal").show();
+}
+
+$("#btnContact").click(function () {
+	addContactModal()
 });
 
-$("#btnCard").click(function() {
+function addCardModal() {
 	$("#cardNumError").hide()
 	$("#cvvError").hide()
 	$("#expDateError").hide()
- 	$("#add-card-modal").show();
+	$("#add-card-modal").show();
+}
+
+$("#btnCard").click(function () {
+	addCardModal()
 });
+
+function removeAccountActive() {
+	$("#account-card-tab").removeClass("pill-active");
+	$("#account-contact-tab").removeClass("pill-active");
+	$("#account-profile-tab").removeClass("pill-active");
+	$("#account-address-tab").removeClass("pill-active");
+}
+
+function hideAccountPage() {
+	$("#accountPage").hide()
+	removeAccountActive()
+}
 
 function showAccountPage() {
 	$("#restaurantPage").hide()
+	hideMenuPage()
+	hideCheckoutPage()
 	$("#accountPage").show()
+	$("#account-profile-tab").addClass("pill-active");
 	listInit()
 	// Sets Account field values
 	$("#usernameAcc").val(loggedInAccount.username)
@@ -74,17 +97,17 @@ function showAccountPage() {
 	$("#passwordAcc").val(loggedInAccount.password)
 }
 
-$("#save-info").click(function() {
+$("#save-info").click(function () {
 	var r = confirm("Are you sure you want to change this information?");
 	if (r == true) {
-    	loggedInAccount.username = $("#usernameAcc").val()
+		loggedInAccount.username = $("#usernameAcc").val()
 		loggedInAccount.fname = $("#fnameAcc").val()
 		loggedInAccount.lname = $("#lnameAcc").val()
 		loggedInAccount.email = $("#emailAcc").val()
- 	}
+	}
 });
 
-$("#change-pwd").click(function() {
+$("#change-pwd").click(function () {
 	let newPass = $("#passwordNew").val()
 	let confirmPass = $("#passwordConfirm").val()
 	// Passwords must match
@@ -99,7 +122,7 @@ $("#change-pwd").click(function() {
 	}
 });
 
-$("#add-card").click(function() {
+$("#add-card").click(function () {
 	let error = false
 	let name = $("#cardInputName").val()
 	let cardNum = $("#cardNum").val()
@@ -111,15 +134,15 @@ $("#add-card").click(function() {
 	$("#cvvError").hide()
 	$("#expDateError").hide()
 	// Error checking for incorrect inputs
-	if(!expDate.match(/^[0-9][0-9]\/[0-9][0-9]$/)) {
+	if (!expDate.match(/^[0-9][0-9]\/[0-9][0-9]$/)) {
 		$("#expDateError").show()
 		error = true
 	}
-	if(!cardNum.match(/^[0-9]{16}$/)) {
+	if (!cardNum.match(/^[0-9]{16}$/)) {
 		$("#cardNumError").show()
 		error = true
 	}
-	if(!cvv.match(/^[0-9]{3}$/)) {
+	if (!cvv.match(/^[0-9]{3}$/)) {
 		$("#cvvError").show()
 		error = true
 	}
@@ -143,7 +166,7 @@ $("#add-card").click(function() {
 	}
 });
 
-$("#add-contact").click(function() {
+$("#add-contact").click(function () {
 	let name = $("#contactInputName").val()
 	let username = $("#contactUsername").val()
 	let contact = {
@@ -157,7 +180,7 @@ $("#add-contact").click(function() {
 	$(".modal").hide()
 });
 
-$("#add-address").click(function() {
+$("#add-address").click(function () {
 	let name = $("#addressInputName").val()
 	let address = $("#address").val()
 	let addr = {
