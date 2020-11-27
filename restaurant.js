@@ -18,36 +18,42 @@ function viewMenu(index) {
     $("#restaurantPage").hide()
 }
 
-function loadRestaurants() {
+function refreshRestaurantList() {
+    var search = document.getElementById("restaurantSearch").value.toUpperCase();
+
+    document.getElementById("restaurantSpace").innerHTML = "";
     for (i=0; i<restaurants.length; i++) {
-        var restaurant = document.createElement("div");
-        restaurant.setAttribute("class", "restaurant");
+        var restauranttext = restaurants[i].name + restaurants[i].text;
+        if (restauranttext.toUpperCase().indexOf(search) > -1) {
+            var restaurant = document.createElement("div");
+            restaurant.setAttribute("class", "restaurant");
 
-        var name = document.createElement("h3");
-        name.setAttribute("class", "restaurantName");
-        name.appendChild(document.createTextNode(restaurants[i].name))
+            var name = document.createElement("h3");
+            name.setAttribute("class", "restaurantName");
+            name.appendChild(document.createTextNode(restaurants[i].name))
 
-        var text = document.createElement("p");
-        text.setAttribute("class", "restaurantText");
-        text.appendChild(document.createTextNode(restaurants[i].text))
+            var text = document.createElement("p");
+            text.setAttribute("class", "restaurantText");
+            text.appendChild(document.createTextNode(restaurants[i].text))
 
-        var img = document.createElement("img");
-        img.setAttribute("class", "restaurantImg");
-        img.setAttribute("src", restaurants[i].image)
+            var img = document.createElement("img");
+            img.setAttribute("class", "restaurantImg");
+            img.setAttribute("src", restaurants[i].image)
 
-        var viewButton = document.createElement("button");
-        viewButton.setAttribute("type", "button");
-        viewButton.setAttribute("class", "addButton");
-        viewButton.appendChild(document.createTextNode("View Menu"));
-        viewButton.setAttribute("onClick", "viewMenu(" + i.toString() + ");");
+            var viewButton = document.createElement("button");
+            viewButton.setAttribute("type", "button");
+            viewButton.setAttribute("class", "addButton");
+            viewButton.appendChild(document.createTextNode("View Menu"));
+            viewButton.setAttribute("onClick", "viewMenu(" + i.toString() + ");");
 
-        restaurant.appendChild(img);
-        restaurant.appendChild(name);
-        restaurant.appendChild(text);
-        restaurant.appendChild(viewButton);
+            restaurant.appendChild(img);
+            restaurant.appendChild(name);
+            restaurant.appendChild(text);
+            restaurant.appendChild(viewButton);
 
-        document.getElementById("restaurantSpace").appendChild(restaurant);
+            document.getElementById("restaurantSpace").appendChild(restaurant);
+        }
     }
 }
 
-window.addEventListener('load',loadRestaurants);
+window.addEventListener('load',refreshRestaurantList);

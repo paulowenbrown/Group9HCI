@@ -68,7 +68,7 @@ function refreshMenuItems() {
     for (i=0; i<items.length; i++) {
         if (items[i].restaurant == currRestaurant.name && (category == "all" || items[i].category == category)) {
             var itemtext = items[i].name + items[i].text;
-                if (itemtext.toUpperCase().indexOf(search) > -1) {
+            if (itemtext.toUpperCase().indexOf(search) > -1) {
                 var item = document.createElement("div");
                 item.setAttribute("class", "menuitem");
                 item.setAttribute("id", "item_" + i.toString());
