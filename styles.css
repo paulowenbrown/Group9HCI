@@ -717,8 +717,7 @@ button:hover {
 .menuitem img {
     margin-top: -15px;
 	margin-right: 25px;
-    width: 200px;
-    height: 200px;
+    height: 100%;
     float: left;
 }
 
