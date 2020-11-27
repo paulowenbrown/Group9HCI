@@ -27,7 +27,7 @@ function refreshRestaurantList() {
         category = categories[0].id
     }
 
-    var restaurants = JSON.parse(restaurantData);
+    restaurants = JSON.parse(restaurantData);
     if (sort == "deliveryTime") restaurants.sort(function(a, b){return a.deliveryTime - b.deliveryTime});
     if (sort == "popularity") restaurants.sort(function(a, b){return b.popularity - a.popularity});
     if (sort == "specials") restaurants.sort(function(a, b){return b.specials - a.specials});
