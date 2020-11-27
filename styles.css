@@ -74,9 +74,8 @@ h1 {
 }
 
 .checkoutSpace h3 {
-    padding-left: 5%;
+    padding-left: 10%;
 }
-
 
 #title {
     padding-left: 0;
@@ -140,7 +139,6 @@ h1 {
 #accountPage .navButton {
     max-height: 100%;
 }
-
 
 .tab-content {
     padding: 20px;
@@ -574,6 +572,10 @@ button:hover {
 	float: right;
 }
 
+.restaurant h3 {
+	margin-top: -10px;
+}
+
 .orderButtonPos {
 	float:right;
 	margin-top: -105px;
@@ -678,12 +680,6 @@ button:hover {
     overflow-y: auto;
 }
 
-#orderList .orderListItem {
-    position: relative;
-    left: 10%;
-    width: 90%;
-}
-
 #menuPage .orderBar p {
   color: #DDE2DB;
 }
@@ -705,12 +701,6 @@ button:hover {
     width: 200px;
     height: 200px;
     float: left;
-}
-
-.menuitem .addButton {
-    position: absolute;
-    right: 10%;
-    bottom: 40%;
 }
 
 #menuPage .selectedOrderSection {

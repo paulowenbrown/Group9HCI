@@ -72,7 +72,7 @@ function showCheckoutInfo() {
     cardSelect.setAttribute("id", "card_" + i);
     for (j = 0; j < loggedInAccount.cards.length; j++) {
       var card = loggedInAccount.cards[j];
-      var opt  = document.createElement('option');
+      var opt = document.createElement('option');
       opt.setAttribute('value', card.cardNumber);
       if (orders[i].cardNumber == card.cardNumber) {
         opt.setAttribute('selected', 'selected');
@@ -101,7 +101,7 @@ function showCheckoutInfo() {
     contactSelect.setAttribute("id", "contact_" + i);
     for (j = 0; j < loggedInAccount.contacts.length; j++) {
       var contact = loggedInAccount.contacts[j];
-      var opt  = document.createElement('option');
+      var opt = document.createElement('option');
       opt.setAttribute('value', contact.username);
       if (orders[i].contact == contact.username) {
         opt.setAttribute('selected', 'selected');
@@ -129,9 +129,9 @@ function showCheckoutInfo() {
       text.appendChild(document.createTextNode(items[orders[i].items[j]].name));
 
       var text2 = document.createElement("p");
-	    text2.setAttribute("class", "orderListItemText");
-	    text2.setAttribute("class", "orderListItemTextPrice");
-	    text2.appendChild(document.createTextNode(items[orders[i].items[j]].price));
+      text2.setAttribute("class", "orderListItemText");
+      text2.setAttribute("class", "orderListItemTextPrice");
+      text2.appendChild(document.createTextNode(items[orders[i].items[j]].price));
 
       var removeButton = document.createElement("button");
       removeButton.setAttribute("type", "button");
@@ -161,22 +161,29 @@ function showCheckoutInfo() {
 
 function hideNotSelected() {
   for (x = 0; x < orders.length; x++) {
-    if (orders[x].checked != "card") {
-      $("#card_" + x).hide()
-      $("#labelCard_" + x).hide()
-      $("#addCard_" + x).hide()
-    }
-    if (orders[i].checked != "contact") {
-      $("#contact_" + x).hide()
-      $("#labelContact_" + x).hide()
-      $("#addContact_" + x).hide()
+    // hide all first
+    $("#card_" + x).hide()
+    $("#labelCard_" + x).hide()
+    $("#addCard_" + x).hide()
+    $("#contact_" + x).hide()
+    $("#labelContact_" + x).hide()
+    $("#addContact_" + x).hide()
+    // show if selected
+    if (orders[x].checked == "contact") {
+      $("#contact_" + x).show()
+      $("#labelContact_" + x).show()
+      $("#addContact_" + x).show()
+    } else if (orders[x].checked == "card") {
+      $("#card_" + x).show()
+      $("#labelCard_" + x).show()
+      $("#addCard_" + x).show()
     }
   }
 }
 
 function setSelected(index) {
   var bool = document.getElementById("radioCard_" + index).checked;
-  if (bool){
+  if (bool) {
     orders[index].checked = "card"
     $("#card_" + index).show()
     $("#labelCard_" + index).show()
@@ -205,9 +212,9 @@ function setContact(index) {
 
 function showCardModal() {
   $("#cardNumErrorC").hide()
-	$("#cvvErrorC").hide()
-	$("#expDateErrorC").hide()
-	$("#add-card-modal-checkout").show();
+  $("#cvvErrorC").hide()
+  $("#expDateErrorC").hide()
+  $("#add-card-modal-checkout").show();
 }
 
 function showContactModal() {
@@ -215,65 +222,65 @@ function showContactModal() {
 }
 
 $("#add-card-checkout").click(function () {
-	let error = false
-	let name = $("#cardInputNameC").val()
-	let cardNum = $("#cardNumC").val()
-	let cardName = $("#cardNameC").val()
-	let expDate = $("#expDateC").val()
-	let cvv = $("#cvvC").val()
-	// Hide all errors before checking and redisplaying if necessary
-	$("#cardNumErrorC").hide()
-	$("#cvvErrorC").hide()
-	$("#expDateErrorC").hide()
-	// Error checking for incorrect inputs
-	if (!expDate.match(/^[0-9][0-9]\/[0-9][0-9]$/)) {
-		$("#expDateErrorC").show()
-		error = true
-	}
-	if (!cardNum.match(/^[0-9]{16}$/)) {
-		$("#cardNumErrorC").show()
-		error = true
-	}
-	if (!cvv.match(/^[0-9]{3}$/)) {
-		$("#cvvErrorC").show()
-		error = true
-	}
-	// Add card to list
-	if (!error) {
-		let card = {
-			name: name,
-			cardNumber: cardNum,
-			cardName: cardName,
-			expDate: expDate,
-			cvv: cvv
-		}
-		loggedInAccount.cards.push(card)
-    
+  let error = false
+  let name = $("#cardInputNameC").val()
+  let cardNum = $("#cardNumC").val()
+  let cardName = $("#cardNameC").val()
+  let expDate = $("#expDateC").val()
+  let cvv = $("#cvvC").val()
+  // Hide all errors before checking and redisplaying if necessary
+  $("#cardNumErrorC").hide()
+  $("#cvvErrorC").hide()
+  $("#expDateErrorC").hide()
+  // Error checking for incorrect inputs
+  if (!expDate.match(/^[0-9][0-9]\/[0-9][0-9]$/)) {
+    $("#expDateErrorC").show()
+    error = true
+  }
+  if (!cardNum.match(/^[0-9]{16}$/)) {
+    $("#cardNumErrorC").show()
+    error = true
+  }
+  if (!cvv.match(/^[0-9]{3}$/)) {
+    $("#cvvErrorC").show()
+    error = true
+  }
+  // Add card to list
+  if (!error) {
+    let card = {
+      name: name,
+      cardNumber: cardNum,
+      cardName: cardName,
+      expDate: expDate,
+      cvv: cvv
+    }
+    loggedInAccount.cards.push(card)
+
     showCheckoutInfo()
 
-		$("#cardInputNameC").val("")
-		$("#cardNumC").val("")
-		$("#cardNameC").val("")
-		$("#expDateC").val("")
-		$("#cvvC").val("")
-		$(".modal").hide()
-	}
+    $("#cardInputNameC").val("")
+    $("#cardNumC").val("")
+    $("#cardNameC").val("")
+    $("#expDateC").val("")
+    $("#cvvC").val("")
+    $(".modal").hide()
+  }
 });
 
 $("#add-contact-checkout").click(function () {
-	let name = $("#contactInputNameC").val()
-	let username = $("#contactUsernameC").val()
-	let contact = {
-		name: name,
-		username: username
-	}
-	loggedInAccount.contacts.push(contact)
-  
+  let name = $("#contactInputNameC").val()
+  let username = $("#contactUsernameC").val()
+  let contact = {
+    name: name,
+    username: username
+  }
+  loggedInAccount.contacts.push(contact)
+
   showCheckoutInfo()
 
-	$("#contactInputNameC").val("")
-	$("#contactUsernameC").val("")
-	$(".modal").hide()
+  $("#contactInputNameC").val("")
+  $("#contactUsernameC").val("")
+  $(".modal").hide()
 });
 
 function placeOrder() {
