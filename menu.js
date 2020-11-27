@@ -130,7 +130,7 @@ function refreshMenuItems() {
                     modalH.setAttribute("class", "modal-header");
                     var span = document.createElement("span");
                     span.setAttribute("class", "close");
-                    span.appendChild(document.createTextNode("x"));
+                    span.innerHTML = "&times;";
                     var h2 = document.createElement("h2");
                     h2.appendChild(document.createTextNode("Edit"));
                     modalH.appendChild(span);
@@ -155,6 +155,7 @@ function refreshMenuItems() {
                             label.appendChild(document.createTextNode(sortedItems[i].radio[j]));
                             modalC.appendChild(radio);
                             modalC.appendChild(label);
+                            modalC.appendChild(document.createElement("br"));
                         }
                     }
 
@@ -174,6 +175,7 @@ function refreshMenuItems() {
                             label.appendChild(document.createTextNode(sortedItems[i].select[j]));
                             modalC.appendChild(check);
                             modalC.appendChild(label);
+                            modalC.appendChild(document.createElement("br"));
                         }
                     }
 
@@ -191,8 +193,6 @@ function refreshMenuItems() {
                     modalC.appendChild(modalF);
                     modal.appendChild(modalC);
                 }
-
-
 
                 orderButtonPos.appendChild(addButton);
                 if (sortedItems[i].radio || sortedItems[i].select) {
