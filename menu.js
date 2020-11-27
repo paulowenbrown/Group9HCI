@@ -53,8 +53,8 @@ var currentOrderSection = 0;
 function refreshMenuItems() {
     var categories = document.getElementsByClassName("pill-active");
     var category = "";
-    if (categories[0]) {
-        category = categories[0].id
+    if (categories[1]) {
+        category = categories[1].id
     }
     var sort = document.getElementById("menuSort").value;
     var search = document.getElementById("menuSearch").value.toUpperCase();
