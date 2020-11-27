@@ -1,3 +1,5 @@
+var currAddress = ""
+
 $("#backMenu").click(function () {
   $("#menuPage").show()
   $("#checkoutPage").hide()
@@ -77,7 +79,8 @@ function showCheckoutInfo() {
       if (orders[i].cardNumber == card.cardNumber) {
         opt.setAttribute('selected', 'selected');
       }
-      opt.appendChild(document.createTextNode(card.name + " - " + card.cardNumber));
+      var cardHidden = card.cardNumber.slice(0, 4) + "********" + card.cardNumber.slice(12, 16);
+      opt.appendChild(document.createTextNode(card.name + " - " + cardHidden));
       cardSelect.appendChild(opt);
     }
     section.appendChild(cardSelect);
@@ -159,6 +162,24 @@ function showCheckoutInfo() {
   }
 }
 
+function showAddress() {
+  document.getElementById("selectAddress").innerHTML = "";
+  for (j = 0; j < loggedInAccount.addresses.length; j++) {
+    var addr = loggedInAccount.addresses[j];
+    var opt = document.createElement('option');
+    opt.setAttribute('value', addr.address);
+    if (addr.address == currAddress) {
+      opt.setAttribute('selected', 'selected');
+    }
+    opt.appendChild(document.createTextNode(addr.name + " - " + addr.address));
+    document.getElementById("selectAddress").appendChild(opt);
+  }
+}
+
+function setCurrAddress() {
+  currAddress = $("#selectAddress :selected").val()
+}
+
 function hideNotSelected() {
   for (x = 0; x < orders.length; x++) {
     // hide all first
@@ -219,6 +240,10 @@ function showCardModal() {
 
 function showContactModal() {
   $("#add-contact-modal-checkout").show();
+}
+
+function showAddrModal() {
+  $("#add-address-modal-checkout").show();
 }
 
 $("#add-card-checkout").click(function () {
@@ -283,6 +308,23 @@ $("#add-contact-checkout").click(function () {
   $(".modal").hide()
 });
 
+$("#add-address-checkout").click(function () {
+	let name = $("#addressInputNameC").val()
+	let address = $("#addressesInputC").val()
+	let addr = {
+		name: name,
+		address: address
+	}
+  loggedInAccount.addresses.push(addr)
+  
+  showAddress()
+	
+	$("#addressInputNameC").val("")
+	$("#addressesInputC").val("")
+	$(".modal").hide()
+});
+
+
 function placeOrder() {
   var showError = false;
   for (i = 0; i < orders.length; i++) {
@@ -301,6 +343,7 @@ function placeOrder() {
 function showCheckoutPage() {
   $("#payError").hide()
   $("#orderConfirm").hide()
+  showAddress()
   showCheckoutInfo()
   $("#checkoutPage").show()
 }

@@ -89,9 +89,8 @@ h1 {
 }
 
 #restaurantPage #title, #menuPage #title {
-  padding-left: 33.5px;
-  height: calc(100% - 40px);
-  width: calc(60%-40px);
+    margin-left: 46.1%;
+    display: inline-block;
 }
 
 .account-container {
@@ -863,6 +862,12 @@ button:hover {
     width:100%;
     font-size: 15px;
     color: #4B5049;
+}
+
+#select-addrBtn {
+    margin-top: 5px;
+    display: block;
+    margin-left: 10%;
 }
 
 #checkoutPage .rSidebar p {

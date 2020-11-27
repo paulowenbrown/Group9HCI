@@ -182,7 +182,7 @@ $("#add-contact").click(function () {
 
 $("#add-address").click(function () {
 	let name = $("#addressInputName").val()
-	let address = $("#address").val()
+	let address = $("#addressesInput").val()
 	let addr = {
 		name: name,
 		address: address
@@ -190,7 +190,7 @@ $("#add-address").click(function () {
 	loggedInAccount.addresses.push(addr)
 	appendAddress(addr)
 	$("#addressInputName").val("")
-	$("#address").val("")
+	$("#addressesInput").val("")
 	$(".modal").hide()
 });
 

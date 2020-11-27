@@ -59,11 +59,6 @@
   <!-- RESTAURANT -->
   <div id="restaurantPage">
     <div class="topBar">
-      <div id="address">
-        <form onsubmit="return false;">
-          <input type="text" placeholder="Address" id="address">
-        </form>
-      </div>
       <h1 id="title">GET FüD</h1>
       <div class="account-container">
         <button class="navButton" id="accountBtn" onclick="showAccountPage()">Account</button>
@@ -261,11 +256,6 @@
   <!-- MENU -->
   <div id="menuPage">
     <div class="topBar">
-      <div id="address">
-        <form>
-          <input type="text" placeholder="Address" id="address">
-        </form>
-      </div>
       <h1 id="title">GET FüD</h1>
       <div class="account-container">
         <button class="navButton" id="accountBtnMenu" onclick="showAccountPage()">Account</button>
@@ -343,11 +333,10 @@
         <hr>
         <div class="select-container">
           <label for="selectAddress">Address</label>
-          <select id="selectAddress">
-            <option value="home">123 university street</option>
-            <option value="school">1 main hwy</option>
+          <select id="selectAddress" onchange="setCurrAddress()">
           </select>
         </div>
+        <button id="select-addrBtn" onclick="showAddrModal()">Add Address</button>
         <p>Delivery Time:</p>
         <div class="note-container">
           <label>Extra Notes</label>
@@ -413,6 +402,24 @@
         <div class="modal-footer">
           <button id="add-contact-checkout" type="submit">Add</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="add-address-modal-checkout">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>Add Address</h2>
+      </div>
+      <div class="modal-body">
+        <form>
+          <label for="inputName">Name</label><input type="text" name="inputName" id="addressInputNameC"><br>
+          <label for="addresses">Address</label><input type="text" name="addresses" id="addressesInputC"><br>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button id="add-address-checkout" type="submit">Add</button>
       </div>
     </div>
   </div>
