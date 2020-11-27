@@ -59,42 +59,44 @@ function refreshMenuItems() {
     var sort = document.getElementById("menuSort").value;
     var search = document.getElementById("menuSearch").value.toUpperCase();
 
-    items = JSON.parse(data);
-    if (sort == "price") items.sort(function (a, b) { return a.price - b.price });
-    if (sort == "popularity") items.sort(function (a, b) { return b.popularity - a.popularity });
-    if (sort == "specials") items.sort(function (a, b) { return b.special - a.special });
+    var sortedItems = JSON.parse(data);
+    if (sort == "price") sortedItems.sort(function (a, b) { return a.price - b.price });
+    if (sort == "popularity") sortedItems.sort(function (a, b) { return b.popularity - a.popularity });
+    if (sort == "specials") sortedItems.sort(function (a, b) { return b.special - a.special });
 
     document.getElementById("dishSpace").innerHTML = "";
-    for (i = 0; i < items.length; i++) {
-        if (items[i].restaurant == currRestaurant.name && (category == "all" || items[i].category == category)) {
-            var itemtext = items[i].name + items[i].text;
+    for (i = 0; i < sortedItems.length; i++) {
+        if (sortedItems[i].restaurant == currRestaurant.name && (category == "all" || sortedItems[i].category == category)) {
+            var itemtext = sortedItems[i].name + sortedItems[i].text;
             if (itemtext.toUpperCase().indexOf(search) > -1) {
+                var itemID = items.findIndex(function(item){return item.name==sortedItems[i].name});
+
                 var item = document.createElement("div");
                 item.setAttribute("class", "menuitem");
-                item.setAttribute("id", "item_" + i.toString());
+                item.setAttribute("id", "item_" + itemID.toString());
 
-                if (items[i].special) item.classList.add("onSpecial");
+                if (sortedItems[i].special) item.classList.add("onSpecial");
 
                 var name = document.createElement("h3");
                 name.setAttribute("class", "itemName");
-                name.appendChild(document.createTextNode(items[i].name));
+                name.appendChild(document.createTextNode(sortedItems[i].name));
 
                 var text = document.createElement("p");
                 text.setAttribute("class", "itemDescription");
-                text.appendChild(document.createTextNode(items[i].text));
+                text.appendChild(document.createTextNode(sortedItems[i].text));
 
                 var price = document.createElement("p");
                 price.setAttribute("class", "itemPrice");
-                if (items[i].special) {
-                    price.appendChild(document.createTextNode(items[i].price + " - 15% off!"));
+                if (sortedItems[i].special) {
+                    price.appendChild(document.createTextNode(sortedItems[i].price + " - 15% off!"));
                 } else {
-                    price.appendChild(document.createTextNode(items[i].price));
+                    price.appendChild(document.createTextNode(sortedItems[i].price));
                 }
                 
 
                 var img = document.createElement("img");
                 img.setAttribute("class", "itemImg");
-                img.setAttribute("src", items[i].image);
+                img.setAttribute("src", sortedItems[i].image);
 
                 var orderButtonPos = document.createElement("div");
                 orderButtonPos.setAttribute("class", "orderButtonPos");
@@ -106,19 +108,19 @@ function refreshMenuItems() {
                 addButton.setAttribute("type", "button");
                 addButton.setAttribute("class", "addButton");
                 addButton.appendChild(document.createTextNode("Add to order"));
-                addButton.setAttribute("onClick", "addToOrder(" + i.toString() + ");");
+                addButton.setAttribute("onClick", "addToOrder(" + itemID.toString() + ");");
 
-                if (items[i].radio || items[i].select) {
+                if (sortedItems[i].radio || sortedItems[i].select) {
                     var editDish = document.createElement("button");
                     editDish.setAttribute("type", "button");
                     editDish.setAttribute("class", "editDish");
                     editDish.appendChild(document.createTextNode("Edit"));
-                    editDish.setAttribute("onClick", "openEditModal(" + i.toString() + ");");
+                    editDish.setAttribute("onClick", "openEditModal(" + itemID.toString() + ");");
 
                     // edit modal
                     var modal = document.createElement("div");
                     modal.setAttribute("class", "modal");
-                    modal.setAttribute("id", "editModal_" + i);
+                    modal.setAttribute("id", "editModal_" + itemID);
 
                     var modalC = document.createElement("div");
                     modalC.setAttribute("class", "modal-content");
@@ -137,11 +139,11 @@ function refreshMenuItems() {
 
                     //Content
 
-                    if (items[i].radio) {
+                    if (sortedItems[i].radio) {
                         var h3radio = document.createElement("h3");
                         h3radio.appendChild(document.createTextNode("Please select one:"));
                         modalC.appendChild(h3radio);
-                        for (j = 0; j < items[i].radio.length; j++) {
+                        for (j = 0; j < sortedItems[i].radio.length; j++) {
                             var radio = document.createElement("input");
                             var label = document.createElement('label');
                             radio.setAttribute("type", "radio");
@@ -150,17 +152,17 @@ function refreshMenuItems() {
                             radio.setAttribute("name", "select");
                             label.setAttribute("for", "radio_" + j);
                             label.setAttribute("id", "label_" + j);
-                            label.appendChild(document.createTextNode(items[i].radio[j]));
+                            label.appendChild(document.createTextNode(sortedItems[i].radio[j]));
                             modalC.appendChild(radio);
                             modalC.appendChild(label);
                         }
                     }
 
-                    if (items[i].select) {
+                    if (sortedItems[i].select) {
                         var h3select = document.createElement("h3");
                         h3select.appendChild(document.createTextNode("Please select one or more:"));
                         modalC.appendChild(h3select);
-                        for (j = 0; j < items[i].select.length; j++) {
+                        for (j = 0; j < sortedItems[i].select.length; j++) {
                             var check = document.createElement("input");
                             var label = document.createElement('label');
                             check.setAttribute("type", "checkbox");
@@ -169,7 +171,7 @@ function refreshMenuItems() {
                             check.setAttribute("name", "select");
                             label.setAttribute("for", "checkbox_" + j);
                             label.setAttribute("id", "labelC_" + j);
-                            label.appendChild(document.createTextNode(items[i].select[j]));
+                            label.appendChild(document.createTextNode(sortedItems[i].select[j]));
                             modalC.appendChild(check);
                             modalC.appendChild(label);
                         }
@@ -183,7 +185,7 @@ function refreshMenuItems() {
                     add.setAttribute("type", "submit");
                     add.setAttribute("class", "addButton");
                     add.appendChild(document.createTextNode("Add to order"));
-                    add.setAttribute("onClick", "addToOrderModal(" + i.toString() + ");");
+                    add.setAttribute("onClick", "addToOrderModal(" + itemID.toString() + ");");
                     modalF.appendChild(add)
 
                     modalC.appendChild(modalF);
@@ -193,7 +195,7 @@ function refreshMenuItems() {
 
 
                 orderButtonPos.appendChild(addButton);
-                if (items[i].radio || items[i].select) {
+                if (sortedItems[i].radio || sortedItems[i].select) {
                     orderButtonPos.appendChild(editDish);
                 }
 
@@ -206,7 +208,7 @@ function refreshMenuItems() {
                 item.appendChild(orderButtonPos);
 
                 document.getElementById("dishSpace").appendChild(item);
-                if (items[i].radio || items[i].select) {
+                if (sortedItems[i].radio || sortedItems[i].select) {
                     document.getElementById("menuPage").appendChild(modal);
                 }
             }
