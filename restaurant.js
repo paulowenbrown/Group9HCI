@@ -1,11 +1,11 @@
 var restaurantData = '[ \
-    {"name":"The Codfather", "text":"Italian family owned seafood restaurant", "category":"seafood", "image":"RestaurantImages/the-codfather.jpg"}, \
-    {"name":"McDoner Lads", "text":"Kebab store owned by a local New Zealand lad", "category":"pita", "image":"RestaurantImages/mcdonner-lads.jpg"}, \
-    {"name":"The Creperia", "text":"Joint pizza and crepe place", "category":"pizza", "image":"RestaurantImages/creperia.jpg"}, \
-    {"name":"Riceland", "text":"Combination nordic and sushi restaurant", "category":"sushi", "image":"RestaurantImages/riceland.jpg"}, \
-    {"name":"Devil May Hungry", "text":"A restaurant themed around items that are devilishly good!", "category":"dessert", "image":"RestaurantImages/DevilMayHungry.jpg"}, \
-    {"name":"The Good Hunter", "text":"A restaurant that serves game", "category":"steakhouse", "image":"RestaurantImages/the-good-hunter.jpg"}, \
-    {"name":"Catfé", "text":"Cat themed café!", "category":"cafe", "image":"RestaurantImages/catfe.jpg"} \
+    {"name":"The Codfather", "text":"Italian family owned seafood restaurant", "category":"seafood", "deliveryTime":30, "popularity":4, "specials":3, "image":"RestaurantImages/the-codfather.jpg"}, \
+    {"name":"McDoner Lads", "text":"Kebab store owned by a local New Zealand lad", "category":"pita", "deliveryTime":15, "popularity":7, "specials":2, "image":"RestaurantImages/mcdonner-lads.jpg"}, \
+    {"name":"The Creperia", "text":"Joint pizza and crepe place", "category":"pizza", "popularity":6, "deliveryTime":20, "specials":0, "image":"RestaurantImages/creperia.jpg"}, \
+    {"name":"Riceland", "text":"Combination nordic and sushi restaurant", "category":"sushi", "deliveryTime":40, "popularity":2, "specials":0, "image":"RestaurantImages/riceland.jpg"}, \
+    {"name":"Devil May Hungry", "text":"A restaurant themed around items that are devilishly good!", "deliveryTime":35, "popularity":1, "specials":1, "category":"dessert", "image":"RestaurantImages/DevilMayHungry.jpg"}, \
+    {"name":"The Good Hunter", "text":"A restaurant that serves game", "category":"steakhouse", "deliveryTime":25, "popularity":3, "specials":0, "image":"RestaurantImages/the-good-hunter.jpg"}, \
+    {"name":"Catfé", "text":"Cat themed café!", "category":"cafe", "popularity":5, "deliveryTime":28, "specials":1, "image":"RestaurantImages/catfe.jpg"} \
 ]';
 
 var restaurants = JSON.parse(restaurantData);
@@ -20,11 +20,17 @@ function viewMenu(index) {
 
 function refreshRestaurantList() {
     var search = document.getElementById("restaurantSearch").value.toUpperCase();
+    var sort = document.getElementById("restaurantSort").value;
     var categories = document.getElementsByClassName("pill-active");
     var category = "";
     if (categories[0]) {
         category = categories[0].id
     }
+
+    var restaurants = JSON.parse(restaurantData);
+    if (sort == "deliveryTime") restaurants.sort(function(a, b){return a.deliveryTime - b.deliveryTime});
+    if (sort == "popularity") restaurants.sort(function(a, b){return b.popularity - a.popularity});
+    if (sort == "specials") restaurants.sort(function(a, b){return b.specials - a.specials});
 
     document.getElementById("restaurantSpace").innerHTML = "";
     for (i=0; i<restaurants.length; i++) {
@@ -42,6 +48,10 @@ function refreshRestaurantList() {
                 text.setAttribute("class", "restaurantText");
                 text.appendChild(document.createTextNode(restaurants[i].text))
 
+                var deltime = document.createElement("p");
+                deltime.setAttribute("class", "deliveryTimeText");
+                deltime.appendChild(document.createTextNode("Estimated delivery time: " + restaurants[i].deliveryTime + " min"))
+
                 var img = document.createElement("img");
                 img.setAttribute("class", "restaurantImg");
                 img.setAttribute("src", restaurants[i].image)
@@ -55,6 +65,7 @@ function refreshRestaurantList() {
                 restaurant.appendChild(img);
                 restaurant.appendChild(name);
                 restaurant.appendChild(text);
+                restaurant.appendChild(deltime);
                 restaurant.appendChild(viewButton);
 
                 document.getElementById("restaurantSpace").appendChild(restaurant);
