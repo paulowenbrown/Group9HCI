@@ -89,9 +89,8 @@ h1 {
 }
 
 #restaurantPage #title, #menuPage #title {
-  padding-left: 33.5px;
-  height: calc(100% - 40px);
-  width: calc(60%-40px);
+    margin-left: 46.1%;
+    display: inline-block;
 }
 
 .account-container {
@@ -393,7 +392,7 @@ button:hover {
     color: red;
 }
 
-#payError {
+#payError, #cartError {
     color: red;
     margin-left: 5%;
 }
@@ -556,7 +555,7 @@ button:hover {
 
 .restaurant img {
     margin-top: -20px;
-	margin-bottom: 20px;
+    margin-bottom: 20px;
     width: 100%;
     height: 75%;
     margin-left: auto;
@@ -581,24 +580,34 @@ button:hover {
 }
 
 .deliveryTimeText {
-	font-style: italic;
+    font-style: italic;
 }
 
 .restaurant h3 {
-	margin-top: -10px;
-	margin-bottom: -3px;
-	font-size: 23px;
+    margin-top: -10px;
+    margin-bottom: -3px;
+    font-size: 23px;
+}
+
+#menuPage .modal h2 {
+    color: #4B5049;
+}
+
+#menuPage .modal label {
+    display: inline-block;
+    font-size: 17px;
+    margin-bottom: 10px;
 }
 
 .orderButtonPos {
-	position: absolute;
-	top: 75px;
-	right: 80px;
+    position: absolute;
+    top: 70px;
+    right: 80px;
 }
 
 .menuDescripPos {
-	width: 75%;
-	margin-top: -10px;
+    width: 75%;
+    margin-top: -15px;
 }
 
 #restaurantSpace::-webkit-scrollbar {
@@ -684,15 +693,35 @@ button:hover {
     top: 110px;
     right: 3%;
     height: 75%;
-    overflow-y: auto;
 }
 
 #orderList {
     position: absolute;
     top: 90px;
     bottom: calc(40px);
-    width: 100%;
-    overflow-y: auto;
+    width: 97%;
+    overflow-y: scroll;
+}
+
+#orderList::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+#orderList::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 100px;
+}
+ 
+/* Handle */
+#orderList::-webkit-scrollbar-thumb {
+  background: #4B5049;
+  border-radius: 100px;
+}
+
+/* Handle on hover */
+#orderList::-webkit-scrollbar-thumb:hover {
+  background: #DDE2DB;
 }
 
 #menuPage .orderBar p {
@@ -711,21 +740,26 @@ button:hover {
     position: relative;
 }
 
+.onSpecial {
+    background-color: #D0F0BE;
+}
+
 .menuitem img {
     margin-top: -15px;
-	margin-right: 25px;
+    margin-right: 25px;
     width: 200px;
     height: 200px;
     float: left;
+    border-radius: 12px;
 }
 
 .menuitem .itemPrice {
-	font-size: 20px;
-	font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .menuitem .itemName {
-	font-size: 25px;
+    font-size: 25px;
 }
 
 #menuPage .selectedOrderSection {
@@ -740,31 +774,31 @@ button:hover {
 }
 
 .checkoutSpace .orderSectionName {
-	margin-left: 0;
-	cursor: default;
+    margin-left: 0;
+    cursor: default;
 }
 
 .orderSectionTotal {
-	display: block;
-	margin-left: 5%;
-	margin-top: -10px;
+    display: block;
+    margin-left: 5%;
+    margin-top: -10px;
 }
 
 .orderListItem {
-	display: flex;
-	justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .orderListItemCheckout {
-	display: flex;
-	justify-content: space-between;
-	width: 25%;
-	margin-left: 10%;
-	background-color: #DDE2DB;
+    display: flex;
+    justify-content: space-between;
+    width: 25%;
+    margin-left: 10%;
+    background-color: #DDE2DB;
 }
 
 .orderListItemCheckout button {
-	margin-right: 10%;
+    margin-right: 10%;
 }
 
 .orderListItemText {
@@ -774,6 +808,7 @@ button:hover {
 
 .orderListItemCheckout .orderListItemText {
     width: 45%;
+    margin-left: 5%;
 }
 
 .orderListItemTextPrice {
@@ -790,22 +825,22 @@ button:hover {
 }
 
 .orderListItem .removeButton {
-	padding: 0px 15px;
-	margin-right: 5%;
-	max-height: 40px;
+    padding: 0px 15px;
+    margin-right: 5%;
+    max-height: 40px;
 }
 
 .checkoutSpace .removeButton {
-	padding: 0px 15px;
-	margin-right: 5%;
-	max-height: 40px;
-	max-width: 40px;
+    padding: 0px 15px;
+    margin-right: 5%;
+    max-height: 40px;
+    max-width: 40px;
 }
 
 .removeButton {
-	max-width: 40px;
-	padding: 12px 25px;
-	padding-left: 15px;
+    max-width: 40px;
+    padding: 12px 25px;
+    padding-left: 15px;
 }
 
 #addPerson {
@@ -847,16 +882,16 @@ button:hover {
 }
 
 .checkoutSpace label {
-	display: inline-block;
+    display: inline-block;
 }
 
 .paymentChoice {
-	margin-left: 10%;
-	margin-right: 10px;
+    margin-left: 10%;
+    margin-right: 10px;
 }
 
 .dropdownOption {
-	padding: 6px;
+    padding: 6px;
     padding-top: 9px;
     padding-bottom: 9px;
     border: 2px solid #5A7574;
@@ -872,8 +907,8 @@ button:hover {
 }
 
 .labelDropdown {
-	margin-left: 10%;
-	margin-right: 10px;
+    margin-left: 10%;
+    margin-right: 10px;
 }
 
 .select-container {
@@ -907,6 +942,12 @@ button:hover {
     width:100%;
     font-size: 15px;
     color: #4B5049;
+}
+
+#select-addrBtn {
+    margin-top: 5px;
+    display: block;
+    margin-left: 10%;
 }
 
 #checkoutPage .rSidebar p {
