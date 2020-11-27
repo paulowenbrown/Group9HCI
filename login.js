@@ -74,6 +74,7 @@ function logout(){
 }
 
 function showLoginPage() {
+    loggedInAccount = ""
     $("#loginPage").show()
     hideMenuPage()
     $("#restaurantPage").hide()

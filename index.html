@@ -19,7 +19,7 @@
         <button id="guest" onclick="guestUserLogin()">Guest User</button>
       </div>
       <div class="flex-container">
-        <p id="loginError"><strong>Invalid username or password</strong></p>
+        <p id="loginError"><strong>Incorrect username or password</strong></p>
       </div>
       <label for="username">Username</label>
       <input type="text" id="username" name="username"><br>
@@ -59,11 +59,6 @@
   <!-- RESTAURANT -->
   <div id="restaurantPage">
     <div class="topBar">
-      <div id="address">
-        <form onsubmit="return false;">
-          <input type="text" placeholder="Address" id="address">
-        </form>
-      </div>
       <h1 id="title">GET FüD</h1>
       <div class="account-container">
         <button class="navButton" id="accountBtn" onclick="showAccountPage()">Account</button>
@@ -90,13 +85,13 @@
         <hr>
         <div class="rCategory">
           <a id="allRest" name="category">All</a>
-          <a id="steakhouse" name="category">A</a>
-          <a id="cafe" name="category">B</a>
-          <a id="pizza" name="category">C</a>
-          <a id="seafood" name="category">D</a>
-          <a id="sushi" name="category">E</a>
-          <a id="pita" name="category">F</a>
-          <a id="dessert" name="category">G</a>
+          <a id="steakhouse" name="category"><img src="icons/steakhouse.png"></a>
+          <a id="cafe" name="category"><img src="icons/cafe.png"></a>
+          <a id="pizza" name="category"><img src="icons/pizza.png"></a>
+          <a id="seafood" name="category"><img src="icons/seafood.png"></a>
+          <a id="sushi" name="category"><img src="icons/sushi.png"></a>
+          <a id="pita" name="category"><img src="icons/pitawrap.png"></a>
+          <a id="dessert" name="category"><img src="icons/dessert.png"></a>
         </div>
       </div>
     </div>
@@ -174,7 +169,7 @@
           <h2>Change Password</h2>
         </div>
         <div class="modal-body">
-          <p id="passwordError"><strong>Passwords must be the same</strong></p>
+          <p id="passwordError"><strong>Passwords must be the same, and at least one character long</strong></p>
           <form>
             <label for="oldPassword">Old Password</label><input type="text" name="oldPassword" id="passwordAcc"><br>
             <label for="newPassword">New Password</label><input type="text" name="newPassword" id="passwordNew"><br>
@@ -261,11 +256,6 @@
   <!-- MENU -->
   <div id="menuPage">
     <div class="topBar">
-      <div id="address">
-        <form>
-          <input type="text" placeholder="Address" id="address">
-        </form>
-      </div>
       <h1 id="title">GET FüD</h1>
       <div class="account-container">
         <button class="navButton" id="accountBtnMenu" onclick="showAccountPage()">Account</button>
@@ -301,7 +291,6 @@
         <a id="sides" name="category">Side Dishes</a>
         <a id="beverages" name="category">Beverages</a>
         <a id="desserts" name="category">Desserts</a>
-        <a id="storePolicy" name="category">Store Policy</a>
       </div>
     </div>
 
@@ -313,9 +302,7 @@
       </div>
       <input type="button" id="checkout" value="Checkout">
     </div>
-
-    <div class="restaurantDisplayName">
-      <h1>Restaurant Name</h1>
+    <div id="restaurantName" class="restaurantDisplayName">
     </div>
     <div id="dishSpace">
     </div>
@@ -340,15 +327,13 @@
       </div>
       <div class="pill-nav">
         <h2 id="delivery">Delivery</h2>
-        <hr>
         <div class="select-container">
           <label for="selectAddress">Address</label>
-          <select id="selectAddress">
-            <option value="home">123 university street</option>
-            <option value="school">1 main hwy</option>
+          <select id="selectAddress" onchange="setCurrAddress()">
           </select>
         </div>
-        <p>Delivery Time:</p>
+        <button id="select-addrBtn" onclick="showAddrModal()">Add Address</button>
+        <div id="deliveryTime"></div>
         <div class="note-container">
           <label>Extra Notes</label>
           <textarea id="extraNote" rows="4" cols="50"></textarea>
@@ -361,7 +346,8 @@
       <div id="persons">
       </div>
       <button type="submit" id="placeOrder" onclick="placeOrder()">Place Order</button><br>
-      <p id="payError"><strong>Please select a payment option for all orders.</strong></p>
+      <p id="cartError"><strong>Please have at least one item in each order</strong></p>
+      <p id="payError"><strong>Please select a payment option for all orders</strong></p>
       <h4 id="orderConfirm">Your order is successfully placed and on its way. Thank you for ordering with GET FüD!</h4>
     </div>
 
@@ -413,6 +399,24 @@
         <div class="modal-footer">
           <button id="add-contact-checkout" type="submit">Add</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="add-address-modal-checkout">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>Add Address</h2>
+      </div>
+      <div class="modal-body">
+        <form>
+          <label for="inputName">Name</label><input type="text" name="inputName" id="addressInputNameC"><br>
+          <label for="addresses">Address</label><input type="text" name="addresses" id="addressesInputC"><br>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button id="add-address-checkout" type="submit">Add</button>
       </div>
     </div>
   </div>

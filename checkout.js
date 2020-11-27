@@ -1,3 +1,5 @@
+var currAddress = ""
+
 $("#backMenu").click(function () {
   $("#menuPage").show()
   $("#checkoutPage").hide()
@@ -77,7 +79,8 @@ function showCheckoutInfo() {
       if (orders[i].cardNumber == card.cardNumber) {
         opt.setAttribute('selected', 'selected');
       }
-      opt.appendChild(document.createTextNode(card.name + " - " + card.cardNumber));
+      var cardHidden = card.cardNumber.slice(0, 4) + "********" + card.cardNumber.slice(12, 16);
+      opt.appendChild(document.createTextNode(card.name + " - " + cardHidden));
       cardSelect.appendChild(opt);
     }
     section.appendChild(cardSelect);
@@ -148,6 +151,9 @@ function showCheckoutInfo() {
       total += items[orders[i].items[j]].price;
     }
 
+    // fixes weird 10 digit decimal point error
+    total = (Math.round(total * 100) / 100).toFixed(2);
+
     section.appendChild(document.createElement("br"));
     var sectionTotal = document.createElement("h2");
     sectionTotal.setAttribute("class", "orderSectionTotal");
@@ -157,6 +163,24 @@ function showCheckoutInfo() {
     document.getElementById("persons").appendChild(section);
     hideNotSelected();
   }
+}
+
+function showAddress() {
+  document.getElementById("selectAddress").innerHTML = "";
+  for (j = 0; j < loggedInAccount.addresses.length; j++) {
+    var addr = loggedInAccount.addresses[j];
+    var opt = document.createElement('option');
+    opt.setAttribute('value', addr.address);
+    if (addr.address == currAddress) {
+      opt.setAttribute('selected', 'selected');
+    }
+    opt.appendChild(document.createTextNode(addr.name + " - " + addr.address));
+    document.getElementById("selectAddress").appendChild(opt);
+  }
+}
+
+function setCurrAddress() {
+  currAddress = $("#selectAddress :selected").val()
 }
 
 function hideNotSelected() {
@@ -221,6 +245,10 @@ function showContactModal() {
   $("#add-contact-modal-checkout").show();
 }
 
+function showAddrModal() {
+  $("#add-address-modal-checkout").show();
+}
+
 $("#add-card-checkout").click(function () {
   let error = false
   let name = $("#cardInputNameC").val()
@@ -283,25 +311,61 @@ $("#add-contact-checkout").click(function () {
   $(".modal").hide()
 });
 
+$("#add-address-checkout").click(function () {
+	let name = $("#addressInputNameC").val()
+	let address = $("#addressesInputC").val()
+	let addr = {
+		name: name,
+		address: address
+	}
+  loggedInAccount.addresses.push(addr)
+  
+  showAddress()
+	
+	$("#addressInputNameC").val("")
+	$("#addressesInputC").val("")
+	$(".modal").hide()
+});
+
+
 function placeOrder() {
-  var showError = false;
+  var payError = false;
+  var cartError = false;
   for (i = 0; i < orders.length; i++) {
     if (!orders[i].checked) {
-      showError = true;
+      payError = true;
+    }
+    if (orders[i].items.length == 0) {
+      cartError = true;
     }
   }
-  if (showError) {
+  if (payError) {
     $("#payError").show()
   } else {
     $("#payError").hide()
+  }
+  if (cartError) {
+    $("#cartError").show()
+  } else {
+    $("#cartError").hide()
+  }
+  if (!payError & !cartError) {
     $("#orderConfirm").show()
   }
 }
 
 function showCheckoutPage() {
   $("#payError").hide()
+  $("#cartError").hide()
   $("#orderConfirm").hide()
+  showAddress()
   showCheckoutInfo()
+
+  document.getElementById("deliveryTime").innerHTML = "";
+  var name = document.createElement("p");
+  name.appendChild(document.createTextNode("Delivery Time: " + currRestaurant.deliveryTime + "min"));
+  document.getElementById("deliveryTime").appendChild(name);
+
   $("#checkoutPage").show()
 }
 
