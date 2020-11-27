@@ -4,7 +4,7 @@ let accounts = [{ username:"admin", password:"password", fname:"John", lname:"Sm
     { name:"Eric", cardNumber:"1234123412343334", cardName:"Eric Brown", expDate:"01/22", cvv: "123" }],
     contacts: [{ name:"Jeff", username: "test" }, { name:"Alphonse", username: "cool-guy" }], 
     addresses: [{ name:"John", address:"123 Admin Place"}, { name:"Eric", address:"99 Circle Ave"}]}]
-let guest = {contacts: [], addresses: [], cards: []}
+let guest = {fname: "Guest", contacts: [], addresses: [], cards: []}
 
 function setPage() {
     $("#loginError").hide()
@@ -41,6 +41,9 @@ function login(){
         $("#accountBtnMenu").show()
         $("#accountBtnCheckout").show()
         showRestaurantPage()
+        // clear current orders 
+        orders = [];
+        refreshOrderList();
     }
 }
 
@@ -56,6 +59,9 @@ function guestUserLogin(){
     $("#accountBtnCheckout").hide()
     loggedInAccount = guest
     showRestaurantPage()
+    // clear current orders 
+    orders = [];
+    refreshOrderList();
 }
 
 function logout(){
@@ -64,7 +70,7 @@ function logout(){
     $("#restaurantPage").hide()
     hideAccountPage()
     hideMenuPage()
-	hideCheckoutPage()
+    hideCheckoutPage()
 }
 
 function showLoginPage() {

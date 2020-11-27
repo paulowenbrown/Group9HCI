@@ -79,11 +79,10 @@
         </div>
         <div class="sort-container">
           <label for="sort">Sort</label>
-          <select name="text" id="restaurantSort" class="sort">
+          <select name="text" id="restaurantSort" class="sort" onchange="refreshRestaurantList()">
             <option value="all">All</option>
             <option value="deliveryTime">Delivery Time</option>
             <option value="popularity">Popularity</option>
-            <option value="price">Price</option>
             <option value="specials">Specials</option>
           </select>
         </div>
