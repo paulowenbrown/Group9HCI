@@ -741,10 +741,20 @@ button:hover {
     background-color: #5A7574;
     color: #DDE2DB;
     border: 2px solid #5A7574;
-    width: 70%;
-    height: 55px;
+    width: 100px;
+    height: 50px;
     display: inline;
-    margin-bottom: 10px; 
+    right: 10%;
+    position: absolute;
+}
+
+.addButton {
+	bottom: 0;
+}
+
+.editDish {
+	top: 0;
+	margin-top: 10px;
 }
 
 .addButton:hover, .editDish:hover {
