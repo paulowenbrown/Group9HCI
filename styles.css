@@ -213,7 +213,7 @@ input[type=text], input[type=email], input[type=password] {
 label {
   margin-bottom: 10px;
   display: block;
-  color: #5A7574;;
+  color: #5A7574;
 }
 
 .sort-container label {
@@ -493,7 +493,7 @@ button:hover {
     margin-left: 10%;
 }
 
-.sort-container .sort {
+.sort-container #sort {
     padding: 6px;
     padding-top: 9px;
     padding-bottom: 9px;
