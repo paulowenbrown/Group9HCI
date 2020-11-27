@@ -89,9 +89,8 @@ h1 {
 }
 
 #restaurantPage #title, #menuPage #title {
-  padding-left: 33.5px;
-  height: calc(100% - 40px);
-  width: calc(60%-40px);
+    margin-left: 46.1%;
+    display: inline-block;
 }
 
 .account-container {
@@ -393,7 +392,7 @@ button:hover {
     color: red;
 }
 
-#payError {
+#payError, #cartError {
     color: red;
     margin-left: 5%;
 }
@@ -709,6 +708,10 @@ button:hover {
     width: 90%;
     max-height: 35%;
     position: relative;
+}
+
+.onSpecial {
+    background-color: #a3f782;
 }
 
 .menuitem img {

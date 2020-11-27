@@ -111,7 +111,7 @@ $("#change-pwd").click(function () {
 	let newPass = $("#passwordNew").val()
 	let confirmPass = $("#passwordConfirm").val()
 	// Passwords must match
-	if (newPass == confirmPass) {
+	if (newPass == confirmPass && newPass.length > 0) {
 		loggedInAccount.password = newPass
 		$("#passwordAcc").val(loggedInAccount.password)
 		$("#passwordNew").val("")

@@ -329,25 +329,43 @@ $("#add-address-checkout").click(function () {
 
 
 function placeOrder() {
-  var showError = false;
+  var payError = false;
+  var cartError = false;
   for (i = 0; i < orders.length; i++) {
     if (!orders[i].checked) {
-      showError = true;
+      payError = true;
+    }
+    if (orders[i].items.length == 0) {
+      cartError = true;
     }
   }
-  if (showError) {
+  if (payError) {
     $("#payError").show()
   } else {
     $("#payError").hide()
+  }
+  if (cartError) {
+    $("#cartError").show()
+  } else {
+    $("#cartError").hide()
+  }
+  if (!payError & !cartError) {
     $("#orderConfirm").show()
   }
 }
 
 function showCheckoutPage() {
   $("#payError").hide()
+  $("#cartError").hide()
   $("#orderConfirm").hide()
   showAddress()
   showCheckoutInfo()
+
+  document.getElementById("deliveryTime").innerHTML = "";
+  var name = document.createElement("p");
+  name.appendChild(document.createTextNode("Delivery Time: " + currRestaurant.deliveryTime + "min"));
+  document.getElementById("deliveryTime").appendChild(name);
+
   $("#checkoutPage").show()
 }
 
